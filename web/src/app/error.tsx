@@ -1,45 +1,31 @@
-"use client";
+'use client';
 
 import Link from "next/link";
 
-import { Container } from "@/components/ui/container";
-
-export default function Error({
-  error,
-  reset,
-}: {
-  error: Error & { digest?: string };
-  reset: () => void;
-}) {
+export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
   return (
-    <Container className="py-12">
-      <div className="rounded-2xl border border-zinc-200 bg-white p-8 text-center shadow-sm dark:border-zinc-800 dark:bg-zinc-950">
-        <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
-          Error
-        </p>
-        <h1 className="mt-3 text-2xl font-semibold tracking-tight text-zinc-900 dark:text-white">
-          Algo salió mal
-        </h1>
-        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-          {error.message || "Ocurrió un error inesperado."}
-        </p>
-
-        <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-          <button
-            type="button"
-            onClick={() => reset()}
-            className="inline-flex h-11 items-center justify-center rounded-xl bg-zinc-900 px-4 text-sm font-semibold text-white hover:bg-zinc-800 dark:bg-white dark:text-black dark:hover:bg-zinc-200"
-          >
-            Reintentar
-          </button>
-          <Link
-            href="/"
-            className="inline-flex h-11 items-center justify-center rounded-xl border border-zinc-200 bg-white px-4 text-sm font-semibold text-zinc-900 hover:bg-zinc-50 dark:border-zinc-800 dark:bg-black dark:text-white dark:hover:bg-white/10"
-          >
-            Ir al inicio
-          </Link>
-        </div>
+    <div className="min-h-screen bg-white p-8 dark:bg-slate-900">
+      <h1 className="text-2xl font-bold text-red-600">Error en la aplicación</h1>
+      <p className="mt-4 text-slate-700 dark:text-slate-300">
+        {error?.message || "Error desconocido"}
+      </p>
+      {error?.digest && (
+        <p className="mt-2 text-xs text-slate-500">Digest: {error.digest}</p>
+      )}
+      <div className="mt-6 flex gap-4">
+        <button
+          onClick={reset}
+          className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-500"
+        >
+          Reintentar
+        </button>
+        <Link
+          href="/autos"
+          className="rounded-lg border border-slate-300 px-4 py-2 hover:bg-slate-50"
+        >
+          Ir a Autos
+        </Link>
       </div>
-    </Container>
+    </div>
   );
 }

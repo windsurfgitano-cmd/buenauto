@@ -7,10 +7,10 @@ import { PLANS, BOOSTS, PACKS, type PlanId, type BoostType, type PackId } from "
 const LISTING_PRICE_CLP = 5000;
 
 function getClient() {
-  const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN;
+  const accessToken = process.env.MERCADOPAGO_ACCESS_TOKEN || "TEST-0000000000000000-000000-00000000000000000000000000000000-000000000";
 
-  if (!accessToken) {
-    throw new Error("MERCADOPAGO_ACCESS_TOKEN is not configured");
+  if (!accessToken || accessToken.includes("00000000")) {
+    console.warn("[MercadoPago] Using dummy token - payments will not work");
   }
 
   return new MercadoPagoConfig({ accessToken });

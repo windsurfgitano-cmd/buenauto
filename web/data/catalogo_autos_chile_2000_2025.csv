@@ -1,0 +1,456 @@
+﻿Brand,Model,Country,Founded,Chile_Entry,Segment,Years,Vehicle_Type,Popular
+TOYOTA,Corolla,Japón,1937,1994,Masivo,2000-2025,"Sedán, Hatchback",True
+TOYOTA,Yaris,Japón,1937,1994,Masivo,2005-2025,"Hatchback, Sedán",True
+TOYOTA,Camry,Japón,1937,1994,Masivo,2000-2025,Sedán,False
+TOYOTA,Tercel,Japón,1937,1994,Masivo,2000-2008,Hatchback,False
+TOYOTA,Hilux,Japón,1937,1994,Masivo,2000-2025,Pick-up,True
+TOYOTA,RAV4,Japón,1937,1994,Masivo,2000-2025,SUV,True
+TOYOTA,Fortuner,Japón,1937,1994,Masivo,2006-2025,SUV,True
+TOYOTA,Innova,Japón,1937,1994,Masivo,2006-2025,"SUV, Minivan",False
+TOYOTA,4Runner,Japón,1937,1994,Masivo,2000-2015,SUV,False
+TOYOTA,Land Cruiser,Japón,1937,1994,Masivo,2000-2025,SUV,False
+TOYOTA,Prius,Japón,1937,1994,Masivo,2010-2025,Híbrido,True
+TOYOTA,Avanza,Japón,1937,1994,Masivo,2007-2025,Minivan,True
+TOYOTA,Auris,Japón,1937,1994,Masivo,2008-2018,Hatchback,False
+TOYOTA,FJ Cruiser,Japón,1937,1994,Masivo,2008-2014,SUV,False
+TOYOTA,Verso,Japón,1937,1994,Masivo,2010-2020,Minivan,False
+TOYOTA,Rav4 Hybrid,Japón,1937,1994,Masivo,2017-2025,SUV Híbrido,True
+TOYOTA,Raize,Japón,1937,1994,Masivo,2022-2025,SUV Compacto,True
+TOYOTA,Glanza,Japón,1937,1994,Masivo,2020-2025,Hatchback,False
+SUZUKI,Swift,Japón,1909,1976,Masivo,2004-2025,Hatchback,True
+SUZUKI,Alto,Japón,1909,1976,Masivo,2009-2025,Citycar,True
+SUZUKI,Celerio,Japón,1909,1976,Masivo,2017-2025,"Hatchback, Citycar",True
+SUZUKI,Baleno,Japón,1909,1976,Masivo,1995-2004,Sedán Compacto,False
+SUZUKI,Vitara,Japón,1909,1976,Masivo,1988-2025,SUV,True
+SUZUKI,Samurai,Japón,1909,1976,Masivo,1981-2005,SUV,False
+SUZUKI,Jimny,Japón,1909,1976,Masivo,1970-2025,SUV Compacto,False
+SUZUKI,Grand Vitara,Japón,1909,1976,Masivo,2005-2015,SUV,False
+SUZUKI,Carry,Japón,1909,1976,Masivo,1979-2020,"Minivan, Comercial",False
+SUZUKI,Cultus,Japón,1909,1976,Masivo,1995-2008,Hatchback,False
+SUZUKI,Fronte,Japón,1909,1976,Masivo,1976-1980,Sedán,False
+SUZUKI,SX4,Japón,1909,1976,Masivo,2006-2014,Crossover,False
+SUZUKI,S-Cross,Japón,1909,1976,Masivo,2015-2025,SUV Compacto,False
+SUZUKI,Ertiga,Japón,1909,1976,Masivo,2018-2025,Minivan,False
+NISSAN,Versa,Japón,1933,1994,Masivo,2007-2025,Sedán,True
+NISSAN,Sentra,Japón,1933,1994,Masivo,2000-2010,Sedán,False
+NISSAN,Sunny,Japón,1933,1994,Masivo,2000-2012,Sedán,False
+NISSAN,V16,Japón,1933,1994,Masivo,1998-2008,Sedán,False
+NISSAN,Maxima,Japón,1933,1994,Masivo,2000-2010,Sedán Premium,False
+NISSAN,Pathfinder,Japón,1933,1994,Masivo,2000-2015,SUV,False
+NISSAN,X-Trail,Japón,1933,1994,Masivo,2001-2025,SUV,True
+NISSAN,Terrano,Japón,1933,1994,Masivo,2000-2015,SUV,False
+NISSAN,Patrol,Japón,1933,1994,Masivo,2000-2025,SUV,False
+NISSAN,D21,Japón,1933,1994,Masivo,2000-2008,Pick-up,False
+NISSAN,Navara,Japón,1933,1994,Masivo,2009-2025,Pick-up,True
+NISSAN,Frontier,Japón,1933,1994,Masivo,2005-2025,Pick-up,True
+NISSAN,Kicks,Japón,1933,1994,Masivo,2018-2025,SUV Compacto,True
+NISSAN,Qashqai,Japón,1933,1994,Masivo,2007-2025,SUV Compacto,True
+NISSAN,Murano,Japón,1933,1994,Masivo,2005-2025,SUV,False
+NISSAN,March,Japón,1933,1994,Masivo,2010-2025,Hatchback,True
+NISSAN,Micra,Japón,1933,1994,Masivo,2005-2012,Hatchback,False
+NISSAN,Juke,Japón,1933,1994,Masivo,2010-2025,Crossover,False
+NISSAN,Rogue,Japón,1933,1994,Masivo,2014-2025,SUV,False
+MITSUBISHI,Lancer,Japón,1970,1994,Masivo,2000-2018,Sedán,False
+MITSUBISHI,Mirage,Japón,1970,1994,Masivo,2012-2025,Hatchback,True
+MITSUBISHI,L-200,Japón,1970,1994,Masivo,2000-2025,Pick-up,True
+MITSUBISHI,Pajero,Japón,1970,1994,Masivo,2000-2015,SUV,False
+MITSUBISHI,Montero Sport,Japón,1970,1994,Masivo,2000-2025,SUV,True
+MITSUBISHI,Outlander,Japón,1970,1994,Masivo,2003-2025,SUV,True
+MITSUBISHI,Eclipse,Japón,1970,1994,Masivo,2000-2012,Deportivo,False
+MITSUBISHI,Galant,Japón,1970,1994,Masivo,2000-2012,Sedán,False
+MITSUBISHI,Colt,Japón,1970,1994,Masivo,2000-2012,Hatchback,False
+MITSUBISHI,Airtrek,Japón,1970,1994,Masivo,2001-2006,SUV,False
+MITSUBISHI,RVR,Japón,1970,1994,Masivo,2010-2025,SUV,False
+MITSUBISHI,ASX,Japón,1970,1994,Masivo,2010-2025,SUV Compacto,False
+MITSUBISHI,i-MiEV,Japón,1970,1994,Masivo,2012-2020,Eléctrico,False
+MITSUBISHI,Fuso,Japón,1970,1994,Masivo,2000-2025,Comercial,False
+MAZDA,Mazda 3,Japón,1920,1994,Masivo,2004-2025,"Hatchback, Sedán",True
+MAZDA,Mazda 6,Japón,1920,1994,Masivo,2002-2025,Sedán,True
+MAZDA,CX-5,Japón,1920,1994,Masivo,2013-2025,SUV,True
+MAZDA,CX-3,Japón,1920,1994,Masivo,2015-2025,SUV Compacto,True
+MAZDA,CX-9,Japón,1920,1994,Masivo,2007-2025,SUV,False
+MAZDA,Mazda 2,Japón,1920,1994,Masivo,2008-2025,Hatchback,True
+MAZDA,Premacy,Japón,1920,1994,Masivo,2001-2010,Minivan,False
+MAZDA,Tribute,Japón,1920,1994,Masivo,2001-2011,SUV,False
+MAZDA,MX-5,Japón,1920,1994,Masivo,2016-2025,Deportivo,False
+MAZDA,BT-50,Japón,1920,1994,Masivo,2007-2025,Pick-up,True
+MAZDA,Protegé,Japón,1920,1994,Masivo,2000-2003,Sedán,False
+SUBARU,Loyale,Japón,1953,1981,Premium,1984-2000,Sedán 4x4,False
+SUBARU,Legacy,Japón,1953,1981,Premium,1990-2025,Sedán,True
+SUBARU,Outback,Japón,1953,1981,Premium,1995-2025,SUV,True
+SUBARU,Forester,Japón,1953,1981,Premium,1997-2025,SUV,True
+SUBARU,Impreza,Japón,1953,1981,Premium,1992-2025,"Sedán, Hatchback",True
+SUBARU,WRX,Japón,1953,1981,Premium,2001-2025,Deportivo,False
+SUBARU,Justy,Japón,1953,1981,Premium,2003-2012,Hatchback,False
+SUBARU,Tracker,Japón,1953,1981,Premium,2000-2008,SUV,False
+SUBARU,XV,Japón,1953,1981,Premium,2011-2025,SUV Compacto,True
+SUBARU,Crosstrek,Japón,1953,1981,Premium,2018-2025,SUV,True
+HYUNDAI,Accent,Corea del Sur,1967,1997,Masivo,1994-2025,Sedán,True
+HYUNDAI,Elantra,Corea del Sur,1967,1997,Masivo,2000-2020,Sedán,False
+HYUNDAI,Coupé,Corea del Sur,1967,1997,Masivo,2001-2009,Deportivo,False
+HYUNDAI,Sonata,Corea del Sur,1967,1997,Masivo,2005-2025,Sedán Premium,False
+HYUNDAI,Grandeur,Corea del Sur,1967,1997,Masivo,2011-2020,Sedán Luxury,False
+HYUNDAI,Getz,Corea del Sur,1967,1997,Masivo,2005-2011,Hatchback,False
+HYUNDAI,i10,Corea del Sur,1967,1997,Masivo,2008-2025,Citycar,True
+HYUNDAI,i20,Corea del Sur,1967,1997,Masivo,2008-2025,Hatchback,True
+HYUNDAI,Tucson,Corea del Sur,1967,1997,Masivo,2004-2025,SUV,True
+HYUNDAI,Santa Fe,Corea del Sur,1967,1997,Masivo,2006-2025,SUV,True
+HYUNDAI,Palisade,Corea del Sur,1967,1997,Masivo,2020-2025,SUV Premium,True
+HYUNDAI,Kona,Corea del Sur,1967,1997,Masivo,2017-2025,SUV Compacto,True
+HYUNDAI,Venue,Corea del Sur,1967,1997,Masivo,2019-2025,SUV Ultracompacto,True
+HYUNDAI,Creta,Corea del Sur,1967,1997,Masivo,2021-2025,SUV Compacto,True
+HYUNDAI,Creata Grand,Corea del Sur,1967,1997,Masivo,2024-2025,SUV,True
+HYUNDAI,IONIQ,Corea del Sur,1967,1997,Masivo,2016-2025,Híbrido,True
+HYUNDAI,IONIQ 5,Corea del Sur,1967,1997,Masivo,2021-2025,SUV Eléctrico,True
+HYUNDAI,Matrix,Corea del Sur,1967,1997,Masivo,2001-2008,Hatchback,False
+HYUNDAI,Terracan,Corea del Sur,1967,1997,Masivo,2001-2007,SUV,False
+KIA,Rio,Corea del Sur,1944,1997,Masivo,1999-2025,"Sedán, Hatchback",True
+KIA,Morning,Corea del Sur,1944,1997,Masivo,2011-2025,Citycar,True
+KIA,Soluto,Corea del Sur,1944,1997,Masivo,2017-2025,Sedán Compacto,True
+KIA,Cerato,Corea del Sur,1944,1997,Masivo,2003-2025,Sedán,True
+KIA,K3,Corea del Sur,1944,1997,Masivo,2019-2025,Sedán,True
+KIA,Sportage,Corea del Sur,1944,1997,Masivo,2004-2025,SUV,True
+KIA,Sorento,Corea del Sur,1944,1997,Masivo,2002-2025,SUV,True
+KIA,Seltos,Corea del Sur,1944,1997,Masivo,2019-2025,SUV Compacto,True
+KIA,Sonet,Corea del Sur,1944,1997,Masivo,2020-2025,SUV Compacto,True
+KIA,Niro,Corea del Sur,1944,1997,Masivo,2016-2025,Híbrido,True
+KIA,Carnival,Corea del Sur,1944,1997,Masivo,2022-2025,Minivan,False
+KIA,Carens,Corea del Sur,1944,1997,Masivo,2013-2025,Minivan,False
+KIA,EV6,Corea del Sur,1944,1997,Masivo,2021-2025,Eléctrico,True
+KIA,EV5,Corea del Sur,1944,1997,Masivo,2023-2025,SUV Eléctrico,True
+KIA,EV9,Corea del Sur,1944,1997,Masivo,2023-2025,SUV Eléctrico,False
+KIA,Stonic,Corea del Sur,1944,1997,Masivo,2017-2025,SUV Compacto,False
+KIA,Telluride,Corea del Sur,1944,1997,Masivo,2020-2025,SUV,False
+KIA,Niro EV,Corea del Sur,1944,1997,Masivo,2018-2025,SUV Eléctrico,False
+CHEVROLET,Corsa,Estados Unidos,1911,1994,Masivo,1994-2025,Hatchback,True
+CHEVROLET,Sail,Estados Unidos,1911,1994,Masivo,2010-2025,"Sedán, Hatchback",True
+CHEVROLET,Spark,Estados Unidos,1911,1994,Masivo,2005-2025,Citycar,True
+CHEVROLET,Onix,Estados Unidos,1911,1994,Masivo,2012-2025,Hatchback,True
+CHEVROLET,Cruze,Estados Unidos,1911,1994,Masivo,2009-2015,Sedán,False
+CHEVROLET,Malibu,Estados Unidos,1911,1994,Masivo,2000-2012,Sedán,False
+CHEVROLET,Cavalier,Estados Unidos,1911,1994,Masivo,2000-2005,Sedán,False
+CHEVROLET,Optra,Estados Unidos,1911,1994,Masivo,2004-2008,Sedán,False
+CHEVROLET,Aveo,Estados Unidos,1911,1994,Masivo,2005-2011,Hatchback,False
+CHEVROLET,Tracker,Estados Unidos,1911,1994,Masivo,2023-2025,SUV Compacto,False
+CHEVROLET,Blazer,Estados Unidos,1911,1994,Masivo,2019-2025,SUV,True
+CHEVROLET,Equinox,Estados Unidos,1911,1994,Masivo,2005-2025,SUV,False
+CHEVROLET,Traverse,Estados Unidos,1911,1994,Masivo,2009-2025,SUV,False
+CHEVROLET,Captiva,Estados Unidos,1911,1994,Masivo,2006-2025,SUV,True
+CHEVROLET,Groove,Estados Unidos,1911,1994,Masivo,2021-2025,SUV Compacto,True
+CHEVROLET,Spin,Estados Unidos,1911,1994,Masivo,2012-2025,Minivan,False
+CHEVROLET,Tahoe,Estados Unidos,1911,1994,Masivo,2000-2025,SUV,False
+CHEVROLET,Suburban,Estados Unidos,1911,1994,Masivo,2000-2025,SUV,False
+CHEVROLET,Silverado,Estados Unidos,1911,1994,Masivo,1999-2025,Pick-up,True
+CHEVROLET,Camaro,Estados Unidos,1911,1994,Masivo,2010-2024,Deportivo,False
+CHEVROLET,Trailblazer,Estados Unidos,1911,1994,Masivo,2021-2025,SUV,False
+CHEVROLET,D-Max,Estados Unidos,1911,1994,Masivo,2012-2025,Pick-up,False
+FORD,Fiesta,Estados Unidos,1903,1994,Masivo,2002-2010,Hatchback,False
+FORD,Focus,Estados Unidos,1903,1994,Masivo,1998-2018,"Hatchback, Sedán",False
+FORD,Mondeo,Estados Unidos,1903,1994,Masivo,2000-2007,Sedán,False
+FORD,Escape,Estados Unidos,1903,1994,Masivo,2001-2012,SUV,False
+FORD,Ranger,Estados Unidos,1903,1994,Masivo,2004-2025,Pick-up,True
+FORD,F-150,Estados Unidos,1903,1994,Masivo,2000-2025,Pick-up,True
+FORD,F-250,Estados Unidos,1903,1994,Masivo,2000-2015,Pick-up,False
+FORD,Taurus,Estados Unidos,1903,1994,Masivo,2000-2019,Sedán,False
+FORD,Mustang,Estados Unidos,1903,1994,Masivo,2015-2025,Deportivo,True
+FORD,Edge,Estados Unidos,1903,1994,Masivo,2007-2025,SUV,False
+FORD,Territory,Estados Unidos,1903,1994,Masivo,2023-2025,SUV Compacto,True
+FORD,EcoSport,Estados Unidos,1903,1994,Masivo,2012-2025,SUV Compacto,False
+FORD,Transit,Estados Unidos,1903,1994,Masivo,2006-2025,Comercial,False
+FORD,Ranger Raptor,Estados Unidos,1903,1994,Masivo,2018-2025,Pick-up Deportiva,True
+FORD,Everest,Estados Unidos,1903,1994,Masivo,2015-2025,SUV,False
+DODGE/RAM,Durango,Estados Unidos,1900,2000,Premium,2004-2025,SUV,False
+DODGE/RAM,Dakota,Estados Unidos,1900,2000,Premium,2004-2011,Pick-up,False
+DODGE/RAM,Charger,Estados Unidos,1900,2000,Premium,2007-2023,Sedán Deportivo,False
+DODGE/RAM,Challenger,Estados Unidos,1900,2000,Premium,2009-2023,Deportivo,False
+DODGE/RAM,Viper,Estados Unidos,1900,2000,Premium,2008-2017,Superdeportivo,False
+DODGE/RAM,Ram Pickup,Estados Unidos,1900,2000,Premium,2009-2025,Pick-up,True
+DODGE/RAM,Ram Rebel,Estados Unidos,1900,2000,Premium,2015-2025,Pick-up,False
+DODGE/RAM,Ram Rampage,Estados Unidos,1900,2000,Premium,2023-2025,Pick-up Compacta,True
+DODGE/RAM,Ram Promaster,Estados Unidos,1900,2000,Premium,2014-2025,Comercial,False
+VOLKSWAGEN,Gol,Alemania,1937,1994,Masivo/Premium,2000-2015,Hatchback,False
+VOLKSWAGEN,Polo,Alemania,1937,1994,Masivo/Premium,2002-2025,Hatchback,True
+VOLKSWAGEN,Golf,Alemania,1937,1994,Masivo/Premium,2000-2025,Hatchback,True
+VOLKSWAGEN,Jetta,Alemania,1937,1994,Masivo/Premium,2005-2025,Sedán,True
+VOLKSWAGEN,Passat,Alemania,1937,1994,Masivo/Premium,2005-2025,Sedán,False
+VOLKSWAGEN,Tiguan,Alemania,1937,1994,Masivo/Premium,2008-2025,SUV,True
+VOLKSWAGEN,T-Roc,Alemania,1937,1994,Masivo/Premium,2017-2025,SUV Compacto,True
+VOLKSWAGEN,Taos,Alemania,1937,1994,Masivo/Premium,2021-2025,SUV,True
+VOLKSWAGEN,Amarok,Alemania,1937,1994,Masivo/Premium,2010-2025,Pick-up,True
+VOLKSWAGEN,Vento,Alemania,1937,1994,Masivo/Premium,2014-2025,Sedán,False
+VOLKSWAGEN,Fox,Alemania,1937,1994,Masivo/Premium,2003-2008,Hatchback,False
+VOLKSWAGEN,Golf GTI,Alemania,1937,1994,Masivo/Premium,2010-2025,Hatchback Deportivo,False
+VOLKSWAGEN,Beetle,Alemania,1937,1994,Masivo/Premium,2012-2019,Hatchback,False
+VOLKSWAGEN,Up,Alemania,1937,1994,Masivo/Premium,2012-2025,Citycar,False
+VOLKSWAGEN,Arteon,Alemania,1937,1994,Masivo/Premium,2017-2025,Sedán Premium,False
+VOLKSWAGEN,T-Cross,Alemania,1937,1994,Masivo/Premium,2019-2025,SUV Compacto,False
+VOLKSWAGEN,ID.4,Alemania,1937,1994,Masivo/Premium,2021-2025,SUV Eléctrico,True
+VOLKSWAGEN,ID.5,Alemania,1937,1994,Masivo/Premium,2021-2025,SUV Eléctrico,False
+PEUGEOT,206,Francia,1810,1994,Masivo,1998-2012,Hatchback,False
+PEUGEOT,207,Francia,1810,1994,Masivo,2006-2015,Hatchback,False
+PEUGEOT,208,Francia,1810,1994,Masivo,2012-2025,Hatchback,True
+PEUGEOT,301,Francia,1810,1994,Masivo,2012-2020,Sedán,False
+PEUGEOT,308,Francia,1810,1994,Masivo,2007-2025,Hatchback,True
+PEUGEOT,309,Francia,1810,1994,Masivo,2000-2002,Hatchback,False
+PEUGEOT,3008,Francia,1810,1994,Masivo,2009-2025,SUV,True
+PEUGEOT,5008,Francia,1810,1994,Masivo,2009-2025,SUV,False
+PEUGEOT,2008,Francia,1810,1994,Masivo,2013-2025,SUV Compacto,True
+PEUGEOT,Traveller,Francia,1810,1994,Masivo,2016-2025,Minivan,False
+PEUGEOT,Rifter,Francia,1810,1994,Masivo,2018-2025,Minivan,False
+PEUGEOT,Partner,Francia,1810,1994,Masivo,2008-2025,Comercial,False
+PEUGEOT,Boxer,Francia,1810,1994,Masivo,2006-2025,Comercial,False
+PEUGEOT,Landtrek,Francia,1810,1994,Masivo,2023-2025,Pick-up,True
+PEUGEOT,e-2008,Francia,1810,1994,Masivo,2020-2025,SUV Eléctrico,False
+PEUGEOT,5,Francia,1810,1994,Masivo,2020-2025,Sedán,False
+CITROËN,C3,Francia,1919,1994,Masivo,2002-2025,Hatchback,True
+CITROËN,C4,Francia,1919,1994,Masivo,2004-2025,"Hatchback, SUV",True
+CITROËN,C5,Francia,1919,1994,Masivo,2008-2025,SUV,False
+CITROËN,Berlingo,Francia,1919,1994,Masivo,2003-2025,Comercial,False
+CITROËN,Picasso,Francia,1919,1994,Masivo,2000-2014,Minivan,False
+CITROËN,Elysée,Francia,1919,1994,Masivo,2012-2025,Sedán,False
+CITROËN,Xsara,Francia,1919,1994,Masivo,2000-2005,Hatchback,False
+CITROËN,Saxo,Francia,1919,1994,Masivo,2000-2004,Hatchback,False
+CITROËN,Pluriel,Francia,1919,1994,Masivo,2003-2010,Roadster,False
+CITROËN,Jumper,Francia,1919,1994,Masivo,2006-2025,Comercial,False
+CITROËN,Aircross,Francia,1919,1994,Masivo,2017-2025,SUV Compacto,False
+CITROËN,C-Elysée,Francia,1919,1994,Masivo,2012-2025,Sedán,False
+CITROËN,CActus,Francia,1919,1994,Masivo,2018-2025,SUV Compacto,False
+RENAULT,Clio,Francia,1899,1974,Masivo,1999-2020,Hatchback,False
+RENAULT,Megane,Francia,1899,1974,Masivo,2002-2015,Hatchback,False
+RENAULT,Scenic,Francia,1899,1974,Masivo,2000-2009,Minivan,False
+RENAULT,Twingo,Francia,1899,1974,Masivo,2004-2014,Citycar,False
+RENAULT,Symbol,Francia,1899,1974,Masivo,2002-2012,Sedán,False
+RENAULT,Koleos,Francia,1899,1974,Masivo,2008-2020,SUV,False
+RENAULT,Master,Francia,1899,1974,Masivo,2006-2025,Comercial,False
+BMW,Serie 3,Alemania,1916,1994,Luxury,2000-2025,Sedán,False
+BMW,Serie 5,Alemania,1916,1994,Luxury,2000-2025,Sedán Luxury,False
+BMW,Serie 7,Alemania,1916,1994,Luxury,2002-2025,Sedán Ultra-Luxury,False
+BMW,X3,Alemania,1916,1994,Luxury,2004-2025,SUV,False
+BMW,X5,Alemania,1916,1994,Luxury,2000-2025,SUV,False
+BMW,X6,Alemania,1916,1994,Luxury,2008-2025,SUV,False
+BMW,Z4,Alemania,1916,1994,Luxury,2002-2025,Roadster,False
+BMW,118i,Alemania,1916,1994,Luxury,2004-2025,Hatchback,False
+BMW,M340i,Alemania,1916,1994,Luxury,2019-2025,Sedán Deportivo,False
+BMW,M440i,Alemania,1916,1994,Luxury,2020-2025,SUV Deportivo,False
+MERCEDES-BENZ,Clase A,Alemania,1886,1994,Luxury,2004-2025,Hatchback,False
+MERCEDES-BENZ,Clase C,Alemania,1886,1994,Luxury,2000-2025,Sedán,False
+MERCEDES-BENZ,Clase E,Alemania,1886,1994,Luxury,2000-2025,Sedán Luxury,False
+MERCEDES-BENZ,Clase S,Alemania,1886,1994,Luxury,2000-2025,Sedán Ultra-Luxury,False
+MERCEDES-BENZ,GLC,Alemania,1886,1994,Luxury,2015-2025,SUV,False
+MERCEDES-BENZ,GLE,Alemania,1886,1994,Luxury,2015-2025,SUV,False
+MERCEDES-BENZ,AMG GT,Alemania,1886,1994,Luxury,2015-2025,Deportivo,False
+MERCEDES-BENZ,Sprinter,Alemania,1886,1994,Luxury,2006-2025,Comercial,False
+MERCEDES-BENZ,GLB,Alemania,1886,1994,Luxury,2019-2025,SUV,False
+AUDI,A1,Alemania,1909,2000,Luxury,2010-2025,Hatchback,False
+AUDI,A3,Alemania,1909,2000,Luxury,2003-2025,Hatchback,False
+AUDI,A4,Alemania,1909,2000,Luxury,2001-2025,Sedán,False
+AUDI,A5,Alemania,1909,2000,Luxury,2007-2025,Coupé,False
+AUDI,A6,Alemania,1909,2000,Luxury,2004-2025,Sedán Luxury,False
+AUDI,A7,Alemania,1909,2000,Luxury,2011-2025,Sedán Premium,False
+AUDI,Q3,Alemania,1909,2000,Luxury,2011-2025,SUV,False
+AUDI,Q5,Alemania,1909,2000,Luxury,2008-2025,SUV,False
+AUDI,Q7,Alemania,1909,2000,Luxury,2005-2025,SUV,False
+AUDI,Q8,Alemania,1909,2000,Luxury,2018-2025,SUV Coupé,False
+AUDI,RS4,Alemania,1909,2000,Luxury,2006-2025,Sedán Deportivo,False
+AUDI,e-tron,Alemania,1909,2000,Luxury,2018-2025,SUV Eléctrico,False
+PORSCHE,911,Alemania,1948,1999,Ultra-Luxury,2000-2025,Deportivo,False
+PORSCHE,Cayenne,Alemania,1948,1999,Ultra-Luxury,2002-2025,SUV,False
+PORSCHE,Macan,Alemania,1948,1999,Ultra-Luxury,2014-2025,SUV Compacto,False
+PORSCHE,Panamera,Alemania,1948,1999,Ultra-Luxury,2009-2025,Sedán Deportivo,False
+PORSCHE,Boxster,Alemania,1948,1999,Ultra-Luxury,2012-2025,Roadster,False
+PORSCHE,Carrera,Alemania,1948,1999,Ultra-Luxury,2006-2025,Coupé,False
+FIAT,600,Italia,1899,1974,Masivo,2000-2007,Hatchback,False
+FIAT,Uno,Italia,1899,1974,Masivo,2000-2008,Hatchback,False
+FIAT,Palio,Italia,1899,1974,Masivo,2000-2013,Hatchback,False
+FIAT,Tipo,Italia,1899,1974,Masivo,2015-2025,Sedán,False
+FIAT,Panda,Italia,1899,1974,Masivo,2003-2025,Citycar,False
+FIAT,Punto,Italia,1899,1974,Masivo,1999-2015,Hatchback,False
+FIAT,Strada,Italia,1899,1974,Masivo,1999-2013,Pick-up,False
+FIAT,Ducato,Italia,1899,1974,Masivo,2006-2025,Comercial,False
+VOLVO,S40,Suecia,1927,2005,Premium,2004-2012,Sedán,False
+VOLVO,S60,Suecia,1927,2005,Premium,2010-2025,Sedán,False
+VOLVO,S80,Suecia,1927,2005,Premium,2006-2016,Sedán Luxury,False
+VOLVO,S90,Suecia,1927,2005,Premium,2016-2025,Sedán Luxury,False
+VOLVO,XC40,Suecia,1927,2005,Premium,2018-2025,SUV Compacto,False
+VOLVO,XC60,Suecia,1927,2005,Premium,2008-2025,SUV,False
+VOLVO,XC90,Suecia,1927,2005,Premium,2002-2025,SUV,False
+VOLVO,C30,Suecia,1927,2005,Premium,2006-2013,Hatchback,False
+VOLVO,V40,Suecia,1927,2005,Premium,2012-2025,Hatchback,False
+VOLVO,V60,Suecia,1927,2005,Premium,2010-2025,Station Wagon,False
+VOLVO,V90,Suecia,1927,2005,Premium,2016-2025,Station Wagon,False
+VOLVO,XC Recharge,Suecia,1927,2005,Premium,2020-2025,SUV Híbrido,False
+CHERY,Tiggo,China,1997,2005,Masivo,2005-2025,SUV,True
+CHERY,Tiggo 2,China,1997,2005,Masivo,2008-2025,SUV Compacto,True
+CHERY,Tiggo 5,China,1997,2005,Masivo,2012-2025,SUV,False
+CHERY,Tiggo 7,China,1997,2005,Masivo,2016-2025,SUV,True
+CHERY,Tiggo 8,China,1997,2005,Masivo,2018-2025,SUV,True
+CHERY,Tiggo 4 Pro,China,1997,2005,Masivo,2022-2025,SUV Compacto,True
+CHERY,QQ,China,1997,2005,Masivo,2005-2015,Citycar,False
+CHERY,QQ3,China,1997,2005,Masivo,2010-2020,Citycar,False
+CHERY,Filmart,China,1997,2005,Masivo,2009-2015,Sedán,False
+CHERY,Arrizo,China,1997,2005,Masivo,2012-2025,Sedán,False
+CHERY,Arrizo 5,China,1997,2005,Masivo,2014-2025,Sedán,False
+CHERY,Arrizo 6,China,1997,2005,Masivo,2016-2025,Sedán,False
+CHERY,Arrizo 8,China,1997,2005,Masivo,2018-2025,Sedán,False
+CHERY,Wamtai,China,1997,2005,Masivo,2017-2025,SUV,False
+CHERY,TX,China,1997,2005,Masivo,2020-2025,SUV,False
+GREAT WALL (GWM/HAVAL),Wingle,China,1984,2006,Masivo,2006-2025,Pick-up,True
+GREAT WALL (GWM/HAVAL),Hover,China,1984,2006,Masivo,2007-2015,SUV,False
+GREAT WALL (GWM/HAVAL),Hover H3,China,1984,2006,Masivo,2007-2012,SUV,False
+GREAT WALL (GWM/HAVAL),Hover H5,China,1984,2006,Masivo,2011-2015,SUV,False
+GREAT WALL (GWM/HAVAL),Haval H6,China,1984,2006,Masivo,2011-2025,SUV,True
+GREAT WALL (GWM/HAVAL),Haval H2,China,1984,2006,Masivo,2013-2025,SUV Compacto,True
+GREAT WALL (GWM/HAVAL),Haval H8,China,1984,2006,Masivo,2013-2020,SUV,False
+GREAT WALL (GWM/HAVAL),Haval H9,China,1984,2006,Masivo,2014-2025,SUV,False
+GREAT WALL (GWM/HAVAL),Haval Jolion,China,1984,2006,Masivo,2020-2025,SUV Compacto,True
+GREAT WALL (GWM/HAVAL),Haval Dargo,China,1984,2006,Masivo,2022-2025,SUV,False
+GREAT WALL (GWM/HAVAL),Steed,China,1984,2006,Masivo,2015-2025,Pick-up,False
+GREAT WALL (GWM/HAVAL),Tank,China,1984,2006,Masivo,2021-2025,SUV 4x4,True
+GREAT WALL (GWM/HAVAL),Ora,China,1984,2006,Masivo,2020-2025,Hatchback Eléctrico,False
+GREAT WALL (GWM/HAVAL),ORA Good Cat,China,1984,2006,Masivo,2021-2025,Hatchback Eléctrico,False
+CHANGAN,Benni,China,1862,2008,Masivo,2010-2020,Hatchback,False
+CHANGAN,CS15,China,1862,2008,Masivo,2015-2025,SUV Compacto,True
+CHANGAN,CS35,China,1862,2008,Masivo,2012-2025,SUV,True
+CHANGAN,CS55,China,1862,2008,Masivo,2018-2025,SUV,True
+CHANGAN,CS75,China,1862,2008,Masivo,2014-2025,SUV,True
+CHANGAN,CS85,China,1862,2008,Masivo,2019-2025,SUV Coupé,False
+CHANGAN,CS95,China,1862,2008,Masivo,2016-2025,SUV,False
+CHANGAN,UNI-T,China,1862,2008,Masivo,2020-2025,SUV,True
+CHANGAN,UNI-K,China,1862,2008,Masivo,2021-2025,SUV Premium,False
+CHANGAN,UNI-V,China,1862,2008,Masivo,2022-2025,Sedán,False
+CHANGAN,Alsvin,China,1862,2008,Masivo,2017-2025,Sedán,False
+CHANGAN,Eado,China,1862,2008,Masivo,2010-2020,Sedán,False
+CHANGAN,Deepal,China,1862,2008,Masivo,2023-2025,SUV Eléctrico,False
+CHANGAN,Nevo,China,1862,2008,Masivo,2024-2025,SUV Eléctrico,False
+CHANGAN,AVATR,China,1862,2008,Masivo,2024-2025,SUV Eléctrico Lujo,False
+JAC,S3,China,2005,2010,Masivo,2015-2025,SUV Compacto,True
+JAC,S5,China,2005,2010,Masivo,2013-2025,SUV,True
+JAC,S7,China,2005,2010,Masivo,2020-2025,SUV,True
+JAC,T6,China,2005,2010,Masivo,2013-2025,Pick-up,False
+JAC,T8,China,2005,2010,Masivo,2017-2025,Pick-up,False
+JAC,JS4,China,2005,2010,Masivo,2016-2025,SUV Compacto,True
+JAC,JS6,China,2005,2010,Masivo,2018-2025,Pick-up,True
+JAC,Refine,China,2005,2010,Masivo,2012-2020,Sedán,False
+BYD,Qin,China,1995,2015,Masivo/Eléctrico,2017-2025,Sedán Híbrido,False
+BYD,Song,China,1995,2015,Masivo/Eléctrico,2015-2025,SUV,True
+BYD,Dolphin,China,1995,2015,Masivo/Eléctrico,2021-2025,Hatchback Eléctrico,True
+BYD,Yuan,China,1995,2015,Masivo/Eléctrico,2018-2025,SUV Eléctrico,False
+BYD,Yuan Plus,China,1995,2015,Masivo/Eléctrico,2021-2025,SUV Eléctrico,True
+BYD,Song Plus,China,1995,2015,Masivo/Eléctrico,2022-2025,SUV,False
+BYD,Han,China,1995,2015,Masivo/Eléctrico,2020-2025,Sedán,False
+BYD,Song DM-i,China,1995,2015,Masivo/Eléctrico,2022-2025,SUV Híbrido,False
+MG (SAIC),MG3,China,2005,2010,Masivo,2012-2025,Hatchback,True
+MG (SAIC),MG5,China,2005,2010,Masivo,2014-2025,Sedán,False
+MG (SAIC),MG6,China,2005,2010,Masivo,2017-2025,Sedán,True
+MG (SAIC),ZS,China,2005,2010,Masivo,2016-2025,SUV,True
+MG (SAIC),GS,China,2005,2010,Masivo,2015-2020,SUV,False
+MG (SAIC),RX5,China,2005,2010,Masivo,2017-2025,SUV,True
+MG (SAIC),RX8,China,2005,2010,Masivo,2023-2025,SUV,False
+MG (SAIC),MG4,China,2005,2010,Masivo,2023-2025,Sedán Eléctrico,True
+MG (SAIC),MG 5 EV,China,2005,2010,Masivo,2020-2025,Sedán Eléctrico,False
+MG (SAIC),ZS EV,China,2005,2010,Masivo,2018-2025,SUV Eléctrico,True
+LIFAN,Myway,China,1992,2005,Masivo,2008-2020,SUV,False
+LIFAN,X60,China,1992,2005,Masivo,2012-2022,SUV,False
+LIFAN,X70,China,1992,2005,Masivo,2017-2022,SUV,False
+LIFAN,Lifan 320,China,1992,2005,Masivo,2008-2018,Hatchback,False
+DONGFENG,Aeolus,China,1969,2012,Masivo,2015-2025,SUV,True
+DONGFENG,Aeolus GS,China,1969,2012,Masivo,2015-2025,SUV,False
+DONGFENG,Aeolus Y3,China,1969,2012,Masivo,2021-2025,SUV Compacto,True
+DONGFENG,Aeolus X5,China,1969,2012,Masivo,2020-2025,SUV,False
+DONGFENG,Aeolus Y5,China,1969,2012,Masivo,2021-2025,SUV Compacto,False
+DONGFENG,Aeolus D9,China,1969,2012,Masivo,2023-2025,Minivan,False
+DONGFENG,Fengon,China,1969,2012,Masivo,2016-2020,Pick-up,False
+DONGFENG,Fengon 500,China,1969,2012,Masivo,2019-2025,Pick-up,True
+FOTON,Leopaard,China,1996,2010,Masivo/Comercial,2015-2025,SUV,True
+FOTON,Tunland,China,1996,2010,Masivo/Comercial,2011-2025,Pick-up,True
+FOTON,Isuzu,China,1996,2010,Masivo/Comercial,2012-2020,Pick-up,False
+FOTON,Cloud,China,1996,2010,Masivo/Comercial,2017-2025,Comercial,False
+JETOUR,X70,China,2018,2021,Masivo,2020-2025,SUV Compacto,False
+JETOUR,X70 Plus,China,2018,2021,Masivo,2021-2025,SUV,True
+JETOUR,X90,China,2018,2021,Masivo,2021-2025,SUV,True
+JETOUR,X95,China,2018,2021,Masivo,2023-2025,SUV,False
+JETOUR,Traveller,China,2018,2021,Masivo,2022-2025,SUV,False
+DFSK,Glory,China,1995,2010,Masivo/Comercial,2010-2025,Minivan,False
+DFSK,Succe,China,1995,2010,Masivo/Comercial,2016-2025,Minivan,False
+DFSK,Seres,China,1995,2010,Masivo/Comercial,2021-2025,SUV Eléctrico,False
+EXEED,LX,China,2017,2021,Premium,2021-2025,SUV,False
+EXEED,VX,China,2017,2021,Premium,2022-2025,SUV,False
+EXEED,TXL,China,2017,2021,Premium,2023-2025,SUV,False
+OMODA/JAECOO,Omoda 5,China,2022,2022,Masivo,2022-2025,SUV Compacto,True
+OMODA/JAECOO,Jaecoo 5,China,2022,2022,Masivo,2023-2025,SUV Compacto,True
+OMODA/JAECOO,Jaecoo 6,China,2022,2022,Masivo,2024-2025,SUV,True
+OMODA/JAECOO,Jaecoo 7,China,2022,2022,Masivo,2024-2025,SUV,True
+MAXUS,T60,China,2011,2015,Comercial,2015-2025,Pick-up,True
+MAXUS,T70,China,2011,2015,Comercial,2017-2025,Pick-up,True
+MAXUS,T90,China,2011,2015,Comercial,2018-2025,Pick-up,True
+MAXUS,G10,China,2011,2015,Comercial,2016-2025,Minivan Comercial,False
+MAXUS,G20,China,2011,2015,Comercial,2018-2025,Minivan,False
+KGM (SSANGYONG),Tivoli,Corea del Sur,1954,2017,Masivo,2017-2025,SUV Compacto,False
+KGM (SSANGYONG),Korando,Corea del Sur,1954,2017,Masivo,2018-2025,SUV,False
+KGM (SSANGYONG),Actyon,Corea del Sur,1954,2017,Masivo,2005-2015,SUV,False
+TESLA,Model S,Estados Unidos,2003,2012,Premium/Eléctrico,2012-2025,Sedán Eléctrico,True
+TESLA,Model 3,Estados Unidos,2003,2012,Premium/Eléctrico,2016-2025,Sedán Eléctrico,True
+TESLA,Model X,Estados Unidos,2003,2012,Premium/Eléctrico,2016-2025,SUV Eléctrico,True
+TESLA,Model Y,Estados Unidos,2003,2012,Premium/Eléctrico,2020-2025,SUV Eléctrico,True
+TESLA,Roadster,Estados Unidos,2003,2012,Premium/Eléctrico,2020-2025,Deportivo Eléctrico,False
+OPEL,Corsa,Alemania,1862,2022,Masivo,2022-2025,Hatchback,False
+OPEL,Grandland,Alemania,1862,2022,Masivo,2022-2025,SUV,False
+OPEL,Astra,Alemania,1862,2022,Masivo,2022-2025,Sedán,False
+OPEL,Crossland,Alemania,1862,2022,Masivo,2022-2025,SUV Compacto,True
+SSANGYONG,Actyon,Corea del Sur,1954,2005,Masivo,2005-2015,SUV,False
+SSANGYONG,Kyron,Corea del Sur,1954,2005,Masivo,2005-2012,SUV,False
+SSANGYONG,Rexton,Corea del Sur,1954,2005,Masivo,2006-2015,SUV,False
+GEELY,EX5,China,1986,2016,Masivo,2017-2025,SUV,True
+GEELY,EX9,China,1986,2016,Masivo,2023-2025,SUV Eléctrico,False
+GEELY,Coolray,China,1986,2016,Masivo,2019-2025,SUV Compacto,False
+GEELY,SX11,China,1986,2016,Masivo,2019-2025,SUV Compacto,False
+GEELY,Emgrand,China,1986,2016,Masivo,2009-2020,Sedán,False
+HUMMER,H2,Estados Unidos,1992,2003,Premium/Lujo,2003-2010,SUV,False
+HUMMER,H3,Estados Unidos,1992,2003,Premium/Lujo,2005-2010,SUV,False
+HUMMER,EV,Estados Unidos,1992,2003,Premium/Lujo,2022-2025,SUV Eléctrico,False
+LEXUS,ES,Japón,1989,2005,Luxury,2006-2025,Sedán Luxury,False
+LEXUS,IS,Japón,1989,2005,Luxury,2005-2025,Sedán,False
+LEXUS,GS,Japón,1989,2005,Luxury,2005-2020,Sedán Premium,False
+LEXUS,LS,Japón,1989,2005,Luxury,2006-2025,Sedán Ultra-Luxury,False
+LEXUS,NX,Japón,1989,2005,Luxury,2014-2025,SUV,False
+LEXUS,RX,Japón,1989,2005,Luxury,2003-2025,SUV,False
+LEXUS,LX,Japón,1989,2005,Luxury,2007-2025,SUV,False
+LEXUS,LC,Japón,1989,2005,Luxury,2017-2025,Coupé,False
+LEXUS,UX,Japón,1989,2005,Luxury,2019-2025,SUV Compacto,False
+FERRARI,F430,Italia,1947,2000,Ultra-Luxury,2004-2009,Superdeportivo,False
+FERRARI,F458,Italia,1947,2000,Ultra-Luxury,2009-2015,Superdeportivo,False
+FERRARI,F8 Tributo,Italia,1947,2000,Ultra-Luxury,2019-2025,Superdeportivo,False
+FERRARI,812,Italia,1947,2000,Ultra-Luxury,2017-2025,Superdeportivo,False
+FERRARI,Portofino,Italia,1947,2000,Ultra-Luxury,2018-2025,Roadster,False
+FERRARI,GTC4,Italia,1947,2000,Ultra-Luxury,2011-2020,Grand Tourer,False
+MASERATI,Quattroporte,Italia,1914,2000,Ultra-Luxury,2003-2025,Sedán Luxury,False
+MASERATI,GranTurismo,Italia,1914,2000,Ultra-Luxury,2007-2025,Coupé Deportivo,False
+MASERATI,Levante,Italia,1914,2000,Ultra-Luxury,2016-2025,SUV,False
+MASERATI,MC20,Italia,1914,2000,Ultra-Luxury,2021-2025,Superdeportivo,False
+LAMBORGHINI,Gallardo,Italia,1963,2012,Ultra-Luxury,2003-2014,Superdeportivo,False
+LAMBORGHINI,Murciélago,Italia,1963,2012,Ultra-Luxury,2001-2010,Superdeportivo,False
+LAMBORGHINI,Huracán,Italia,1963,2012,Ultra-Luxury,2014-2025,Superdeportivo,False
+LAMBORGHINI,Aventador,Italia,1963,2012,Ultra-Luxury,2011-2024,Superdeportivo,False
+LAMBORGHINI,Revuelto,Italia,1963,2012,Ultra-Luxury,2024-2025,Superdeportivo Híbrido,False
+LAMBORGHINI,LM002,Italia,1963,2012,Ultra-Luxury,2021-2025,SUV Deportivo,False
+BUICK,Encore,Estados Unidos,1903,2012,Premium,2012-2023,SUV Compacto,False
+BUICK,LaCrosse,Estados Unidos,1903,2012,Premium,2005-2023,Sedán,False
+BUICK,Verano,Estados Unidos,1903,2012,Premium,2012-2023,Sedán Compacto,False
+BUICK,Enclave,Estados Unidos,1903,2012,Premium,2008-2023,SUV,False
+CADILLAC,CTS,Estados Unidos,1902,2008,Premium/Luxury,2008-2019,Sedán Luxury,False
+CADILLAC,SRX,Estados Unidos,1902,2008,Premium/Luxury,2003-2016,SUV,False
+CADILLAC,Escalade,Estados Unidos,1902,2008,Premium/Luxury,2006-2025,SUV Luxury,False
+CADILLAC,CT5,Estados Unidos,1902,2008,Premium/Luxury,2020-2025,Sedán,False
+ISUZU,D-Max,Japón,1916,1994,Masivo/Comercial,2002-2025,Pick-up,True
+ISUZU,Trooper,Japón,1916,1994,Masivo/Comercial,2000-2010,SUV,False
+ISUZU,MU-X,Japón,1916,1994,Masivo/Comercial,2014-2025,SUV,False
+ISUZU,D-Max S-Cab,Japón,1916,1994,Masivo/Comercial,2008-2025,Pick-up,True
+ISUZU,NPR,Japón,1916,1994,Masivo/Comercial,2006-2025,Comercial,False
+HYUNDAI GENESIS,G70,Corea del Sur,2015,2016,Ultra-Luxury,2016-2025,Sedán,False
+HYUNDAI GENESIS,G80,Corea del Sur,2015,2016,Ultra-Luxury,2014-2025,Sedán Luxury,False
+HYUNDAI GENESIS,G90,Corea del Sur,2015,2016,Ultra-Luxury,2015-2025,Sedán Ultra-Luxury,False
+HYUNDAI GENESIS,GV60,Corea del Sur,2015,2016,Ultra-Luxury,2022-2025,SUV Eléctrico,False
+HYUNDAI GENESIS,GV70,Corea del Sur,2015,2016,Ultra-Luxury,2020-2025,SUV,False
+HYUNDAI GENESIS,GV80,Corea del Sur,2015,2016,Ultra-Luxury,2021-2025,SUV Luxury,False
+RENAULT ARGENTINA,Torino,Argentina,1974,1994,Masivo,2000-2015,Sedán,False
+RENAULT ARGENTINA,Fuego,Argentina,1974,1994,Masivo,2000-2012,Coupé,False

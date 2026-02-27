@@ -164,7 +164,9 @@ export function applyListingSearch(listings: Listing[], search: ListingSearch) {
 
 export async function getListings() {
   const items = await loadListingsRaw();
-  const visible = items.filter((l) => isListingPublic(l));
+  // Limit to most recent 100 for performance
+  const recentItems = items.slice(0, 100);
+  const visible = recentItems.filter((l) => isListingPublic(l));
   return applyListingSearch(visible, { sort: "newest" });
 }
 

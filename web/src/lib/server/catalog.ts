@@ -252,10 +252,11 @@ async function loadListingPairs() {
   }
 }
 
-async function resolveCatalogPath() {
+async function resolveCatalogPath(): Promise<string | null> {
   const candidates = [
     path.join(process.cwd(), "data", CATALOG_FILENAME),
     path.join(process.cwd(), "..", CATALOG_FILENAME),
+    path.join("/vercel/path0", CATALOG_FILENAME),
   ];
 
   for (const p of candidates) {
@@ -263,11 +264,11 @@ async function resolveCatalogPath() {
       await fs.access(p);
       return p;
     } catch {
-      // continue
+      // Continue to next candidate
     }
   }
 
-  throw new Error(`Catalog CSV not found (${CATALOG_FILENAME})`);
+  return null;
 }
 
 function parseCsvLine(line: string) {
@@ -306,6 +307,12 @@ async function loadRows() {
   if (cachedRows !== null) return cachedRows;
 
   const filePath = await resolveCatalogPath();
+  if (!filePath) {
+    // No catalog file found, return empty
+    cachedRows = [];
+    return [];
+  }
+  
   const raw = await fs.readFile(filePath, "utf8");
   const cleanedRaw = raw.replace(/^\uFEFF/, "");
   const lines = cleanedRaw.split(/\r?\n/).filter(Boolean);
@@ -347,10 +354,22 @@ async function loadRows() {
 }
 
 export async function getCatalogBrands() {
-  const listingPairs = await loadListingPairs();
-  const listingsMtimeMs = cachedListingsMtimeMs ?? 0;
-  const customCatalog = await loadCustomCatalog();
-  const customMtimeMs = cachedCustomCatalogMtimeMs ?? 0;
+  console.log("[CATALOG] getCatalogBrands called");
+  
+  let listingPairs: Array<{ Brand: string; Model: string }> = [];
+  let listingsMtimeMs = 0;
+  let customCatalog: CustomCatalog = { brands: {} };
+  let customMtimeMs = 0;
+  
+  try {
+    listingPairs = await loadListingPairs();
+    listingsMtimeMs = cachedListingsMtimeMs ?? 0;
+    customCatalog = await loadCustomCatalog();
+    customMtimeMs = cachedCustomCatalogMtimeMs ?? 0;
+    console.log("[CATALOG] Loaded listing pairs:", listingPairs.length);
+  } catch (err) {
+    console.error("[CATALOG] Error loading listings/custom catalog:", err);
+  }
 
   if (
     cachedBrands !== null &&

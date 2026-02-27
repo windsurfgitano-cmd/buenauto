@@ -3,13 +3,21 @@
 /* stylelint-disable at-rule-no-unknown */
 
 :root {
-  --background: #fafafa;
-  --foreground: #0b0b0d;
-  --bg-glow-1: rgba(0, 0, 0, 0.06);
-  --bg-glow-2: rgba(0, 0, 0, 0.03);
-  --selection: rgba(0, 0, 0, 0.14);
-  --scrollbar-thumb: rgba(0, 0, 0, 0.18);
-  --scrollbar-thumb-hover: rgba(0, 0, 0, 0.28);
+  /* Yacht palette */
+  --navy: #0f172a;
+  --navy-light: #1e3a5f;
+  --gold: #c9a962;
+  --gold-light: #d4af37;
+  --cream: #f8f6f3;
+  --sand: #e8e4df;
+  
+  --background: #f8f6f3;
+  --foreground: #0f172a;
+  --bg-glow-1: rgba(15, 46, 87, 0.04);
+  --bg-glow-2: rgba(201, 169, 98, 0.05);
+  --selection: rgba(201, 169, 98, 0.25);
+  --scrollbar-thumb: rgba(15, 46, 87, 0.2);
+  --scrollbar-thumb-hover: rgba(15, 46, 87, 0.35);
 }
 
 @theme inline {
@@ -21,13 +29,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #070707;
-    --foreground: #f4f4f5;
-    --bg-glow-1: rgba(255, 255, 255, 0.07);
-    --bg-glow-2: rgba(255, 255, 255, 0.03);
-    --selection: rgba(255, 255, 255, 0.16);
-    --scrollbar-thumb: rgba(255, 255, 255, 0.18);
-    --scrollbar-thumb-hover: rgba(255, 255, 255, 0.28);
+    --background: #0a0f1a;
+    --foreground: #f8f6f3;
+    --bg-glow-1: rgba(96, 165, 250, 0.06);
+    --bg-glow-2: rgba(201, 169, 98, 0.04);
+    --selection: rgba(201, 169, 98, 0.3);
+    --scrollbar-thumb: rgba(148, 163, 184, 0.2);
+    --scrollbar-thumb-hover: rgba(148, 163, 184, 0.35);
   }
 }
 
