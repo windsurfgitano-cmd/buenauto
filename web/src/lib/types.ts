@@ -1,0 +1,64 @@
+export type Listing = {
+  id: string;
+  ownerId?: string;
+  status?: "draft" | "pending_payment" | "published" | "expired";
+  brand: string;
+  model: string;
+  year: number;
+  price: number;
+  km: number;
+  region: string;
+  city: string;
+  transmission: string;
+  fuel: string;
+  description: string;
+  images: string[];
+  contactName: string;
+  contactPhone: string;
+  createdAt: string;
+  publishedAt?: string;
+  expiresAt?: string;
+  paymentId?: string;
+  invoiceEmail?: string;
+  invoiceRUT?: string;
+};
+
+export type ListingCreateInput = {
+  brand: string;
+  model: string;
+  year: number;
+  price: number;
+  km: number;
+  region: string;
+  city?: string;
+  transmission?: string;
+  fuel?: string;
+  description?: string;
+  images?: string[];
+  contactName?: string;
+  contactPhone?: string;
+  invoiceEmail?: string;
+  invoiceRUT?: string;
+};
+
+export type ListingUpdateInput = {
+  brand?: string;
+  model?: string;
+  year?: number;
+  price?: number;
+  km?: number;
+  region?: string;
+  city?: string;
+  transmission?: string;
+  fuel?: string;
+  description?: string;
+  images?: string[];
+  contactName?: string;
+  contactPhone?: string;
+  status?: "draft" | "pending_payment" | "published" | "expired";
+  publishedAt?: string;
+  expiresAt?: string;
+  paymentId?: string;
+  invoiceEmail?: string;
+  invoiceRUT?: string;
+};
