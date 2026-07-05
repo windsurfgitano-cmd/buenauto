@@ -188,7 +188,6 @@ export async function createListing(
     ownerId?: string;
   },
 ) {
-  const filePath = getListingsFilePath();
   const existing = await getListings();
   const id = getNextListingId(existing);
 
@@ -260,7 +259,6 @@ export async function getListingsByOwner(ownerId: string) {
 }
 
 export async function updateListing(id: string, ownerId: string, input: ListingUpdateInput) {
-  const filePath = getListingsFilePath();
   const existing = await loadListingsRaw();
   const idx = existing.findIndex((l) => l.id === id);
 
@@ -419,7 +417,6 @@ export async function publishListing(
 }
 
 export async function deleteListing(id: string, ownerId: string) {
-  const filePath = getListingsFilePath();
   const existing = await loadListingsRaw();
   const listing = existing.find((l) => l.id === id);
 

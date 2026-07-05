@@ -18,8 +18,7 @@
     "contactPhone": "+56 9 1307 1080",
     "createdAt": "2026-02-12T21:42:57.674Z",
     "status": "published",
-    "publishedAt": "2026-02-11T21:42:57.674Z",
-    "expiresAt": "2026-03-29T21:42:57.674Z"
+    "publishedAt": "2026-02-11T21:42:57.674Z"
   },
   {
     "id": "ls_0002",
@@ -40,8 +39,7 @@
     "contactPhone": "+56 9 7633 1605",
     "createdAt": "2026-01-29T21:42:57.674Z",
     "status": "published",
-    "publishedAt": "2026-02-25T21:42:57.674Z",
-    "expiresAt": "2026-03-29T21:42:57.674Z"
+    "publishedAt": "2026-02-25T21:42:57.674Z"
   },
   {
     "id": "ls_0003",
@@ -62,8 +60,7 @@
     "contactPhone": "+56 9 1777 3846",
     "createdAt": "2026-02-15T21:42:57.674Z",
     "status": "published",
-    "publishedAt": "2026-02-05T21:42:57.674Z",
-    "expiresAt": "2026-03-29T21:42:57.674Z"
+    "publishedAt": "2026-02-05T21:42:57.674Z"
   },
   {
     "id": "ls_0004",
@@ -84,8 +81,7 @@
     "contactPhone": "+56 9 4737 2063",
     "createdAt": "2026-02-18T21:42:57.674Z",
     "status": "published",
-    "publishedAt": "2026-02-07T21:42:57.674Z",
-    "expiresAt": "2026-03-29T21:42:57.674Z"
+    "publishedAt": "2026-02-07T21:42:57.674Z"
   },
   {
     "id": "ls_0005",
@@ -106,8 +102,7 @@
     "contactPhone": "+56 9 1144 7772",
     "createdAt": "2026-01-31T21:42:57.674Z",
     "status": "published",
-    "publishedAt": "2026-02-21T21:42:57.674Z",
-    "expiresAt": "2026-03-29T21:42:57.674Z"
+    "publishedAt": "2026-02-21T21:42:57.674Z"
   },
   {
     "id": "ls_0006",
@@ -128,8 +123,7 @@
     "contactPhone": "+56 9 4716 5402",
     "createdAt": "2026-02-20T21:42:57.674Z",
     "status": "published",
-    "publishedAt": "2026-01-28T21:42:57.674Z",
-    "expiresAt": "2026-03-29T21:42:57.674Z"
+    "publishedAt": "2026-01-28T21:42:57.674Z"
   },
   {
     "id": "ls_0007",
@@ -150,8 +144,7 @@
     "contactPhone": "+56 9 1873 3726",
     "createdAt": "2026-02-07T21:42:57.674Z",
     "status": "published",
-    "publishedAt": "2026-02-07T21:42:57.674Z",
-    "expiresAt": "2026-03-29T21:42:57.674Z"
+    "publishedAt": "2026-02-07T21:42:57.674Z"
   },
   {
     "id": "ls_0008",
@@ -172,8 +165,7 @@
     "contactPhone": "+56 9 9870 6304",
     "createdAt": "2026-02-14T21:42:57.674Z",
     "status": "published",
-    "publishedAt": "2026-02-09T21:42:57.674Z",
-    "expiresAt": "2026-03-29T21:42:57.674Z"
+    "publishedAt": "2026-02-09T21:42:57.674Z"
   },
   {
     "id": "ls_0009",
@@ -194,8 +186,7 @@
     "contactPhone": "+56 9 7694 7837",
     "createdAt": "2026-02-07T21:42:57.674Z",
     "status": "published",
-    "publishedAt": "2026-02-06T21:42:57.674Z",
-    "expiresAt": "2026-03-29T21:42:57.674Z"
+    "publishedAt": "2026-02-06T21:42:57.674Z"
   },
   {
     "id": "ls_0010",
@@ -216,8 +207,7 @@
     "contactPhone": "+56 9 4289 9786",
     "createdAt": "2026-02-11T21:42:57.674Z",
     "status": "published",
-    "publishedAt": "2026-02-18T21:42:57.674Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-18T21:42:57.674Z"
   },
   {
     "id": "ls_0011",
@@ -238,8 +228,7 @@
     "contactPhone": "+56 9 2625 3670",
     "createdAt": "2026-02-12T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-18T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-18T21:42:57.675Z"
   },
   {
     "id": "ls_0012",
@@ -260,8 +249,7 @@
     "contactPhone": "+56 9 7463 6663",
     "createdAt": "2026-02-08T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-20T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-20T21:42:57.675Z"
   },
   {
     "id": "ls_0013",
@@ -282,8 +270,7 @@
     "contactPhone": "+56 9 6721 1467",
     "createdAt": "2026-02-11T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-22T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-22T21:42:57.675Z"
   },
   {
     "id": "ls_0014",
@@ -304,8 +291,7 @@
     "contactPhone": "+56 9 9814 7862",
     "createdAt": "2026-02-04T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-19T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-19T21:42:57.675Z"
   },
   {
     "id": "ls_0015",
@@ -326,8 +312,7 @@
     "contactPhone": "+56 9 1225 5083",
     "createdAt": "2026-01-29T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-18T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-18T21:42:57.675Z"
   },
   {
     "id": "ls_0016",
@@ -348,8 +333,7 @@
     "contactPhone": "+56 9 3540 3966",
     "createdAt": "2026-02-07T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-01-29T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-01-29T21:42:57.675Z"
   },
   {
     "id": "ls_0017",
@@ -370,8 +354,7 @@
     "contactPhone": "+56 9 3989 5890",
     "createdAt": "2026-01-29T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-23T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-23T21:42:57.675Z"
   },
   {
     "id": "ls_0018",
@@ -392,8 +375,7 @@
     "contactPhone": "+56 9 6059 4705",
     "createdAt": "2026-01-28T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-07T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-07T21:42:57.675Z"
   },
   {
     "id": "ls_0019",
@@ -414,8 +396,7 @@
     "contactPhone": "+56 9 8962 8819",
     "createdAt": "2026-02-10T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-24T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-24T21:42:57.675Z"
   },
   {
     "id": "ls_0020",
@@ -436,8 +417,7 @@
     "contactPhone": "+56 9 9813 6117",
     "createdAt": "2026-02-05T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-01-30T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-01-30T21:42:57.675Z"
   },
   {
     "id": "ls_0021",
@@ -458,8 +438,7 @@
     "contactPhone": "+56 9 7516 7572",
     "createdAt": "2026-02-24T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-24T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-24T21:42:57.675Z"
   },
   {
     "id": "ls_0022",
@@ -480,8 +459,7 @@
     "contactPhone": "+56 9 8644 4635",
     "createdAt": "2026-02-04T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-04T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-04T21:42:57.675Z"
   },
   {
     "id": "ls_0023",
@@ -502,8 +480,7 @@
     "contactPhone": "+56 9 1141 2508",
     "createdAt": "2026-02-17T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-16T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-16T21:42:57.675Z"
   },
   {
     "id": "ls_0024",
@@ -524,8 +501,7 @@
     "contactPhone": "+56 9 4921 3151",
     "createdAt": "2026-02-10T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-26T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-26T21:42:57.675Z"
   },
   {
     "id": "ls_0025",
@@ -546,8 +522,7 @@
     "contactPhone": "+56 9 5529 1177",
     "createdAt": "2026-02-05T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-01-31T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-01-31T21:42:57.675Z"
   },
   {
     "id": "ls_0026",
@@ -568,8 +543,7 @@
     "contactPhone": "+56 9 7362 5565",
     "createdAt": "2026-02-17T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-10T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-10T21:42:57.675Z"
   },
   {
     "id": "ls_0027",
@@ -590,8 +564,7 @@
     "contactPhone": "+56 9 9209 5149",
     "createdAt": "2026-02-23T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-01-31T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-01-31T21:42:57.675Z"
   },
   {
     "id": "ls_0028",
@@ -612,8 +585,7 @@
     "contactPhone": "+56 9 9615 4981",
     "createdAt": "2026-02-15T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-24T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-24T21:42:57.675Z"
   },
   {
     "id": "ls_0029",
@@ -634,8 +606,7 @@
     "contactPhone": "+56 9 8583 6077",
     "createdAt": "2026-01-31T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-05T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-05T21:42:57.675Z"
   },
   {
     "id": "ls_0030",
@@ -656,7 +627,6 @@
     "contactPhone": "+56 9 7846 4511",
     "createdAt": "2026-02-09T21:42:57.675Z",
     "status": "published",
-    "publishedAt": "2026-02-15T21:42:57.675Z",
-    "expiresAt": "2026-03-29T21:42:57.675Z"
+    "publishedAt": "2026-02-15T21:42:57.675Z"
   }
 ]

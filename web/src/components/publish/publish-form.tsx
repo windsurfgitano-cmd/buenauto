@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useId, useMemo, useState } from "react";
-import { useRouter } from "next/navigation";
 
 import { formatCLP } from "@/lib/format";
 import { CHILE_REGIONS } from "@/lib/regions";
@@ -22,8 +21,6 @@ type CreateListingResponse =
   | { error: string };
 
 export function PublishForm({ brands }: Props) {
-  const router = useRouter();
-
   const brandsListId = useId();
   const modelsListId = useId();
 
@@ -42,8 +39,8 @@ export function PublishForm({ brands }: Props) {
   const [description, setDescription] = useState("");
   const [contactName, setContactName] = useState("");
   const [contactPhone, setContactPhone] = useState("");
-  const [invoiceEmail, setInvoiceEmail] = useState("");
-  const [invoiceRUT, setInvoiceRUT] = useState("");
+  const [invoiceEmail] = useState("");
+  const [invoiceRUT] = useState("");
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);

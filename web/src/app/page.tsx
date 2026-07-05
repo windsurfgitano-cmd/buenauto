@@ -1,161 +1,124 @@
+import Link from "next/link";
+import { getListings } from "@/lib/server/listings-store";
+import { SearchBox } from "@/components/search/search-box";
+import type { Listing } from "@/lib/types";
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-export default function Home() {
+function formatPrice(price: number): string {
+  return "$" + price.toLocaleString("es-CL");
+}
+
+export default async function Home() {
+  let listings: Listing[] = [];
+  let brands: string[] = [];
+
+  try {
+    listings = await getListings();
+    brands = [...new Set(listings.map(l => l.brand))].sort();
+  } catch (e) {
+    console.error("Error loading listings:", e);
+  }
+
+  const featured = listings.slice(0, 12);
+
+  const brandCounts = new Map<string, number>();
+  for (const l of listings) {
+    brandCounts.set(l.brand, (brandCounts.get(l.brand) ?? 0) + 1);
+  }
+  const topBrands = [...brandCounts.entries()]
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 4);
+
   return (
-    <div style={{ 
-      minHeight: '100vh', 
-      background: '#f8f6f3',
-      fontFamily: 'system-ui, sans-serif'
-    }}>
-      {/* Header */}
-      <header style={{ 
-        borderBottom: '1px solid #e8e4df', 
-        background: '#ffffff',
-        padding: '1rem 2rem'
-      }}>
-        <div style={{ 
-          maxWidth: '1200px', 
-          margin: '0 auto',
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center'
-        }}>
-          <h1 style={{ 
-            fontSize: '1.5rem', 
-            fontWeight: 700, 
-            color: '#0f172a',
-            letterSpacing: '0.1em'
-          }}>
-            BUENAUTO
+    <div className="bg-[#f8f6f3]">
+      {/* Hero - Sin header ya que está en layout */}
+      <section className="relative bg-gradient-to-br from-[#0f172a] via-[#1e3a5f] to-[#0f172a] py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4">
+            Encuentra tu auto ideal
           </h1>
-          <nav>
-            <a href="/autos" style={{ 
-              marginRight: '1.5rem', 
-              color: '#1e3a5f',
-              textDecoration: 'none' 
-            }}>Buscar</a>
-            <a href="/publicar" style={{ 
-              color: '#c9a962',
-              textDecoration: 'none',
-              fontWeight: 600
-            }}>Publicar</a>
-          </nav>
+          <p className="text-lg md:text-xl text-[#c9a962] mb-8">
+            {listings.length.toLocaleString('es-CL')} vehículos disponibles en Chile
+          </p>
+          <SearchBox brands={brands} />
         </div>
-      </header>
-
-      {/* Hero */}
-      <section style={{ 
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%)',
-        color: '#ffffff',
-        padding: '4rem 2rem',
-        textAlign: 'center'
-      }}>
-        <h2 style={{ 
-          fontSize: '2.5rem', 
-          fontWeight: 300,
-          marginBottom: '1rem'
-        }}>
-          Compra y vende autos
-        </h2>
-        <p style={{ 
-          fontSize: '1.125rem', 
-          color: '#c9a962',
-          marginBottom: '2rem'
-        }}>
-          El marketplace de vehículos más confiable de Chile
-        </p>
-        <a 
-          href="/autos"
-          style={{ 
-            display: 'inline-block',
-            background: '#c9a962',
-            color: '#0f172a',
-            padding: '0.75rem 2rem',
-            borderRadius: '0.5rem',
-            textDecoration: 'none',
-            fontWeight: 600
-          }}
-        >
-          Ver autos disponibles
-        </a>
       </section>
 
-      {/* Listings placeholder */}
-      <section style={{ padding: '3rem 2rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h3 style={{ 
-            fontSize: '1.5rem', 
-            color: '#0f172a',
-            marginBottom: '2rem',
-            fontWeight: 600
-          }}>
-            Avisos destacados
-          </h3>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-            gap: '1.5rem'
-          }}>
-            {/* Static listing cards */}
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div 
-                key={i}
-                style={{
-                  background: '#ffffff',
-                  borderRadius: '0.75rem',
-                  overflow: 'hidden',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-                  border: '1px solid #e8e4df'
-                }}
-              >
-                <div style={{ 
-                  height: '180px', 
-                  background: '#e8e4df',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#64748b'
-                }}>
-                  Imagen del auto
-                </div>
-                <div style={{ padding: '1.25rem' }}>
-                  <h4 style={{ 
-                    fontSize: '1.125rem', 
-                    color: '#0f172a',
-                    marginBottom: '0.5rem',
-                    fontWeight: 600
-                  }}>
-                    TOYOTA Corolla 2020
-                  </h4>
-                  <p style={{ color: '#64748b', fontSize: '0.875rem' }}>
-                    45.000 km • Santiago
-                  </p>
-                  <p style={{ 
-                    color: '#c9a962', 
-                    fontSize: '1.25rem', 
-                    fontWeight: 700,
-                    marginTop: '0.75rem'
-                  }}>
-                    $12.500.000
-                  </p>
-                </div>
-              </div>
-            ))}
+      {/* Marcas */}
+      {topBrands.length > 0 && (
+        <section className="py-12 bg-white border-b border-[#e8e4df]">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-2xl font-semibold text-[#0f172a] mb-8 text-center">Explora por marca</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {topBrands.map(([marca, count]) => (
+                <Link
+                  key={marca}
+                  href={`/autos?brand=${encodeURIComponent(marca)}`}
+                  className="p-6 bg-[#f8f6f3] rounded-xl text-center hover:bg-[#0f172a] hover:text-white transition group"
+                >
+                  <span className="text-3xl mb-2 block group-hover:scale-110 transition">🚗</span>
+                  <span className="font-semibold block">{marca}</span>
+                  <span className="text-sm text-[#64748b] group-hover:text-[#c9a962]">{count} {count === 1 ? "aviso" : "avisos"}</span>
+                </Link>
+              ))}
+            </div>
           </div>
+        </section>
+      )}
+
+      {/* Destacados */}
+      <section className="py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between mb-8">
+            <h2 className="text-2xl md:text-3xl font-semibold text-[#0f172a]">Destacados</h2>
+            <Link href="/autos" className="text-[#1e3a5f] hover:text-[#c9a962] transition font-medium">
+              Ver todos →
+            </Link>
+          </div>
+
+          {featured.length === 0 ? (
+            <div className="text-center py-16 bg-white rounded-2xl">
+              <p className="text-[#64748b]">No hay autos disponibles</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              {featured.map((car) => (
+                <Link 
+                  key={car.id} 
+                  href={`/autos/${car.id}`}
+                  className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition border border-[#e8e4df]"
+                >
+                  <div className="h-48 bg-gradient-to-br from-[#1e3a5f]/10 to-[#c9a962]/10 flex items-center justify-center relative">
+                    <span className="text-6xl opacity-30">🚗</span>
+                    <span className="absolute bottom-3 left-3 px-2 py-1 bg-[#0f172a] text-white text-xs rounded">
+                      {car.year}
+                    </span>
+                  </div>
+                  <div className="p-5">
+                    <span className="text-xs font-bold text-[#1e3a5f] uppercase">{car.brand}</span>
+                    <h3 className="font-bold text-[#0f172a] mb-2 text-lg">{car.model}</h3>
+                    <p className="text-sm text-[#64748b] mb-3">{car.km.toLocaleString('es-CL')} km • {car.city}</p>
+                    <p className="text-xl font-bold text-[#c9a962]">{formatPrice(car.price)}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
-      {/* Footer */}
-      <footer style={{ 
-        background: '#0f172a', 
-        color: '#ffffff',
-        padding: '2rem',
-        textAlign: 'center',
-        marginTop: '3rem'
-      }}>
-        <p style={{ color: '#94a3b8' }}>© 2025 BuenAuto. Todos los derechos reservados.</p>
-      </footer>
+      {/* CTA Vender */}
+      <section className="py-20 bg-gradient-to-r from-[#0f172a] to-[#1e3a5f]">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h2 className="text-3xl md:text-4xl font-light text-white mb-4">¿Quieres vender tu vehículo?</h2>
+          <p className="text-[#c9a962] text-lg mb-8">Publica gratis y llega a miles de compradores</p>
+          <Link href="/publicar" className="px-8 py-4 bg-[#c9a962] text-[#0f172a] rounded-xl font-bold hover:bg-[#d4af37] transition">
+            Publicar Ahora
+          </Link>
+        </div>
+      </section>
     </div>
   );
 }

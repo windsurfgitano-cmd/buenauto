@@ -33,6 +33,14 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# runtime data with user info (created by the app, never commit)
+/data/users.json
+/data/sessions.json
+/data/payments.json
+/data/subscriptions.json
+/data/boosts.json
+/data/credits.json
+
 # vercel
 .vercel
 

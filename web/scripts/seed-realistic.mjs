@@ -7,7 +7,6 @@
 
 import { promises as fs } from "fs";
 import path from "path";
-import crypto from "crypto";
 
 const LISTINGS_FILE = path.join(process.cwd(), "data", "listings.json");
 const CATALOG_FILE = path.join("c:", "Users", "Ozymandias", "Documents", "BuenAuto", "catalogo_autos_chile_2000_2025.csv");
