@@ -3,6 +3,8 @@ import "server-only";
 import { promises as fs } from "fs";
 import path from "path";
 
+import { query } from "@/lib/server/db";
+
 type CatalogRow = {
   Brand: string;
   Model: string;
@@ -16,26 +18,13 @@ type CatalogRow = {
 };
 
 const CATALOG_FILENAME = "catalogo_autos_chile_2000_2025.csv";
-const LISTINGS_FILENAME = "listings.json";
-const CUSTOM_CATALOG_FILENAME = "catalog_custom.json";
 
 type CustomCatalog = {
   brands: Record<string, string[]>;
 };
 
+// El CSV es estático: se cachea en memoria por instancia.
 let cachedRows: CatalogRow[] | null = null;
-let cachedBrands: string[] | null = null;
-let cachedBrandsListingsMtimeMs: number | null = null;
-let cachedBrandsCustomMtimeMs: number | null = null;
-const cachedModelsByBrand = new Map<string, string[]>();
-let cachedModelsListingsMtimeMs: number | null = null;
-let cachedModelsCustomMtimeMs: number | null = null;
-
-let cachedListingPairs: Array<{ Brand: string; Model: string }> | null = null;
-let cachedListingsMtimeMs: number | null = null;
-
-let cachedCustomCatalog: CustomCatalog | null = null;
-let cachedCustomCatalogMtimeMs: number | null = null;
 
 function normalizeBrand(brand: string) {
   return brand.trim().toUpperCase();
@@ -51,83 +40,24 @@ function sortBrandsRecord(input: Record<string, string[]>) {
   ) as Record<string, string[]>;
 }
 
-function sanitizeCustomCatalog(value: unknown): CustomCatalog {
+async function loadCustomCatalog(): Promise<CustomCatalog> {
+  const rows = await query<{ brand: string; model: string }>(
+    `SELECT brand, model FROM catalog_custom ORDER BY brand, model`,
+  );
+
   const brands: Record<string, string[]> = {};
-
-  if (!value || typeof value !== "object" || Array.isArray(value)) {
-    return { brands };
-  }
-
-  const rawBrands = (value as { brands?: unknown }).brands;
-  if (!rawBrands || typeof rawBrands !== "object" || Array.isArray(rawBrands)) {
-    return { brands };
-  }
-
-  for (const [brandKey, rawModels] of Object.entries(
-    rawBrands as Record<string, unknown>,
-  )) {
-    const Brand = normalizeBrand(brandKey);
+  for (const row of rows) {
+    const Brand = normalizeBrand(row.brand);
     if (!Brand) continue;
+    if (!brands[Brand]) brands[Brand] = [];
+    brands[Brand].push(row.model);
+  }
 
-    const models: string[] = [];
-    const seen = new Set<string>();
-
-    if (Array.isArray(rawModels)) {
-      for (const item of rawModels) {
-        if (typeof item !== "string") continue;
-        const Model = normalizeModel(item);
-        if (!Model) continue;
-        const key = Model.toLowerCase();
-        if (seen.has(key)) continue;
-        seen.add(key);
-        models.push(Model);
-      }
-    }
-
+  for (const models of Object.values(brands)) {
     models.sort((a, b) => a.localeCompare(b, "es"));
-    brands[Brand] = models;
   }
 
   return { brands: sortBrandsRecord(brands) };
-}
-
-async function loadCustomCatalog() {
-  const filePath = path.join(process.cwd(), "data", CUSTOM_CATALOG_FILENAME);
-
-  try {
-    const stat = await fs.stat(filePath);
-    const mtimeMs = stat.mtimeMs;
-
-    if (cachedCustomCatalog !== null && cachedCustomCatalogMtimeMs === mtimeMs) {
-      return cachedCustomCatalog;
-    }
-
-    const raw = await fs.readFile(filePath, "utf8");
-    const parsed = JSON.parse(raw);
-    const catalog = sanitizeCustomCatalog(parsed);
-    cachedCustomCatalog = catalog;
-    cachedCustomCatalogMtimeMs = mtimeMs;
-    return catalog;
-  } catch {
-    cachedCustomCatalog = { brands: {} };
-    cachedCustomCatalogMtimeMs = null;
-    return cachedCustomCatalog;
-  }
-}
-
-async function writeCustomCatalog(catalog: CustomCatalog) {
-  const filePath = path.join(process.cwd(), "data", CUSTOM_CATALOG_FILENAME);
-  await fs.mkdir(path.dirname(filePath), { recursive: true });
-  await fs.writeFile(filePath, `${JSON.stringify(catalog, null, 2)}\n`, "utf8");
-
-  try {
-    const stat = await fs.stat(filePath);
-    cachedCustomCatalog = catalog;
-    cachedCustomCatalogMtimeMs = stat.mtimeMs;
-  } catch {
-    cachedCustomCatalog = catalog;
-    cachedCustomCatalogMtimeMs = null;
-  }
 }
 
 export async function getCustomCatalog() {
@@ -145,24 +75,15 @@ export async function addCustomCatalogModels(input: { brand: string; models: str
     .map(normalizeModel)
     .filter(Boolean);
 
-  const current = await loadCustomCatalog();
-  const brands = { ...current.brands };
-  const existing = Array.isArray(brands[Brand]) ? [...brands[Brand]] : [];
-  const seen = new Set(existing.map((m) => m.toLowerCase()));
-
-  for (const m of nextModels) {
-    const key = m.toLowerCase();
-    if (seen.has(key)) continue;
-    seen.add(key);
-    existing.push(m);
+  for (const model of nextModels) {
+    await query(
+      `INSERT INTO catalog_custom (brand, model) VALUES ($1, $2)
+       ON CONFLICT DO NOTHING`,
+      [Brand, model],
+    );
   }
 
-  existing.sort((a, b) => a.localeCompare(b, "es"));
-  brands[Brand] = existing;
-
-  const next: CustomCatalog = { brands: sortBrandsRecord(brands) };
-  await writeCustomCatalog(next);
-  return next;
+  return loadCustomCatalog();
 }
 
 export async function deleteCustomCatalogModel(input: { brand: string; model?: string }) {
@@ -171,85 +92,39 @@ export async function deleteCustomCatalogModel(input: { brand: string; model?: s
     throw new Error("Invalid brand");
   }
 
-  const current = await loadCustomCatalog();
-  const brands = { ...current.brands };
-
-  if (!(Brand in brands)) {
-    return current;
-  }
-
   if (!input.model) {
-    delete brands[Brand];
+    await query(`DELETE FROM catalog_custom WHERE brand = $1`, [Brand]);
   } else {
-    const target = normalizeModel(input.model).toLowerCase();
+    const target = normalizeModel(input.model);
     if (!target) {
       throw new Error("Invalid model");
     }
 
-    const nextModels = (brands[Brand] ?? []).filter(
-      (m) => m.toLowerCase() !== target,
+    await query(
+      `DELETE FROM catalog_custom WHERE brand = $1 AND lower(model) = lower($2)`,
+      [Brand, target],
     );
-
-    if (nextModels.length === 0) {
-      delete brands[Brand];
-    } else {
-      brands[Brand] = nextModels;
-    }
   }
 
-  const next: CustomCatalog = { brands: sortBrandsRecord(brands) };
-  await writeCustomCatalog(next);
-  return next;
+  return loadCustomCatalog();
 }
 
+/** Pares marca/modelo de avisos creados por usuarios (con dueño). */
 async function loadListingPairs() {
-  const filePath = path.join(process.cwd(), "data", LISTINGS_FILENAME);
+  const rows = await query<{ brand: string; model: string }>(
+    `SELECT DISTINCT brand, model FROM listings
+     WHERE owner_id IS NOT NULL AND owner_id <> ''`,
+  );
 
-  try {
-    const stat = await fs.stat(filePath);
-    const mtimeMs = stat.mtimeMs;
-
-    if (cachedListingPairs !== null && cachedListingsMtimeMs === mtimeMs) {
-      return cachedListingPairs;
-    }
-
-    const raw = await fs.readFile(filePath, "utf8");
-    const parsed = JSON.parse(raw);
-
-    if (!Array.isArray(parsed)) {
-      cachedListingPairs = [];
-      cachedListingsMtimeMs = mtimeMs;
-      return [];
-    }
-
-    const pairs: Array<{ Brand: string; Model: string }> = [];
-
-    for (const item of parsed) {
-      if (!item || typeof item !== "object") continue;
-
-      const ownerId = (item as { ownerId?: unknown }).ownerId;
-      const brand = (item as { brand?: unknown }).brand;
-      const model = (item as { model?: unknown }).model;
-
-      if (typeof ownerId !== "string" || !ownerId.trim()) continue;
-      if (typeof brand !== "string" || typeof model !== "string") continue;
-
-      const Brand = normalizeBrand(brand);
-      const Model = model.trim();
-
-      if (!Brand || !Model) continue;
-
-      pairs.push({ Brand, Model });
-    }
-
-    cachedListingPairs = pairs;
-    cachedListingsMtimeMs = mtimeMs;
-    return pairs;
-  } catch {
-    cachedListingPairs = [];
-    cachedListingsMtimeMs = null;
-    return [];
+  const pairs: Array<{ Brand: string; Model: string }> = [];
+  for (const row of rows) {
+    const Brand = normalizeBrand(row.brand);
+    const Model = normalizeModel(row.model);
+    if (!Brand || !Model) continue;
+    pairs.push({ Brand, Model });
   }
+
+  return pairs;
 }
 
 async function resolveCatalogPath(): Promise<string | null> {
@@ -308,18 +183,17 @@ async function loadRows() {
 
   const filePath = await resolveCatalogPath();
   if (!filePath) {
-    // No catalog file found, return empty
     cachedRows = [];
     return [];
   }
-  
+
   const raw = await fs.readFile(filePath, "utf8");
-  const cleanedRaw = raw.replace(/^\uFEFF/, "");
+  const cleanedRaw = raw.replace(/^﻿/, "");
   const lines = cleanedRaw.split(/\r?\n/).filter(Boolean);
   if (lines.length === 0) return [];
 
   const header = parseCsvLine(lines[0]);
-  if (header[0]) header[0] = header[0].replace(/^\uFEFF/, "");
+  if (header[0]) header[0] = header[0].replace(/^﻿/, "");
   const rows: CatalogRow[] = [];
 
   for (const line of lines.slice(1)) {
@@ -354,66 +228,30 @@ async function loadRows() {
 }
 
 export async function getCatalogBrands() {
-  console.log("[CATALOG] getCatalogBrands called");
-  
-  let listingPairs: Array<{ Brand: string; Model: string }> = [];
-  let listingsMtimeMs = 0;
-  let customCatalog: CustomCatalog = { brands: {} };
-  let customMtimeMs = 0;
-  
-  try {
-    listingPairs = await loadListingPairs();
-    listingsMtimeMs = cachedListingsMtimeMs ?? 0;
-    customCatalog = await loadCustomCatalog();
-    customMtimeMs = cachedCustomCatalogMtimeMs ?? 0;
-    console.log("[CATALOG] Loaded listing pairs:", listingPairs.length);
-  } catch (err) {
-    console.error("[CATALOG] Error loading listings/custom catalog:", err);
-  }
+  const [rows, listingPairs, customCatalog] = await Promise.all([
+    loadRows(),
+    loadListingPairs(),
+    loadCustomCatalog(),
+  ]);
 
-  if (
-    cachedBrands !== null &&
-    cachedBrandsListingsMtimeMs === listingsMtimeMs &&
-    cachedBrandsCustomMtimeMs === customMtimeMs
-  ) {
-    return cachedBrands;
-  }
-
-  const rows = await loadRows();
   const set = new Set<string>();
 
   for (const r of rows) set.add(r.Brand);
   for (const pair of listingPairs) set.add(pair.Brand);
   for (const Brand of Object.keys(customCatalog.brands)) set.add(Brand);
 
-  const brands = [...set].sort((a, b) => a.localeCompare(b, "es"));
-  cachedBrands = brands;
-  cachedBrandsListingsMtimeMs = listingsMtimeMs;
-  cachedBrandsCustomMtimeMs = customMtimeMs;
-  return brands;
+  return [...set].sort((a, b) => a.localeCompare(b, "es"));
 }
 
 export async function getCatalogModelsByBrand(brand: string) {
   const normalized = normalizeBrand(brand);
 
-  const listingPairs = await loadListingPairs();
-  const listingsMtimeMs = cachedListingsMtimeMs ?? 0;
-  const customCatalog = await loadCustomCatalog();
-  const customMtimeMs = cachedCustomCatalogMtimeMs ?? 0;
+  const [rows, listingPairs, customCatalog] = await Promise.all([
+    loadRows(),
+    loadListingPairs(),
+    loadCustomCatalog(),
+  ]);
 
-  if (
-    cachedModelsListingsMtimeMs !== listingsMtimeMs ||
-    cachedModelsCustomMtimeMs !== customMtimeMs
-  ) {
-    cachedModelsByBrand.clear();
-    cachedModelsListingsMtimeMs = listingsMtimeMs;
-    cachedModelsCustomMtimeMs = customMtimeMs;
-  }
-
-  const cached = cachedModelsByBrand.get(normalized);
-  if (cached) return cached;
-
-  const rows = await loadRows();
   const set = new Set<string>();
 
   for (const r of rows) {
@@ -430,9 +268,7 @@ export async function getCatalogModelsByBrand(brand: string) {
     set.add(Model);
   }
 
-  const models = [...set].sort((a, b) => a.localeCompare(b, "es"));
-  cachedModelsByBrand.set(normalized, models);
-  return models;
+  return [...set].sort((a, b) => a.localeCompare(b, "es"));
 }
 
 export type { CatalogRow };

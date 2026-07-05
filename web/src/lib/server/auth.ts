@@ -1,8 +1,8 @@
 import "server-only";
 
 import crypto from "crypto";
-import { promises as fs } from "fs";
-import path from "path";
+
+import { query, toIso } from "@/lib/server/db";
 
 export const SESSION_COOKIE_NAME = "ba_session";
 
@@ -12,21 +12,14 @@ const PBKDF2_DIGEST = "sha256";
 
 const SESSION_TTL_SECONDS = 60 * 60 * 24 * 30;
 
-type UserRecord = {
+type UserRow = {
   id: string;
   email: string;
-  name?: string;
-  passwordHash: string;
-  passwordSalt: string;
-  favorites?: string[];
-  createdAt: string;
-};
-
-type SessionRecord = {
-  id: string;
-  userId: string;
-  createdAt: string;
-  expiresAt: string;
+  name: string | null;
+  password_hash: string;
+  password_salt: string;
+  favorites: unknown;
+  created_at: unknown;
 };
 
 export type PublicUser = {
@@ -37,43 +30,7 @@ export type PublicUser = {
   createdAt: string;
 };
 
-function getUsersFilePath() {
-  return path.join(process.cwd(), "data", "users.json");
-}
-
-function getSessionsFilePath() {
-  return path.join(process.cwd(), "data", "sessions.json");
-}
-
-async function readJsonArray<T>(filePath: string): Promise<T[]> {
-  try {
-    const raw = await fs.readFile(filePath, "utf8");
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as T[]) : [];
-  } catch {
-    return [];
-  }
-}
-
-async function writeJsonArray(filePath: string, value: unknown[]) {
-  await fs.writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
-}
-
-async function loadUsers() {
-  return readJsonArray<UserRecord>(getUsersFilePath());
-}
-
-async function saveUsers(users: UserRecord[]) {
-  await writeJsonArray(getUsersFilePath(), users);
-}
-
-async function loadSessions() {
-  return readJsonArray<SessionRecord>(getSessionsFilePath());
-}
-
-async function saveSessions(sessions: SessionRecord[]) {
-  await writeJsonArray(getSessionsFilePath(), sessions);
-}
+const USER_COLUMNS = `id, email, name, password_hash, password_salt, favorites, created_at`;
 
 function normalizeEmail(email: string) {
   return email.trim().toLowerCase();
@@ -106,30 +63,22 @@ function safeEqualHex(a: string, b: string) {
   }
 }
 
-function sanitizeUser(user: UserRecord): PublicUser {
+function rowToPublicUser(row: UserRow): PublicUser {
   return {
-    id: user.id,
-    email: user.email,
-    name: user.name,
-    favorites: Array.isArray(user.favorites) ? user.favorites : [],
-    createdAt: user.createdAt,
+    id: row.id,
+    email: row.email,
+    name: row.name ?? undefined,
+    favorites: Array.isArray(row.favorites) ? (row.favorites as string[]) : [],
+    createdAt: toIso(row.created_at),
   };
 }
 
-function getNextUserId(users: UserRecord[]) {
-  let max = 0;
-
-  for (const u of users) {
-    const match = /^u_(\d+)$/.exec(u.id);
-    if (!match) continue;
-
-    const num = Number(match[1]);
-    if (!Number.isFinite(num)) continue;
-
-    max = Math.max(max, num);
-  }
-
-  const next = max + 1;
+async function getNextUserId() {
+  const rows = await query<{ max_num: number | null }>(
+    `SELECT max((substring(id from 'u_(\\d+)'))::int) AS max_num
+     FROM users WHERE id ~ '^u_\\d+$'`,
+  );
+  const next = (rows[0]?.max_num ?? 0) + 1;
   return `u_${String(next).padStart(4, "0")}`;
 }
 
@@ -137,64 +86,46 @@ function newSessionId() {
   return `s_${crypto.randomBytes(24).toString("hex")}`;
 }
 
-function nowIso() {
-  return new Date().toISOString();
-}
-
-function addSeconds(date: Date, seconds: number) {
-  return new Date(date.getTime() + seconds * 1000);
-}
-
-async function purgeExpiredSessions() {
-  const sessions = await loadSessions();
-  const now = Date.now();
-  const alive = sessions.filter((s) => {
-    const ts = new Date(s.expiresAt).getTime();
-    return Number.isFinite(ts) && ts > now;
-  });
-
-  if (alive.length !== sessions.length) {
-    await saveSessions(alive);
-  }
-
-  return alive;
-}
-
 export async function getUserBySessionId(sessionId: string): Promise<PublicUser | null> {
   if (!sessionId) return null;
 
-  const sessions = await purgeExpiredSessions();
-  const session = sessions.find((s) => s.id === sessionId);
-  if (!session) return null;
+  const rows = await query<UserRow>(
+    `SELECT ${USER_COLUMNS.split(", ")
+      .map((c) => `u.${c}`)
+      .join(", ")}
+     FROM sessions s
+     JOIN users u ON u.id = s.user_id
+     WHERE s.id = $1 AND s.expires_at > now()`,
+    [sessionId],
+  );
 
-  const users = await loadUsers();
-  const user = users.find((u) => u.id === session.userId);
-  return user ? sanitizeUser(user) : null;
+  return rows.length > 0 ? rowToPublicUser(rows[0]) : null;
 }
 
 export async function createSessionForUser(userId: string) {
-  const sessions = await purgeExpiredSessions();
+  // Limpieza oportunista de sesiones vencidas (antes se hacía en cada purge).
+  await query(`DELETE FROM sessions WHERE expires_at <= now()`);
 
-  const session: SessionRecord = {
-    id: newSessionId(),
-    userId,
-    createdAt: nowIso(),
-    expiresAt: addSeconds(new Date(), SESSION_TTL_SECONDS).toISOString(),
+  const id = newSessionId();
+  const rows = await query<{ id: string; user_id: string; created_at: unknown; expires_at: unknown }>(
+    `INSERT INTO sessions (id, user_id, created_at, expires_at)
+     VALUES ($1, $2, now(), now() + make_interval(secs => $3))
+     RETURNING id, user_id, created_at, expires_at`,
+    [id, userId, SESSION_TTL_SECONDS],
+  );
+
+  const row = rows[0];
+  return {
+    id: row.id,
+    userId: row.user_id,
+    createdAt: toIso(row.created_at),
+    expiresAt: toIso(row.expires_at),
   };
-
-  await saveSessions([session, ...sessions]);
-  return session;
 }
 
 export async function deleteSession(sessionId: string) {
   if (!sessionId) return;
-
-  const sessions = await purgeExpiredSessions();
-  const next = sessions.filter((s) => s.id !== sessionId);
-
-  if (next.length !== sessions.length) {
-    await saveSessions(next);
-  }
+  await query(`DELETE FROM sessions WHERE id = $1`, [sessionId]);
 }
 
 export async function registerUser(input: {
@@ -214,25 +145,36 @@ export async function registerUser(input: {
     throw new Error("Invalid password");
   }
 
-  const users = await loadUsers();
+  const existing = await query<{ id: string }>(
+    `SELECT id FROM users WHERE lower(email) = $1`,
+    [email],
+  );
 
-  if (users.some((u) => normalizeEmail(u.email) === email)) {
+  if (existing.length > 0) {
     throw new Error("Email already exists");
   }
 
   const salt = newSalt();
-  const user: UserRecord = {
-    id: getNextUserId(users),
-    email,
-    name: name || undefined,
-    passwordSalt: salt,
-    passwordHash: hashPassword(password, salt),
-    favorites: [],
-    createdAt: nowIso(),
-  };
+  const passwordHash = hashPassword(password, salt);
 
-  await saveUsers([user, ...users]);
-  return sanitizeUser(user);
+  // Reintento por si dos registros concurrentes calculan el mismo id.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const id = await getNextUserId();
+
+    const rows = await query<UserRow>(
+      `INSERT INTO users (id, email, name, password_hash, password_salt, favorites, created_at)
+       VALUES ($1, $2, $3, $4, $5, '[]'::jsonb, now())
+       ON CONFLICT (id) DO NOTHING
+       RETURNING ${USER_COLUMNS}`,
+      [id, email, name || null, passwordHash, salt],
+    );
+
+    if (rows.length > 0) {
+      return rowToPublicUser(rows[0]);
+    }
+  }
+
+  throw new Error("Could not allocate user id");
 }
 
 export async function authenticateUser(input: {
@@ -242,33 +184,41 @@ export async function authenticateUser(input: {
   const email = normalizeEmail(input.email);
   const password = input.password;
 
-  const users = await loadUsers();
-  const user = users.find((u) => normalizeEmail(u.email) === email);
+  const rows = await query<UserRow>(
+    `SELECT ${USER_COLUMNS} FROM users WHERE lower(email) = $1`,
+    [email],
+  );
+
+  const user = rows[0];
 
   if (!user) {
     throw new Error("Invalid credentials");
   }
 
-  const expected = user.passwordHash;
-  const actual = hashPassword(password, user.passwordSalt);
+  const expected = user.password_hash;
+  const actual = hashPassword(password, user.password_salt);
 
   if (!safeEqualHex(expected, actual)) {
     throw new Error("Invalid credentials");
   }
 
-  return sanitizeUser(user);
+  return rowToPublicUser(user);
 }
 
 export async function toggleFavorite(userId: string, listingId: string) {
   if (!userId) throw new Error("Missing user");
   if (!listingId) throw new Error("Missing listing");
 
-  const users = await loadUsers();
-  const idx = users.findIndex((u) => u.id === userId);
-  if (idx === -1) throw new Error("Missing user");
+  const rows = await query<UserRow>(
+    `SELECT ${USER_COLUMNS} FROM users WHERE id = $1`,
+    [userId],
+  );
+  const user = rows[0];
+  if (!user) throw new Error("Missing user");
 
-  const u = users[idx];
-  const favorites = Array.isArray(u.favorites) ? [...u.favorites] : [];
+  const favorites = Array.isArray(user.favorites)
+    ? [...(user.favorites as string[])]
+    : [];
   const pos = favorites.indexOf(listingId);
 
   if (pos === -1) {
@@ -277,52 +227,42 @@ export async function toggleFavorite(userId: string, listingId: string) {
     favorites.splice(pos, 1);
   }
 
-  const nextUser: UserRecord = {
-    ...u,
-    favorites,
-  };
+  const updated = await query<UserRow>(
+    `UPDATE users SET favorites = $2 WHERE id = $1 RETURNING ${USER_COLUMNS}`,
+    [userId, JSON.stringify(favorites)],
+  );
 
-  const nextUsers = [...users];
-  nextUsers[idx] = nextUser;
-
-  await saveUsers(nextUsers);
-  return sanitizeUser(nextUser);
+  return rowToPublicUser(updated[0]);
 }
 
 export async function getUserById(userId: string) {
-  const users = await loadUsers();
-  const user = users.find((u) => u.id === userId);
-  return user ? sanitizeUser(user) : null;
+  const rows = await query<UserRow>(
+    `SELECT ${USER_COLUMNS} FROM users WHERE id = $1`,
+    [userId],
+  );
+  return rows.length > 0 ? rowToPublicUser(rows[0]) : null;
 }
 
 export async function getUserByEmail(email: string) {
-  const normalized = normalizeEmail(email);
-  const users = await loadUsers();
-  const user = users.find((u) => normalizeEmail(u.email) === normalized);
-  return user ? sanitizeUser(user) : null;
+  const rows = await query<UserRow>(
+    `SELECT ${USER_COLUMNS} FROM users WHERE lower(email) = $1`,
+    [normalizeEmail(email)],
+  );
+  return rows.length > 0 ? rowToPublicUser(rows[0]) : null;
 }
 
 export async function updateUserName(userId: string, name: string) {
   if (!userId) throw new Error("Missing user");
 
   const normalized = name.trim();
-  const nextName = normalized ? normalized : undefined;
 
-  const users = await loadUsers();
-  const idx = users.findIndex((u) => u.id === userId);
-  if (idx === -1) throw new Error("Missing user");
+  const rows = await query<UserRow>(
+    `UPDATE users SET name = $2 WHERE id = $1 RETURNING ${USER_COLUMNS}`,
+    [userId, normalized || null],
+  );
 
-  const u = users[idx];
-  const nextUser: UserRecord = {
-    ...u,
-    name: nextName,
-  };
-
-  const nextUsers = [...users];
-  nextUsers[idx] = nextUser;
-  await saveUsers(nextUsers);
-
-  return sanitizeUser(nextUser);
+  if (rows.length === 0) throw new Error("Missing user");
+  return rowToPublicUser(rows[0]);
 }
 
 export async function updateUserPassword(
@@ -336,31 +276,30 @@ export async function updateUserPassword(
     throw new Error("Invalid password");
   }
 
-  const users = await loadUsers();
-  const idx = users.findIndex((u) => u.id === userId);
-  if (idx === -1) throw new Error("Missing user");
+  const rows = await query<UserRow>(
+    `SELECT ${USER_COLUMNS} FROM users WHERE id = $1`,
+    [userId],
+  );
+  const user = rows[0];
+  if (!user) throw new Error("Missing user");
 
-  const u = users[idx];
-  const expected = u.passwordHash;
-  const actual = hashPassword(currentPassword, u.passwordSalt);
+  const expected = user.password_hash;
+  const actual = hashPassword(currentPassword, user.password_salt);
 
   if (!safeEqualHex(expected, actual)) {
     throw new Error("Invalid credentials");
   }
 
   const salt = newSalt();
+  const passwordHash = hashPassword(newPassword, salt);
 
-  const nextUser: UserRecord = {
-    ...u,
-    passwordSalt: salt,
-    passwordHash: hashPassword(newPassword, salt),
-  };
+  const updated = await query<UserRow>(
+    `UPDATE users SET password_salt = $2, password_hash = $3 WHERE id = $1
+     RETURNING ${USER_COLUMNS}`,
+    [userId, salt, passwordHash],
+  );
 
-  const nextUsers = [...users];
-  nextUsers[idx] = nextUser;
-  await saveUsers(nextUsers);
-
-  return sanitizeUser(nextUser);
+  return rowToPublicUser(updated[0]);
 }
 
 export function getSessionTtlSeconds() {

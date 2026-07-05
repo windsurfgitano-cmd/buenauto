@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "seed:listings": "node scripts/seed-listings.mjs"
+    "seed:listings": "node scripts/seed-listings.mjs",
+    "db:migrate": "node scripts/migrate-to-neon.mjs"
   },
   "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
     "gsap": "^3.14.2",
     "mercadopago": "^2.11.0",
     "next": "16.0.10",

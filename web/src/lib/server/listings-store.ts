@@ -1,8 +1,6 @@
 import "server-only";
 
-import { promises as fs } from "fs";
-import path from "path";
-
+import { escapeLike, query, toIso, toIsoOrUndefined } from "@/lib/server/db";
 import type { Listing, ListingCreateInput, ListingUpdateInput } from "@/lib/types";
 
 type ListingSearch = {
@@ -17,14 +15,71 @@ type ListingSearch = {
   sort?: "newest" | "price_asc" | "price_desc" | "year_desc" | "km_asc" | "km_desc";
 };
 
-function getListingsFilePath() {
-  return path.join(process.cwd(), "data", "listings.json");
-}
-
-let cachedListings: Listing[] | null = null;
-let cachedListingsMtimeMs: number | null = null;
-
 const PUBLISH_DURATION_DAYS = 30;
+
+const MIN_LISTING_YEAR = 2000;
+const MAX_LISTING_YEAR = 2025;
+
+const LISTING_COLUMNS = `
+  id, owner_id, status, brand, model, year, price, km, region, city,
+  transmission, fuel, description, images, contact_name, contact_phone,
+  created_at, published_at, expires_at, payment_id, invoice_email, invoice_rut
+`;
+
+/** Condición SQL equivalente a isListingPublic(). */
+const PUBLIC_WHERE = `status = 'published' AND (expires_at IS NULL OR expires_at > now())`;
+
+type ListingRow = {
+  id: string;
+  owner_id: string | null;
+  status: string | null;
+  brand: string;
+  model: string;
+  year: number;
+  price: number;
+  km: number;
+  region: string;
+  city: string;
+  transmission: string;
+  fuel: string;
+  description: string;
+  images: unknown;
+  contact_name: string;
+  contact_phone: string;
+  created_at: unknown;
+  published_at: unknown;
+  expires_at: unknown;
+  payment_id: string | null;
+  invoice_email: string | null;
+  invoice_rut: string | null;
+};
+
+function rowToListing(row: ListingRow): Listing {
+  return {
+    id: row.id,
+    ownerId: row.owner_id ?? undefined,
+    status: (row.status ?? "published") as Listing["status"],
+    brand: row.brand,
+    model: row.model,
+    year: Number(row.year),
+    price: Number(row.price),
+    km: Number(row.km),
+    region: row.region,
+    city: row.city,
+    transmission: row.transmission,
+    fuel: row.fuel,
+    description: row.description,
+    images: Array.isArray(row.images) ? (row.images as string[]) : [],
+    contactName: row.contact_name,
+    contactPhone: row.contact_phone,
+    createdAt: toIso(row.created_at),
+    publishedAt: toIsoOrUndefined(row.published_at),
+    expiresAt: toIsoOrUndefined(row.expires_at),
+    paymentId: row.payment_id ?? undefined,
+    invoiceEmail: row.invoice_email ?? undefined,
+    invoiceRUT: row.invoice_rut ?? undefined,
+  };
+}
 
 export function isListingPublic(listing: Listing, nowMs: number = Date.now()) {
   const status = listing.status ?? "published";
@@ -40,53 +95,8 @@ export function isListingPublic(listing: Listing, nowMs: number = Date.now()) {
   return true;
 }
 
-async function saveListings(items: Listing[]) {
-  const filePath = getListingsFilePath();
-  await fs.writeFile(filePath, `${JSON.stringify(items, null, 2)}\n`, "utf8");
-
-  try {
-    const stat = await fs.stat(filePath);
-    cachedListings = items;
-    cachedListingsMtimeMs = stat.mtimeMs;
-  } catch {
-    cachedListings = items;
-    cachedListingsMtimeMs = null;
-  }
-}
-
 function addDays(date: Date, days: number) {
   return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
-}
-
-async function loadListingsRaw() {
-  const filePath = getListingsFilePath();
-
-  try {
-    const stat = await fs.stat(filePath);
-    const mtimeMs = stat.mtimeMs;
-
-    if (cachedListings !== null && cachedListingsMtimeMs === mtimeMs) {
-      return cachedListings;
-    }
-
-    const raw = await fs.readFile(filePath, "utf8");
-    const parsed = JSON.parse(raw);
-
-    if (!Array.isArray(parsed)) {
-      cachedListings = [];
-      cachedListingsMtimeMs = mtimeMs;
-      return [];
-    }
-
-    const items = parsed as Listing[];
-    cachedListings = items;
-    cachedListingsMtimeMs = mtimeMs;
-    return items;
-  } catch {
-    cachedListings = [];
-    cachedListingsMtimeMs = null;
-    return [];
-  }
 }
 
 function toNumber(value: unknown) {
@@ -102,82 +112,105 @@ function normalizeText(value: string) {
   return value.trim();
 }
 
-const MIN_LISTING_YEAR = 2000;
-const MAX_LISTING_YEAR = 2025;
-
-function getNextListingId(existing: Listing[]) {
-  let max = 0;
-
-  for (const item of existing) {
-    const match = /^ls_(\d+)$/.exec(item.id);
-    if (!match) continue;
-
-    const num = Number(match[1]);
-    if (!Number.isFinite(num)) continue;
-
-    max = Math.max(max, num);
+function sortToOrderBy(sort: ListingSearch["sort"]) {
+  switch (sort) {
+    case "price_asc":
+      return "price ASC";
+    case "price_desc":
+      return "price DESC";
+    case "year_desc":
+      return "year DESC";
+    case "km_asc":
+      return "km ASC";
+    case "km_desc":
+      return "km DESC";
+    default:
+      return "created_at DESC";
   }
-
-  const next = max + 1;
-  return `ls_${String(next).padStart(4, "0")}`;
 }
 
-export function applyListingSearch(listings: Listing[], search: ListingSearch) {
-  const q = (search.q ?? "").trim().toLowerCase();
-  const brand = (search.brand ?? "").trim().toUpperCase();
-  const model = (search.model ?? "").trim().toLowerCase();
-  const region = (search.region ?? "").trim().toLowerCase();
+function buildSearchWhere(search: ListingSearch) {
+  const conditions: string[] = [PUBLIC_WHERE];
+  const params: unknown[] = [];
 
-  let items = listings.filter((l) => {
-    if (q) {
-      const hay = `${l.brand} ${l.model} ${l.year} ${l.region} ${l.city}`.toLowerCase();
-      if (!hay.includes(q)) return false;
-    }
+  const q = (search.q ?? "").trim();
+  const brand = (search.brand ?? "").trim();
+  const model = (search.model ?? "").trim();
+  const region = (search.region ?? "").trim();
 
-    if (brand && l.brand.toUpperCase() !== brand) return false;
-    if (model && !l.model.toLowerCase().includes(model)) return false;
-    if (region && l.region.toLowerCase() !== region) return false;
+  if (q) {
+    params.push(`%${escapeLike(q)}%`);
+    conditions.push(
+      `(brand || ' ' || model || ' ' || year::text || ' ' || region || ' ' || city) ILIKE $${params.length}`,
+    );
+  }
 
-    if (typeof search.minYear === "number" && l.year < search.minYear) return false;
-    if (typeof search.maxYear === "number" && l.year > search.maxYear) return false;
+  if (brand) {
+    params.push(brand.toUpperCase());
+    conditions.push(`upper(brand) = $${params.length}`);
+  }
 
-    if (typeof search.minPrice === "number" && l.price < search.minPrice) return false;
-    if (typeof search.maxPrice === "number" && l.price > search.maxPrice) return false;
+  if (model) {
+    params.push(`%${escapeLike(model)}%`);
+    conditions.push(`model ILIKE $${params.length}`);
+  }
 
-    return true;
-  });
+  if (region) {
+    params.push(region.toLowerCase());
+    conditions.push(`lower(region) = $${params.length}`);
+  }
 
-  const sort = search.sort ?? "newest";
+  if (typeof search.minYear === "number") {
+    params.push(search.minYear);
+    conditions.push(`year >= $${params.length}`);
+  }
 
-  items = [...items].sort((a, b) => {
-    if (sort === "price_asc") return a.price - b.price;
-    if (sort === "price_desc") return b.price - a.price;
-    if (sort === "year_desc") return b.year - a.year;
-    if (sort === "km_asc") return a.km - b.km;
-    if (sort === "km_desc") return b.km - a.km;
+  if (typeof search.maxYear === "number") {
+    params.push(search.maxYear);
+    conditions.push(`year <= $${params.length}`);
+  }
 
-    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-  });
+  if (typeof search.minPrice === "number") {
+    params.push(search.minPrice);
+    conditions.push(`price >= $${params.length}`);
+  }
 
-  return items;
+  if (typeof search.maxPrice === "number") {
+    params.push(search.maxPrice);
+    conditions.push(`price <= $${params.length}`);
+  }
+
+  return { where: conditions.join(" AND "), params };
 }
 
 export async function getListings() {
-  const items = await loadListingsRaw();
-  const visible = items.filter((l) => isListingPublic(l));
-  return applyListingSearch(visible, { sort: "newest" });
+  const rows = await query<ListingRow>(
+    `SELECT ${LISTING_COLUMNS} FROM listings WHERE ${PUBLIC_WHERE} ORDER BY created_at DESC`,
+  );
+  return rows.map(rowToListing);
 }
 
 export async function getListingById(id: string) {
-  const items = await loadListingsRaw();
-  return items.find((l) => l.id === id) ?? null;
+  const rows = await query<ListingRow>(
+    `SELECT ${LISTING_COLUMNS} FROM listings WHERE id = $1`,
+    [id],
+  );
+  return rows.length > 0 ? rowToListing(rows[0]) : null;
 }
 
 export async function getListingByIdForOwner(id: string, ownerId: string) {
-  const items = await loadListingsRaw();
-  const listing = items.find((l) => l.id === id);
+  const listing = await getListingById(id);
   if (!listing || listing.ownerId !== ownerId) return null;
   return listing;
+}
+
+async function getNextListingId() {
+  const rows = await query<{ max_num: number | null }>(
+    `SELECT max((substring(id from 'ls_(\\d+)'))::int) AS max_num
+     FROM listings WHERE id ~ '^ls_\\d+$'`,
+  );
+  const next = (rows[0]?.max_num ?? 0) + 1;
+  return `ls_${String(next).padStart(4, "0")}`;
 }
 
 export async function createListing(
@@ -186,11 +219,6 @@ export async function createListing(
     ownerId?: string;
   },
 ) {
-  // Usar la lista cruda: con la lista filtrada se reusarían IDs de avisos
-  // no públicos y saveListings borraría borradores y avisos pendientes.
-  const existing = await loadListingsRaw();
-  const id = getNextListingId(existing);
-
   const year = toNumber(input.year);
   const price = toNumber(input.price);
   const km = toNumber(input.km);
@@ -222,55 +250,74 @@ export async function createListing(
     throw new Error("Invalid mileage");
   }
 
-  const listing: Listing = {
-    id,
-    ownerId: options?.ownerId,
-    status: "draft",
-    brand: normalizeBrand(input.brand),
-    model: normalizeText(input.model),
-    year,
-    price,
-    km,
-    region: normalizeText(input.region),
-    city: normalizeText(input.city ?? ""),
-    transmission: normalizeText(input.transmission ?? "No especificado"),
-    fuel: normalizeText(input.fuel ?? "No especificado"),
-    description: normalizeText(input.description ?? ""),
-    images: input.images && input.images.length > 0 ? input.images : ["/car-placeholder.svg"],
-    contactName: normalizeText(input.contactName ?? "") || "Vendedor",
-    contactPhone: normalizeText(input.contactPhone ?? ""),
-    createdAt: new Date().toISOString(),
-    paymentId: undefined,
-    publishedAt: undefined,
-    expiresAt: undefined,
-    invoiceEmail: input.invoiceEmail ? normalizeText(input.invoiceEmail) : undefined,
-    invoiceRUT: input.invoiceRUT ? normalizeText(input.invoiceRUT) : undefined,
-  };
+  const images =
+    input.images && input.images.length > 0 ? input.images : ["/car-placeholder.svg"];
 
-  const next = [listing, ...existing];
-  await saveListings(next);
+  // Reintento por si dos creaciones concurrentes calculan el mismo id.
+  for (let attempt = 0; attempt < 3; attempt++) {
+    const id = await getNextListingId();
 
-  return listing;
+    const rows = await query<ListingRow>(
+      `INSERT INTO listings (
+        id, owner_id, status, brand, model, year, price, km, region, city,
+        transmission, fuel, description, images, contact_name, contact_phone,
+        created_at, invoice_email, invoice_rut
+      ) VALUES ($1,$2,'draft',$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,now(),$16,$17)
+      ON CONFLICT (id) DO NOTHING
+      RETURNING ${LISTING_COLUMNS}`,
+      [
+        id,
+        options?.ownerId ?? null,
+        normalizeBrand(input.brand),
+        normalizeText(input.model),
+        year,
+        price,
+        km,
+        normalizeText(input.region),
+        normalizeText(input.city ?? ""),
+        normalizeText(input.transmission ?? "No especificado"),
+        normalizeText(input.fuel ?? "No especificado"),
+        normalizeText(input.description ?? ""),
+        JSON.stringify(images),
+        normalizeText(input.contactName ?? "") || "Vendedor",
+        normalizeText(input.contactPhone ?? ""),
+        input.invoiceEmail ? normalizeText(input.invoiceEmail) : null,
+        input.invoiceRUT ? normalizeText(input.invoiceRUT) : null,
+      ],
+    );
+
+    if (rows.length > 0) {
+      return rowToListing(rows[0]);
+    }
+  }
+
+  throw new Error("Could not allocate listing id");
 }
 
 export async function getListingsByOwner(ownerId: string) {
-  const items = await loadListingsRaw();
-  return items.filter((l) => l.ownerId === ownerId);
+  const rows = await query<ListingRow>(
+    `SELECT ${LISTING_COLUMNS} FROM listings WHERE owner_id = $1 ORDER BY created_at DESC`,
+    [ownerId],
+  );
+  return rows.map(rowToListing);
 }
 
-export async function updateListing(id: string, ownerId: string, input: ListingUpdateInput) {
-  const existing = await loadListingsRaw();
-  const idx = existing.findIndex((l) => l.id === id);
+async function getOwnedListingOrThrow(id: string, ownerId: string) {
+  const current = await getListingById(id);
 
-  if (idx === -1) {
+  if (!current) {
     throw new Error("Not found");
   }
-
-  const current = existing[idx];
 
   if (!current.ownerId || current.ownerId !== ownerId) {
     throw new Error("Forbidden");
   }
+
+  return current;
+}
+
+export async function updateListing(id: string, ownerId: string, input: ListingUpdateInput) {
+  const current = await getOwnedListingOrThrow(id, ownerId);
 
   const nextBrand =
     input.brand !== undefined ? normalizeBrand(String(input.brand)) : current.brand;
@@ -304,51 +351,54 @@ export async function updateListing(id: string, ownerId: string, input: ListingU
     throw new Error("Invalid mileage");
   }
 
-  const nextListing: Listing = {
-    ...current,
-    brand: nextBrand,
-    model: nextModel,
-    year: nextYearRaw,
-    price: nextPriceRaw,
-    km: nextKmRaw,
-    region: nextRegion,
-    city: input.city !== undefined ? normalizeText(String(input.city)) : current.city,
-    transmission:
+  const nextImages =
+    input.images !== undefined && Array.isArray(input.images)
+      ? input.images.length > 0
+        ? input.images
+        : ["/car-placeholder.svg"]
+      : current.images;
+
+  const rows = await query<ListingRow>(
+    `UPDATE listings SET
+      brand = $2, model = $3, year = $4, price = $5, km = $6, region = $7,
+      city = $8, transmission = $9, fuel = $10, description = $11, images = $12,
+      contact_name = $13, contact_phone = $14, status = $15, payment_id = $16,
+      published_at = $17, expires_at = $18, invoice_email = $19, invoice_rut = $20
+    WHERE id = $1
+    RETURNING ${LISTING_COLUMNS}`,
+    [
+      id,
+      nextBrand,
+      nextModel,
+      nextYearRaw,
+      nextPriceRaw,
+      nextKmRaw,
+      nextRegion,
+      input.city !== undefined ? normalizeText(String(input.city)) : current.city,
       input.transmission !== undefined
         ? normalizeText(String(input.transmission))
         : current.transmission,
-    fuel: input.fuel !== undefined ? normalizeText(String(input.fuel)) : current.fuel,
-    description:
+      input.fuel !== undefined ? normalizeText(String(input.fuel)) : current.fuel,
       input.description !== undefined
         ? normalizeText(String(input.description))
         : current.description,
-    images:
-      input.images !== undefined && Array.isArray(input.images)
-        ? input.images.length > 0
-          ? input.images
-          : ["/car-placeholder.svg"]
-        : current.images,
-    contactName:
+      JSON.stringify(nextImages),
       input.contactName !== undefined
         ? normalizeText(String(input.contactName)) || "Vendedor"
         : current.contactName,
-    contactPhone:
       input.contactPhone !== undefined
         ? normalizeText(String(input.contactPhone))
         : current.contactPhone,
-    status: input.status ?? current.status ?? "published",
-    paymentId: input.paymentId ?? current.paymentId,
-    publishedAt: input.publishedAt ?? current.publishedAt,
-    expiresAt: input.expiresAt ?? current.expiresAt,
-    invoiceEmail: input.invoiceEmail ?? current.invoiceEmail,
-    invoiceRUT: input.invoiceRUT ?? current.invoiceRUT,
-  };
+      input.status ?? current.status ?? "published",
+      input.paymentId ?? current.paymentId ?? null,
+      input.publishedAt ?? current.publishedAt ?? null,
+      input.expiresAt ?? current.expiresAt ?? null,
+      input.invoiceEmail ?? current.invoiceEmail ?? null,
+      input.invoiceRUT ?? current.invoiceRUT ?? null,
+    ],
+  );
 
-  const next = [...existing];
-  next[idx] = nextListing;
-  await saveListings(next);
-
-  return nextListing;
+  return rowToListing(rows[0]);
 }
 
 export async function markListingPendingPayment(
@@ -356,31 +406,22 @@ export async function markListingPendingPayment(
   ownerId: string,
   input: Pick<ListingUpdateInput, "invoiceEmail" | "invoiceRUT"> & { paymentId: string },
 ) {
-  const existing = await loadListingsRaw();
-  const idx = existing.findIndex((l) => l.id === id);
+  const current = await getOwnedListingOrThrow(id, ownerId);
 
-  if (idx === -1) {
-    throw new Error("Not found");
-  }
+  const rows = await query<ListingRow>(
+    `UPDATE listings SET
+      status = 'pending_payment', payment_id = $2, invoice_email = $3, invoice_rut = $4
+    WHERE id = $1
+    RETURNING ${LISTING_COLUMNS}`,
+    [
+      id,
+      input.paymentId,
+      input.invoiceEmail ?? current.invoiceEmail ?? null,
+      input.invoiceRUT ?? current.invoiceRUT ?? null,
+    ],
+  );
 
-  const current = existing[idx];
-
-  if (!current.ownerId || current.ownerId !== ownerId) {
-    throw new Error("Forbidden");
-  }
-
-  const next: Listing = {
-    ...current,
-    status: "pending_payment",
-    paymentId: input.paymentId,
-    invoiceEmail: input.invoiceEmail ?? current.invoiceEmail,
-    invoiceRUT: input.invoiceRUT ?? current.invoiceRUT,
-  };
-
-  const all = [...existing];
-  all[idx] = next;
-  await saveListings(all);
-  return next;
+  return rowToListing(rows[0]);
 }
 
 export async function publishListing(
@@ -388,48 +429,28 @@ export async function publishListing(
   ownerId: string,
   input?: { paymentId?: string },
 ) {
-  const existing = await loadListingsRaw();
-  const idx = existing.findIndex((l) => l.id === id);
-
-  if (idx === -1) {
-    throw new Error("Not found");
-  }
-
-  const current = existing[idx];
-
-  if (!current.ownerId || current.ownerId !== ownerId) {
-    throw new Error("Forbidden");
-  }
+  const current = await getOwnedListingOrThrow(id, ownerId);
 
   const now = new Date();
-  const next: Listing = {
-    ...current,
-    status: "published",
-    paymentId: input?.paymentId ?? current.paymentId,
-    publishedAt: now.toISOString(),
-    expiresAt: addDays(now, PUBLISH_DURATION_DAYS).toISOString(),
-  };
+  const rows = await query<ListingRow>(
+    `UPDATE listings SET
+      status = 'published', payment_id = $2, published_at = $3, expires_at = $4
+    WHERE id = $1
+    RETURNING ${LISTING_COLUMNS}`,
+    [
+      id,
+      input?.paymentId ?? current.paymentId ?? null,
+      now.toISOString(),
+      addDays(now, PUBLISH_DURATION_DAYS).toISOString(),
+    ],
+  );
 
-  const all = [...existing];
-  all[idx] = next;
-  await saveListings(all);
-  return next;
+  return rowToListing(rows[0]);
 }
 
 export async function deleteListing(id: string, ownerId: string) {
-  const existing = await loadListingsRaw();
-  const listing = existing.find((l) => l.id === id);
-
-  if (!listing) {
-    throw new Error("Not found");
-  }
-
-  if (!listing.ownerId || listing.ownerId !== ownerId) {
-    throw new Error("Forbidden");
-  }
-
-  const next = existing.filter((l) => l.id !== id);
-  await saveListings(next);
+  await getOwnedListingOrThrow(id, ownerId);
+  await query(`DELETE FROM listings WHERE id = $1`, [id]);
 }
 
 type ListingSearchResult = {
@@ -451,17 +472,28 @@ export async function searchListings(
     Number.isFinite(rawPageSize) && rawPageSize > 0 ? Math.floor(rawPageSize) : 24;
   const pageSize = Math.min(100, pageSizeUnclamped);
 
-  const items = await loadListingsRaw();
-  const publicItems = items.filter((l) => isListingPublic(l));
-  const all = applyListingSearch(publicItems, search);
+  const { where, params } = buildSearchWhere(search);
 
-  const total = all.length;
+  const countRows = await query<{ total: number }>(
+    `SELECT count(*)::int AS total FROM listings WHERE ${where}`,
+    params,
+  );
+  const total = countRows[0]?.total ?? 0;
+
   const totalPages = Math.max(1, Math.ceil(total / pageSize));
   const safePage = Math.min(page, totalPages);
-  const start = (safePage - 1) * pageSize;
+  const offset = (safePage - 1) * pageSize;
+
+  const rows = await query<ListingRow>(
+    `SELECT ${LISTING_COLUMNS} FROM listings
+     WHERE ${where}
+     ORDER BY ${sortToOrderBy(search.sort)}
+     LIMIT $${params.length + 1} OFFSET $${params.length + 2}`,
+    [...params, pageSize, offset],
+  );
 
   return {
-    items: all.slice(start, start + pageSize),
+    items: rows.map(rowToListing),
     total,
     page: safePage,
     pageSize,

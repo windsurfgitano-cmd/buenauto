@@ -1,10 +1,9 @@
 import "server-only";
 
-import { promises as fs } from "fs";
-import path from "path";
 import crypto from "crypto";
 
 import type { PlanId, BoostType } from "@/lib/plans";
+import { query, toIso, toIsoOrUndefined } from "@/lib/server/db";
 
 export type Subscription = {
   id: string;
@@ -53,72 +52,123 @@ export type UserCredits = {
   updatedAt: string;
 };
 
-function getSubscriptionsFilePath() {
-  return path.join(process.cwd(), "data", "subscriptions.json");
+type SubscriptionRow = {
+  id: string;
+  user_id: string;
+  plan_id: string;
+  status: string;
+  mp_subscription_id: string | null;
+  current_period_start: unknown;
+  current_period_end: unknown;
+  created_at: unknown;
+  cancelled_at: unknown;
+};
+
+type PaymentRow = {
+  id: string;
+  user_id: string;
+  type: string;
+  amount: number;
+  currency: string;
+  status: string;
+  mp_payment_id: string | null;
+  mp_preference_id: string | null;
+  metadata: unknown;
+  created_at: unknown;
+  paid_at: unknown;
+};
+
+type BoostRow = {
+  id: string;
+  listing_id: string;
+  user_id: string;
+  boost_type: string;
+  starts_at: unknown;
+  ends_at: unknown;
+  created_at: unknown;
+};
+
+type CreditsRow = {
+  user_id: string;
+  boost_credits: number;
+  updated_at: unknown;
+};
+
+function rowToSubscription(row: SubscriptionRow): Subscription {
+  return {
+    id: row.id,
+    userId: row.user_id,
+    planId: row.plan_id as PlanId,
+    status: row.status as Subscription["status"],
+    mpSubscriptionId: row.mp_subscription_id ?? undefined,
+    currentPeriodStart: toIso(row.current_period_start),
+    currentPeriodEnd: toIso(row.current_period_end),
+    createdAt: toIso(row.created_at),
+    cancelledAt: toIsoOrUndefined(row.cancelled_at),
+  };
 }
 
-function getPaymentsFilePath() {
-  return path.join(process.cwd(), "data", "payments.json");
+function rowToPayment(row: PaymentRow): Payment {
+  return {
+    id: row.id,
+    userId: row.user_id,
+    type: row.type as Payment["type"],
+    amount: Number(row.amount),
+    currency: "CLP",
+    status: row.status as Payment["status"],
+    mpPaymentId: row.mp_payment_id ?? undefined,
+    mpPreferenceId: row.mp_preference_id ?? undefined,
+    metadata:
+      row.metadata && typeof row.metadata === "object"
+        ? (row.metadata as Payment["metadata"])
+        : {},
+    createdAt: toIso(row.created_at),
+    paidAt: toIsoOrUndefined(row.paid_at),
+  };
 }
 
-function getBoostsFilePath() {
-  return path.join(process.cwd(), "data", "boosts.json");
+function rowToBoost(row: BoostRow): ListingBoost {
+  return {
+    id: row.id,
+    listingId: row.listing_id,
+    userId: row.user_id,
+    boostType: row.boost_type as BoostType,
+    startsAt: toIso(row.starts_at),
+    endsAt: toIso(row.ends_at),
+    createdAt: toIso(row.created_at),
+  };
 }
 
-function getCreditsFilePath() {
-  return path.join(process.cwd(), "data", "credits.json");
-}
-
-async function readJsonArray<T>(filePath: string): Promise<T[]> {
-  try {
-    const raw = await fs.readFile(filePath, "utf8");
-    const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? (parsed as T[]) : [];
-  } catch {
-    return [];
-  }
-}
-
-async function writeJsonArray(filePath: string, value: unknown[]) {
-  const dir = path.dirname(filePath);
-  await fs.mkdir(dir, { recursive: true });
-  await fs.writeFile(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+function rowToCredits(row: CreditsRow): UserCredits {
+  return {
+    userId: row.user_id,
+    boostCredits: Number(row.boost_credits),
+    updatedAt: toIso(row.updated_at),
+  };
 }
 
 function newId(prefix: string) {
   return `${prefix}_${crypto.randomBytes(12).toString("hex")}`;
 }
 
-function nowIso() {
-  return new Date().toISOString();
-}
-
-function addDays(date: Date, days: number) {
-  return new Date(date.getTime() + days * 24 * 60 * 60 * 1000);
-}
-
 // Subscriptions
 
 export async function loadSubscriptions(): Promise<Subscription[]> {
-  return readJsonArray<Subscription>(getSubscriptionsFilePath());
-}
-
-async function saveSubscriptions(subs: Subscription[]) {
-  await writeJsonArray(getSubscriptionsFilePath(), subs);
+  const rows = await query<SubscriptionRow>(
+    `SELECT * FROM subscriptions ORDER BY created_at DESC`,
+  );
+  return rows.map(rowToSubscription);
 }
 
 export async function getActiveSubscription(userId: string): Promise<Subscription | null> {
-  const subs = await loadSubscriptions();
-  const now = Date.now();
-
-  return (
-    subs.find(
-      (s) =>
-        s.userId === userId &&
-        s.status === "active" &&
-        new Date(s.currentPeriodEnd).getTime() > now
-    ) ?? null
+  const rows = await query<SubscriptionRow>(
+    `SELECT * FROM subscriptions
+     WHERE user_id = $1 AND status = 'active' AND current_period_end > now()
+     ORDER BY created_at DESC
+     LIMIT 1`,
+    [userId],
   );
+  return rows.length > 0 ? rowToSubscription(rows[0]) : null;
 }
 
 export async function getUserPlanId(userId: string): Promise<PlanId> {
@@ -131,54 +181,47 @@ export async function createSubscription(input: {
   planId: PlanId;
   mpSubscriptionId?: string;
 }): Promise<Subscription> {
-  const subs = await loadSubscriptions();
+  await query(
+    `UPDATE subscriptions SET status = 'cancelled', cancelled_at = now()
+     WHERE user_id = $1 AND status = 'active'`,
+    [input.userId],
+  );
 
-  // Cancel any existing active subscription
-  const updated = subs.map((s) => {
-    if (s.userId === input.userId && s.status === "active") {
-      return { ...s, status: "cancelled" as const, cancelledAt: nowIso() };
-    }
-    return s;
-  });
+  const rows = await query<SubscriptionRow>(
+    `INSERT INTO subscriptions (
+      id, user_id, plan_id, status, mp_subscription_id,
+      current_period_start, current_period_end, created_at
+    ) VALUES ($1, $2, $3, 'active', $4, now(), now() + interval '30 days', now())
+    RETURNING *`,
+    [newId("sub"), input.userId, input.planId, input.mpSubscriptionId ?? null],
+  );
 
-  const now = new Date();
-  const sub: Subscription = {
-    id: newId("sub"),
-    userId: input.userId,
-    planId: input.planId,
-    status: "active",
-    mpSubscriptionId: input.mpSubscriptionId,
-    currentPeriodStart: nowIso(),
-    currentPeriodEnd: addDays(now, 30).toISOString(),
-    createdAt: nowIso(),
-  };
-
-  await saveSubscriptions([sub, ...updated]);
-  return sub;
+  return rowToSubscription(rows[0]);
 }
 
 export async function cancelSubscription(userId: string): Promise<Subscription | null> {
-  const subs = await loadSubscriptions();
-  const idx = subs.findIndex((s) => s.userId === userId && s.status === "active");
+  const rows = await query<SubscriptionRow>(
+    `UPDATE subscriptions SET status = 'cancelled', cancelled_at = now()
+     WHERE id = (
+       SELECT id FROM subscriptions
+       WHERE user_id = $1 AND status = 'active'
+       ORDER BY created_at DESC
+       LIMIT 1
+     )
+     RETURNING *`,
+    [userId],
+  );
 
-  if (idx === -1) return null;
-
-  const updated = { ...subs[idx], status: "cancelled" as const, cancelledAt: nowIso() };
-  const next = [...subs];
-  next[idx] = updated;
-
-  await saveSubscriptions(next);
-  return updated;
+  return rows.length > 0 ? rowToSubscription(rows[0]) : null;
 }
 
 // Payments
 
 export async function loadPayments(): Promise<Payment[]> {
-  return readJsonArray<Payment>(getPaymentsFilePath());
-}
-
-async function savePayments(payments: Payment[]) {
-  await writeJsonArray(getPaymentsFilePath(), payments);
+  const rows = await query<PaymentRow>(
+    `SELECT * FROM payments ORDER BY created_at DESC`,
+  );
+  return rows.map(rowToPayment);
 }
 
 export async function createPayment(input: {
@@ -188,68 +231,59 @@ export async function createPayment(input: {
   mpPreferenceId?: string;
   metadata: Payment["metadata"];
 }): Promise<Payment> {
-  const payments = await loadPayments();
+  const rows = await query<PaymentRow>(
+    `INSERT INTO payments (
+      id, user_id, type, amount, currency, status,
+      mp_preference_id, metadata, created_at
+    ) VALUES ($1, $2, $3, $4, 'CLP', 'pending', $5, $6, now())
+    RETURNING *`,
+    [
+      newId("pay"),
+      input.userId,
+      input.type,
+      input.amount,
+      input.mpPreferenceId ?? null,
+      JSON.stringify(input.metadata ?? {}),
+    ],
+  );
 
-  const payment: Payment = {
-    id: newId("pay"),
-    userId: input.userId,
-    type: input.type,
-    amount: input.amount,
-    currency: "CLP",
-    status: "pending",
-    mpPreferenceId: input.mpPreferenceId,
-    metadata: input.metadata,
-    createdAt: nowIso(),
-  };
-
-  await savePayments([payment, ...payments]);
-  return payment;
+  return rowToPayment(rows[0]);
 }
 
 export async function approvePayment(paymentId: string, mpPaymentId?: string): Promise<Payment | null> {
-  const payments = await loadPayments();
-  const idx = payments.findIndex((p) => p.id === paymentId);
+  const rows = await query<PaymentRow>(
+    `UPDATE payments SET status = 'approved', mp_payment_id = $2, paid_at = now()
+     WHERE id = $1
+     RETURNING *`,
+    [paymentId, mpPaymentId ?? null],
+  );
 
-  if (idx === -1) return null;
-
-  const updated: Payment = {
-    ...payments[idx],
-    status: "approved",
-    mpPaymentId,
-    paidAt: nowIso(),
-  };
-
-  const next = [...payments];
-  next[idx] = updated;
-
-  await savePayments(next);
-  return updated;
+  return rows.length > 0 ? rowToPayment(rows[0]) : null;
 }
 
 export async function getPaymentByPreferenceId(preferenceId: string): Promise<Payment | null> {
-  const payments = await loadPayments();
-  return payments.find((p) => p.mpPreferenceId === preferenceId) ?? null;
+  const rows = await query<PaymentRow>(
+    `SELECT * FROM payments WHERE mp_preference_id = $1 LIMIT 1`,
+    [preferenceId],
+  );
+  return rows.length > 0 ? rowToPayment(rows[0]) : null;
 }
 
 // Boosts
 
 export async function loadBoosts(): Promise<ListingBoost[]> {
-  return readJsonArray<ListingBoost>(getBoostsFilePath());
-}
-
-async function saveBoosts(boosts: ListingBoost[]) {
-  await writeJsonArray(getBoostsFilePath(), boosts);
+  const rows = await query<BoostRow>(
+    `SELECT * FROM boosts ORDER BY created_at DESC`,
+  );
+  return rows.map(rowToBoost);
 }
 
 export async function getActiveBoost(listingId: string): Promise<ListingBoost | null> {
-  const boosts = await loadBoosts();
-  const now = Date.now();
-
-  return (
-    boosts.find(
-      (b) => b.listingId === listingId && new Date(b.endsAt).getTime() > now
-    ) ?? null
+  const rows = await query<BoostRow>(
+    `SELECT * FROM boosts WHERE listing_id = $1 AND ends_at > now() LIMIT 1`,
+    [listingId],
   );
+  return rows.length > 0 ? rowToBoost(rows[0]) : null;
 }
 
 export async function createBoost(input: {
@@ -258,93 +292,56 @@ export async function createBoost(input: {
   boostType: BoostType;
   durationDays: number;
 }): Promise<ListingBoost> {
-  const boosts = await loadBoosts();
-  const now = new Date();
+  const rows = await query<BoostRow>(
+    `INSERT INTO boosts (id, listing_id, user_id, boost_type, starts_at, ends_at, created_at)
+     VALUES ($1, $2, $3, $4, now(), now() + make_interval(days => $5), now())
+     RETURNING *`,
+    [newId("boost"), input.listingId, input.userId, input.boostType, input.durationDays],
+  );
 
-  const boost: ListingBoost = {
-    id: newId("boost"),
-    listingId: input.listingId,
-    userId: input.userId,
-    boostType: input.boostType,
-    startsAt: nowIso(),
-    endsAt: addDays(now, input.durationDays).toISOString(),
-    createdAt: nowIso(),
-  };
-
-  await saveBoosts([boost, ...boosts]);
-  return boost;
+  return rowToBoost(rows[0]);
 }
 
 export async function getBoostedListingIds(): Promise<string[]> {
-  const boosts = await loadBoosts();
-  const now = Date.now();
-
-  return boosts
-    .filter((b) => new Date(b.endsAt).getTime() > now)
-    .map((b) => b.listingId);
+  const rows = await query<{ listing_id: string }>(
+    `SELECT DISTINCT listing_id FROM boosts WHERE ends_at > now()`,
+  );
+  return rows.map((r) => r.listing_id);
 }
 
 // Credits
 
 export async function loadCredits(): Promise<UserCredits[]> {
-  return readJsonArray<UserCredits>(getCreditsFilePath());
-}
-
-async function saveCredits(credits: UserCredits[]) {
-  await writeJsonArray(getCreditsFilePath(), credits);
+  const rows = await query<CreditsRow>(`SELECT * FROM credits`);
+  return rows.map(rowToCredits);
 }
 
 export async function getUserCredits(userId: string): Promise<number> {
-  const credits = await loadCredits();
-  const record = credits.find((c) => c.userId === userId);
-  return record?.boostCredits ?? 0;
+  const rows = await query<{ boost_credits: number }>(
+    `SELECT boost_credits FROM credits WHERE user_id = $1`,
+    [userId],
+  );
+  return rows.length > 0 ? Number(rows[0].boost_credits) : 0;
 }
 
 export async function addUserCredits(userId: string, amount: number): Promise<number> {
-  const credits = await loadCredits();
-  const idx = credits.findIndex((c) => c.userId === userId);
-
-  if (idx === -1) {
-    const record: UserCredits = {
-      userId,
-      boostCredits: amount,
-      updatedAt: nowIso(),
-    };
-    await saveCredits([record, ...credits]);
-    return amount;
-  }
-
-  const current = credits[idx].boostCredits ?? 0;
-  const updated: UserCredits = {
-    ...credits[idx],
-    boostCredits: current + amount,
-    updatedAt: nowIso(),
-  };
-
-  const next = [...credits];
-  next[idx] = updated;
-  await saveCredits(next);
-
-  return updated.boostCredits;
+  const rows = await query<{ boost_credits: number }>(
+    `INSERT INTO credits (user_id, boost_credits, updated_at)
+     VALUES ($1, $2, now())
+     ON CONFLICT (user_id) DO UPDATE
+       SET boost_credits = credits.boost_credits + $2, updated_at = now()
+     RETURNING boost_credits`,
+    [userId, amount],
+  );
+  return Number(rows[0].boost_credits);
 }
 
 export async function consumeUserCredit(userId: string): Promise<boolean> {
-  const credits = await loadCredits();
-  const idx = credits.findIndex((c) => c.userId === userId);
-
-  if (idx === -1 || credits[idx].boostCredits < 1) {
-    return false;
-  }
-
-  const updated: UserCredits = {
-    ...credits[idx],
-    boostCredits: credits[idx].boostCredits - 1,
-    updatedAt: nowIso(),
-  };
-
-  const next = [...credits];
-  next[idx] = updated;
-  await saveCredits(next);
-
-  return true;
+  const rows = await query<{ boost_credits: number }>(
+    `UPDATE credits SET boost_credits = boost_credits - 1, updated_at = now()
+     WHERE user_id = $1 AND boost_credits >= 1
+     RETURNING boost_credits`,
+    [userId],
+  );
+  return rows.length > 0;
 }
