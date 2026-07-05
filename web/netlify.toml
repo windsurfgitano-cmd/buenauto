@@ -4,3 +4,8 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+# Sin el runtime explícito, netlify deploy --build sube .next como
+# estáticos y todo da 404.
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
