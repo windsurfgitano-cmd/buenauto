@@ -21,15 +21,22 @@ const CHILE_REGIONS = [
 ];
 
 const CITIES_BY_REGION = {
-  "Región Metropolitana": ["Santiago", "Maipú", "Las Condes", "Puente Alto"],
-  Valparaíso: ["Viña del Mar", "Valparaíso", "Quilpué"],
-  Biobío: ["Concepción", "Talcahuano", "Los Ángeles"],
-  Coquimbo: ["La Serena", "Coquimbo"],
-  "La Araucanía": ["Temuco", "Villarrica"],
-  "Los Lagos": ["Puerto Montt", "Osorno"],
-  Atacama: ["Copiapó"],
+  "Arica y Parinacota": ["Arica"],
+  Tarapacá: ["Iquique", "Alto Hospicio"],
   Antofagasta: ["Antofagasta", "Calama"],
+  Atacama: ["Copiapó"],
+  Coquimbo: ["La Serena", "Coquimbo"],
+  Valparaíso: ["Viña del Mar", "Valparaíso", "Quilpué"],
+  "Región Metropolitana": ["Santiago", "Maipú", "Las Condes", "Puente Alto"],
+  "O'Higgins": ["Rancagua", "San Fernando"],
   Maule: ["Talca", "Curicó"],
+  Ñuble: ["Chillán"],
+  Biobío: ["Concepción", "Talcahuano", "Los Ángeles"],
+  "La Araucanía": ["Temuco", "Villarrica"],
+  "Los Ríos": ["Valdivia"],
+  "Los Lagos": ["Puerto Montt", "Osorno"],
+  Aysén: ["Coyhaique"],
+  Magallanes: ["Punta Arenas"],
 };
 
 function argValue(name, fallback) {

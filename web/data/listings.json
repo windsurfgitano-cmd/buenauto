@@ -1,5 +1,2285 @@
 [
   {
+    "id": "ls_0031",
+    "brand": "BYD",
+    "model": "Song",
+    "year": 2022,
+    "price": 18495244,
+    "km": 40653,
+    "region": "La Araucanía",
+    "city": "Villarrica",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "BYD Song 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3621 6596",
+    "createdAt": "2026-05-24T21:23:08.166Z"
+  },
+  {
+    "id": "ls_0032",
+    "brand": "HYUNDAI",
+    "model": "Accent",
+    "year": 2013,
+    "price": 12443277,
+    "km": 156506,
+    "region": "Ñuble",
+    "city": "Chillán",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "HYUNDAI Accent 2013. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1709 2506",
+    "createdAt": "2026-06-07T21:23:08.167Z"
+  },
+  {
+    "id": "ls_0033",
+    "brand": "FORD",
+    "model": "Escape",
+    "year": 2004,
+    "price": 9399158,
+    "km": 184938,
+    "region": "Arica y Parinacota",
+    "city": "Arica",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "FORD Escape 2004. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3938 5771",
+    "createdAt": "2026-06-30T21:23:08.167Z"
+  },
+  {
+    "id": "ls_0034",
+    "brand": "HYUNDAI",
+    "model": "IONIQ 5",
+    "year": 2024,
+    "price": 20724570,
+    "km": 25754,
+    "region": "Aysén",
+    "city": "Coyhaique",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "HYUNDAI IONIQ 5 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3895 3177",
+    "createdAt": "2026-06-19T21:23:08.167Z"
+  },
+  {
+    "id": "ls_0035",
+    "brand": "HYUNDAI",
+    "model": "Creata Grand",
+    "year": 2024,
+    "price": 21783119,
+    "km": 29472,
+    "region": "Región Metropolitana",
+    "city": "Puente Alto",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "HYUNDAI Creata Grand 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9698 3089",
+    "createdAt": "2026-05-29T21:23:08.167Z"
+  },
+  {
+    "id": "ls_0036",
+    "brand": "MAZDA",
+    "model": "CX-5",
+    "year": 2024,
+    "price": 20853327,
+    "km": 26250,
+    "region": "Los Lagos",
+    "city": "Osorno",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "MAZDA CX-5 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2762 7714",
+    "createdAt": "2026-05-30T21:23:08.167Z"
+  },
+  {
+    "id": "ls_0037",
+    "brand": "LIFAN",
+    "model": "Lifan 320",
+    "year": 2017,
+    "price": 17098201,
+    "km": 70280,
+    "region": "Región Metropolitana",
+    "city": "Santiago",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "LIFAN Lifan 320 2017. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9848 5253",
+    "createdAt": "2026-07-05T21:23:08.167Z"
+  },
+  {
+    "id": "ls_0038",
+    "brand": "GREAT WALL (GWM/HAVAL)",
+    "model": "Haval Dargo",
+    "year": 2022,
+    "price": 18941011,
+    "km": 45976,
+    "region": "Biobío",
+    "city": "Concepción",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "GREAT WALL (GWM/HAVAL) Haval Dargo 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4301 6510",
+    "createdAt": "2026-05-23T21:23:08.167Z"
+  },
+  {
+    "id": "ls_0039",
+    "brand": "CITROËN",
+    "model": "C3",
+    "year": 2020,
+    "price": 17354221,
+    "km": 83191,
+    "region": "Valparaíso",
+    "city": "Valparaíso",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "CITROËN C3 2020. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 5665 2127",
+    "createdAt": "2026-05-27T21:23:08.167Z"
+  },
+  {
+    "id": "ls_0040",
+    "brand": "SUZUKI",
+    "model": "Ertiga",
+    "year": 2019,
+    "price": 16107398,
+    "km": 59947,
+    "region": "Biobío",
+    "city": "Los Ángeles",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "SUZUKI Ertiga 2019. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1909 4837",
+    "createdAt": "2026-07-03T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0041",
+    "brand": "SUZUKI",
+    "model": "Cultus",
+    "year": 2003,
+    "price": 6160819,
+    "km": 293617,
+    "region": "Región Metropolitana",
+    "city": "Maipú",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "SUZUKI Cultus 2003. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7050 1866",
+    "createdAt": "2026-06-25T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0042",
+    "brand": "FORD",
+    "model": "EcoSport",
+    "year": 2020,
+    "price": 17713261,
+    "km": 66192,
+    "region": "Arica y Parinacota",
+    "city": "Arica",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "FORD EcoSport 2020. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9218 5042",
+    "createdAt": "2026-06-10T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0043",
+    "brand": "LAMBORGHINI",
+    "model": "Aventador",
+    "year": 2015,
+    "price": 12674582,
+    "km": 108765,
+    "region": "Valparaíso",
+    "city": "Quilpué",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "LAMBORGHINI Aventador 2015. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 6268 6054",
+    "createdAt": "2026-06-16T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0044",
+    "brand": "TOYOTA",
+    "model": "Hilux",
+    "year": 2019,
+    "price": 18168222,
+    "km": 56175,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "TOYOTA Hilux 2019. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9540 4153",
+    "createdAt": "2026-05-30T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0045",
+    "brand": "HYUNDAI",
+    "model": "Getz",
+    "year": 2007,
+    "price": 6367379,
+    "km": 198337,
+    "region": "Tarapacá",
+    "city": "Iquique",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "HYUNDAI Getz 2007. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4354 8571",
+    "createdAt": "2026-05-26T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0046",
+    "brand": "SUBARU",
+    "model": "Loyale",
+    "year": 2000,
+    "price": 900000,
+    "km": 341321,
+    "region": "Maule",
+    "city": "Talca",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "SUBARU Loyale 2000. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3446 4898",
+    "createdAt": "2026-06-09T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0047",
+    "brand": "BMW",
+    "model": "X5",
+    "year": 2014,
+    "price": 12870518,
+    "km": 151904,
+    "region": "Antofagasta",
+    "city": "Antofagasta",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "BMW X5 2014. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4839 4698",
+    "createdAt": "2026-05-13T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0048",
+    "brand": "ISUZU",
+    "model": "D-Max",
+    "year": 2006,
+    "price": 2916444,
+    "km": 258659,
+    "region": "Valparaíso",
+    "city": "Viña del Mar",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "ISUZU D-Max 2006. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2265 9967",
+    "createdAt": "2026-07-01T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0049",
+    "brand": "NISSAN",
+    "model": "Sentra",
+    "year": 2006,
+    "price": 4576048,
+    "km": 215693,
+    "region": "Coquimbo",
+    "city": "La Serena",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "NISSAN Sentra 2006. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2276 5598",
+    "createdAt": "2026-05-19T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0050",
+    "brand": "HYUNDAI",
+    "model": "i20",
+    "year": 2024,
+    "price": 21666855,
+    "km": 32198,
+    "region": "La Araucanía",
+    "city": "Temuco",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "HYUNDAI i20 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1127 1228",
+    "createdAt": "2026-06-04T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0051",
+    "brand": "DONGFENG",
+    "model": "Aeolus Y5",
+    "year": 2024,
+    "price": 21781994,
+    "km": 25087,
+    "region": "Aysén",
+    "city": "Coyhaique",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "DONGFENG Aeolus Y5 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7876 9185",
+    "createdAt": "2026-06-30T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0052",
+    "brand": "CHEVROLET",
+    "model": "Groove",
+    "year": 2022,
+    "price": 20027995,
+    "km": 50549,
+    "region": "Región Metropolitana",
+    "city": "Puente Alto",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "CHEVROLET Groove 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9228 9097",
+    "createdAt": "2026-05-28T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0053",
+    "brand": "KIA",
+    "model": "K3",
+    "year": 2019,
+    "price": 17355910,
+    "km": 86851,
+    "region": "Coquimbo",
+    "city": "Coquimbo",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "KIA K3 2019. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9284 5949",
+    "createdAt": "2026-05-20T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0054",
+    "brand": "CHERY",
+    "model": "Tiggo 2",
+    "year": 2017,
+    "price": 12624830,
+    "km": 113497,
+    "region": "Valparaíso",
+    "city": "Quilpué",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "CHERY Tiggo 2 2017. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1405 5002",
+    "createdAt": "2026-07-04T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0055",
+    "brand": "DFSK",
+    "model": "Seres",
+    "year": 2025,
+    "price": 22871741,
+    "km": 733,
+    "region": "Aysén",
+    "city": "Coyhaique",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "DFSK Seres 2025. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2516 9752",
+    "createdAt": "2026-06-29T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0056",
+    "brand": "MITSUBISHI",
+    "model": "ASX",
+    "year": 2016,
+    "price": 17019070,
+    "km": 129385,
+    "region": "Los Ríos",
+    "city": "Valdivia",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "MITSUBISHI ASX 2016. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 8653 6368",
+    "createdAt": "2026-05-07T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0057",
+    "brand": "OPEL",
+    "model": "Crossland",
+    "year": 2023,
+    "price": 19801999,
+    "km": 24987,
+    "region": "Ñuble",
+    "city": "Chillán",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "OPEL Crossland 2023. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2631 3298",
+    "createdAt": "2026-07-01T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0058",
+    "brand": "GREAT WALL (GWM/HAVAL)",
+    "model": "Haval H2",
+    "year": 2024,
+    "price": 22399177,
+    "km": 26069,
+    "region": "Coquimbo",
+    "city": "La Serena",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "GREAT WALL (GWM/HAVAL) Haval H2 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2352 8479",
+    "createdAt": "2026-06-29T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0059",
+    "brand": "FOTON",
+    "model": "Isuzu",
+    "year": 2012,
+    "price": 8182006,
+    "km": 179005,
+    "region": "Antofagasta",
+    "city": "Calama",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "FOTON Isuzu 2012. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1064 1103",
+    "createdAt": "2026-07-02T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0060",
+    "brand": "MITSUBISHI",
+    "model": "Outlander",
+    "year": 2023,
+    "price": 21090342,
+    "km": 36213,
+    "region": "Aysén",
+    "city": "Coyhaique",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "MITSUBISHI Outlander 2023. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9567 2929",
+    "createdAt": "2026-06-28T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0061",
+    "brand": "CITROËN",
+    "model": "Xsara",
+    "year": 2004,
+    "price": 1354712,
+    "km": 187877,
+    "region": "La Araucanía",
+    "city": "Temuco",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "CITROËN Xsara 2004. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4770 6970",
+    "createdAt": "2026-06-23T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0062",
+    "brand": "AUDI",
+    "model": "Q5",
+    "year": 2010,
+    "price": 8789056,
+    "km": 203216,
+    "region": "O'Higgins",
+    "city": "San Fernando",
+    "transmission": "Manual",
+    "fuel": "Bencina",
+    "description": "AUDI Q5 2010. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 8597 7602",
+    "createdAt": "2026-06-07T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0063",
+    "brand": "ISUZU",
+    "model": "NPR",
+    "year": 2025,
+    "price": 21560180,
+    "km": 12180,
+    "region": "Los Lagos",
+    "city": "Osorno",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "ISUZU NPR 2025. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 5922 5946",
+    "createdAt": "2026-05-06T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0064",
+    "brand": "AUDI",
+    "model": "Q3",
+    "year": 2021,
+    "price": 18796975,
+    "km": 59424,
+    "region": "Coquimbo",
+    "city": "La Serena",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "AUDI Q3 2021. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3602 5168",
+    "createdAt": "2026-06-07T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0065",
+    "brand": "PEUGEOT",
+    "model": "206",
+    "year": 2003,
+    "price": 900000,
+    "km": 250152,
+    "region": "Maule",
+    "city": "Talca",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "PEUGEOT 206 2003. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3348 2845",
+    "createdAt": "2026-05-18T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0066",
+    "brand": "GREAT WALL (GWM/HAVAL)",
+    "model": "Ora",
+    "year": 2025,
+    "price": 20877261,
+    "km": 19696,
+    "region": "Biobío",
+    "city": "Talcahuano",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "GREAT WALL (GWM/HAVAL) Ora 2025. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9581 6109",
+    "createdAt": "2026-06-22T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0067",
+    "brand": "JAC",
+    "model": "T8",
+    "year": 2021,
+    "price": 18751063,
+    "km": 64980,
+    "region": "O'Higgins",
+    "city": "Rancagua",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "JAC T8 2021. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1729 1310",
+    "createdAt": "2026-05-11T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0068",
+    "brand": "BYD",
+    "model": "Yuan Plus",
+    "year": 2024,
+    "price": 20503250,
+    "km": 21430,
+    "region": "O'Higgins",
+    "city": "San Fernando",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "BYD Yuan Plus 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2295 9045",
+    "createdAt": "2026-07-04T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0069",
+    "brand": "PEUGEOT",
+    "model": "Traveller",
+    "year": 2023,
+    "price": 19266897,
+    "km": 43752,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "PEUGEOT Traveller 2023. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1941 5218",
+    "createdAt": "2026-06-29T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0070",
+    "brand": "TOYOTA",
+    "model": "Prius",
+    "year": 2013,
+    "price": 13299889,
+    "km": 132227,
+    "region": "Ñuble",
+    "city": "Chillán",
+    "transmission": "Manual",
+    "fuel": "Bencina",
+    "description": "TOYOTA Prius 2013. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4490 6571",
+    "createdAt": "2026-06-08T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0071",
+    "brand": "FORD",
+    "model": "Mondeo",
+    "year": 2005,
+    "price": 8509143,
+    "km": 243707,
+    "region": "O'Higgins",
+    "city": "San Fernando",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "FORD Mondeo 2005. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 5438 9745",
+    "createdAt": "2026-07-02T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0072",
+    "brand": "OPEL",
+    "model": "Grandland",
+    "year": 2022,
+    "price": 19179712,
+    "km": 25715,
+    "region": "Maule",
+    "city": "Curicó",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "OPEL Grandland 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9788 4247",
+    "createdAt": "2026-05-27T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0073",
+    "brand": "BMW",
+    "model": "Serie 5",
+    "year": 2024,
+    "price": 21333729,
+    "km": 28861,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "BMW Serie 5 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9328 4778",
+    "createdAt": "2026-05-26T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0074",
+    "brand": "TOYOTA",
+    "model": "Land Cruiser",
+    "year": 2024,
+    "price": 22529863,
+    "km": 15723,
+    "region": "Ñuble",
+    "city": "Chillán",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "TOYOTA Land Cruiser 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 8256 5208",
+    "createdAt": "2026-05-24T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0075",
+    "brand": "VOLKSWAGEN",
+    "model": "Fox",
+    "year": 2007,
+    "price": 9392336,
+    "km": 217394,
+    "region": "Valparaíso",
+    "city": "Viña del Mar",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "VOLKSWAGEN Fox 2007. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7102 4431",
+    "createdAt": "2026-05-10T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0076",
+    "brand": "SUZUKI",
+    "model": "Celerio",
+    "year": 2022,
+    "price": 18973997,
+    "km": 30312,
+    "region": "Tarapacá",
+    "city": "Alto Hospicio",
+    "transmission": "Manual",
+    "fuel": "Bencina",
+    "description": "SUZUKI Celerio 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1487 7779",
+    "createdAt": "2026-07-04T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0077",
+    "brand": "CITROËN",
+    "model": "C4",
+    "year": 2024,
+    "price": 21447654,
+    "km": 21213,
+    "region": "Valparaíso",
+    "city": "Viña del Mar",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "CITROËN C4 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7628 8854",
+    "createdAt": "2026-05-27T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0078",
+    "brand": "OPEL",
+    "model": "Corsa",
+    "year": 2022,
+    "price": 18773403,
+    "km": 39020,
+    "region": "O'Higgins",
+    "city": "Rancagua",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "OPEL Corsa 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1414 5174",
+    "createdAt": "2026-05-21T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0079",
+    "brand": "MITSUBISHI",
+    "model": "Lancer",
+    "year": 2018,
+    "price": 13923759,
+    "km": 70056,
+    "region": "Antofagasta",
+    "city": "Calama",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "MITSUBISHI Lancer 2018. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9727 9098",
+    "createdAt": "2026-05-07T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0080",
+    "brand": "PORSCHE",
+    "model": "911",
+    "year": 2017,
+    "price": 14001236,
+    "km": 77439,
+    "region": "La Araucanía",
+    "city": "Villarrica",
+    "transmission": "Manual",
+    "fuel": "Bencina",
+    "description": "PORSCHE 911 2017. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1294 3230",
+    "createdAt": "2026-07-05T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0081",
+    "brand": "DODGE/RAM",
+    "model": "Ram Rampage",
+    "year": 2024,
+    "price": 21425421,
+    "km": 22946,
+    "region": "O'Higgins",
+    "city": "San Fernando",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "DODGE/RAM Ram Rampage 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3992 2102",
+    "createdAt": "2026-05-23T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0082",
+    "brand": "VOLVO",
+    "model": "XC60",
+    "year": 2020,
+    "price": 18691934,
+    "km": 66336,
+    "region": "La Araucanía",
+    "city": "Villarrica",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "VOLVO XC60 2020. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4272 6609",
+    "createdAt": "2026-06-24T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0083",
+    "brand": "MG (SAIC)",
+    "model": "MG3",
+    "year": 2015,
+    "price": 15344755,
+    "km": 100858,
+    "region": "Región Metropolitana",
+    "city": "Las Condes",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "MG (SAIC) MG3 2015. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 8494 1162",
+    "createdAt": "2026-05-11T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0084",
+    "brand": "PEUGEOT",
+    "model": "308",
+    "year": 2010,
+    "price": 13617494,
+    "km": 209752,
+    "region": "Valparaíso",
+    "city": "Valparaíso",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "PEUGEOT 308 2010. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 8061 6628",
+    "createdAt": "2026-06-12T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0085",
+    "brand": "FERRARI",
+    "model": "F458",
+    "year": 2009,
+    "price": 10721346,
+    "km": 205862,
+    "region": "Maule",
+    "city": "Talca",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "FERRARI F458 2009. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 6394 7083",
+    "createdAt": "2026-06-15T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0086",
+    "brand": "SUZUKI",
+    "model": "Jimny",
+    "year": 2016,
+    "price": 14340601,
+    "km": 95474,
+    "region": "Aysén",
+    "city": "Coyhaique",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "SUZUKI Jimny 2016. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1173 2316",
+    "createdAt": "2026-05-13T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0087",
+    "brand": "GEELY",
+    "model": "Coolray",
+    "year": 2020,
+    "price": 18724851,
+    "km": 45200,
+    "region": "Tarapacá",
+    "city": "Iquique",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "GEELY Coolray 2020. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3168 4272",
+    "createdAt": "2026-05-28T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0088",
+    "brand": "VOLKSWAGEN",
+    "model": "Passat",
+    "year": 2008,
+    "price": 4192949,
+    "km": 187109,
+    "region": "Biobío",
+    "city": "Concepción",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "VOLKSWAGEN Passat 2008. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9642 4952",
+    "createdAt": "2026-06-05T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0089",
+    "brand": "MAXUS",
+    "model": "G20",
+    "year": 2022,
+    "price": 20354896,
+    "km": 44636,
+    "region": "Los Ríos",
+    "city": "Valdivia",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "MAXUS G20 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7979 4681",
+    "createdAt": "2026-06-04T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0090",
+    "brand": "MAZDA",
+    "model": "Protegé",
+    "year": 2002,
+    "price": 4605879,
+    "km": 329479,
+    "region": "Coquimbo",
+    "city": "La Serena",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "MAZDA Protegé 2002. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 6020 7403",
+    "createdAt": "2026-05-23T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0091",
+    "brand": "FERRARI",
+    "model": "F8 Tributo",
+    "year": 2022,
+    "price": 19060719,
+    "km": 52780,
+    "region": "Valparaíso",
+    "city": "Quilpué",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "FERRARI F8 Tributo 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1876 1388",
+    "createdAt": "2026-06-05T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0092",
+    "brand": "MITSUBISHI",
+    "model": "Montero Sport",
+    "year": 2024,
+    "price": 21950856,
+    "km": 16156,
+    "region": "Los Lagos",
+    "city": "Puerto Montt",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "MITSUBISHI Montero Sport 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9699 9508",
+    "createdAt": "2026-06-21T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0093",
+    "brand": "NISSAN",
+    "model": "Versa",
+    "year": 2023,
+    "price": 20797942,
+    "km": 27663,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "NISSAN Versa 2023. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2977 1434",
+    "createdAt": "2026-06-01T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0094",
+    "brand": "GREAT WALL (GWM/HAVAL)",
+    "model": "Wingle",
+    "year": 2022,
+    "price": 18696803,
+    "km": 40663,
+    "region": "Arica y Parinacota",
+    "city": "Arica",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "GREAT WALL (GWM/HAVAL) Wingle 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9838 7605",
+    "createdAt": "2026-07-02T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0095",
+    "brand": "LAMBORGHINI",
+    "model": "Gallardo",
+    "year": 2013,
+    "price": 11685533,
+    "km": 175921,
+    "region": "Ñuble",
+    "city": "Chillán",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "LAMBORGHINI Gallardo 2013. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 8729 7863",
+    "createdAt": "2026-05-08T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0096",
+    "brand": "CITROËN",
+    "model": "Jumper",
+    "year": 2024,
+    "price": 20087827,
+    "km": 22217,
+    "region": "Atacama",
+    "city": "Copiapó",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "CITROËN Jumper 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4035 8874",
+    "createdAt": "2026-05-21T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0097",
+    "brand": "AUDI",
+    "model": "A5",
+    "year": 2023,
+    "price": 20800379,
+    "km": 35055,
+    "region": "Ñuble",
+    "city": "Chillán",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "AUDI A5 2023. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7744 5662",
+    "createdAt": "2026-06-19T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0098",
+    "brand": "RENAULT ARGENTINA",
+    "model": "Torino",
+    "year": 2004,
+    "price": 6701442,
+    "km": 201059,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "RENAULT ARGENTINA Torino 2004. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 5554 1770",
+    "createdAt": "2026-06-16T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0099",
+    "brand": "HYUNDAI",
+    "model": "Sonata",
+    "year": 2014,
+    "price": 14660372,
+    "km": 115476,
+    "region": "O'Higgins",
+    "city": "Rancagua",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "HYUNDAI Sonata 2014. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4783 8642",
+    "createdAt": "2026-06-30T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0100",
+    "brand": "CHEVROLET",
+    "model": "Malibu",
+    "year": 2009,
+    "price": 12379182,
+    "km": 199643,
+    "region": "Coquimbo",
+    "city": "Coquimbo",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "CHEVROLET Malibu 2009. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2433 3425",
+    "createdAt": "2026-06-04T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0101",
+    "brand": "CHANGAN",
+    "model": "Alsvin",
+    "year": 2019,
+    "price": 17862434,
+    "km": 84056,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "CHANGAN Alsvin 2019. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1563 1802",
+    "createdAt": "2026-05-12T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0102",
+    "brand": "HYUNDAI",
+    "model": "i10",
+    "year": 2008,
+    "price": 11174555,
+    "km": 178039,
+    "region": "Biobío",
+    "city": "Concepción",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "HYUNDAI i10 2008. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2521 6240",
+    "createdAt": "2026-05-30T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0103",
+    "brand": "DONGFENG",
+    "model": "Fengon",
+    "year": 2016,
+    "price": 16464418,
+    "km": 95611,
+    "region": "Región Metropolitana",
+    "city": "Maipú",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "DONGFENG Fengon 2016. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1430 6511",
+    "createdAt": "2026-07-03T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0104",
+    "brand": "SUBARU",
+    "model": "WRX",
+    "year": 2009,
+    "price": 11249687,
+    "km": 193118,
+    "region": "Tarapacá",
+    "city": "Iquique",
+    "transmission": "Manual",
+    "fuel": "Bencina",
+    "description": "SUBARU WRX 2009. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 5090 4940",
+    "createdAt": "2026-05-10T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0105",
+    "brand": "FIAT",
+    "model": "Punto",
+    "year": 2012,
+    "price": 9900087,
+    "km": 178447,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Manual",
+    "fuel": "Bencina",
+    "description": "FIAT Punto 2012. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3330 3921",
+    "createdAt": "2026-05-23T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0106",
+    "brand": "CHEVROLET",
+    "model": "Sail",
+    "year": 2015,
+    "price": 14921761,
+    "km": 104594,
+    "region": "Aysén",
+    "city": "Coyhaique",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "CHEVROLET Sail 2015. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 5265 7328",
+    "createdAt": "2026-05-13T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0107",
+    "brand": "ISUZU",
+    "model": "D-Max S-Cab",
+    "year": 2025,
+    "price": 21185428,
+    "km": 5332,
+    "region": "Maule",
+    "city": "Curicó",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "ISUZU D-Max S-Cab 2025. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 8277 5459",
+    "createdAt": "2026-05-13T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0108",
+    "brand": "NISSAN",
+    "model": "Patrol",
+    "year": 2011,
+    "price": 11261792,
+    "km": 128000,
+    "region": "Coquimbo",
+    "city": "Coquimbo",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "NISSAN Patrol 2011. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4054 5596",
+    "createdAt": "2026-07-02T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0109",
+    "brand": "BMW",
+    "model": "X3",
+    "year": 2010,
+    "price": 11358777,
+    "km": 206515,
+    "region": "Los Ríos",
+    "city": "Valdivia",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "BMW X3 2010. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1806 6650",
+    "createdAt": "2026-05-06T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0110",
+    "brand": "FIAT",
+    "model": "Palio",
+    "year": 2012,
+    "price": 13672616,
+    "km": 146518,
+    "region": "Antofagasta",
+    "city": "Calama",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "FIAT Palio 2012. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3253 4413",
+    "createdAt": "2026-06-23T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0111",
+    "brand": "SUZUKI",
+    "model": "Carry",
+    "year": 2007,
+    "price": 4443727,
+    "km": 208020,
+    "region": "Región Metropolitana",
+    "city": "Maipú",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "SUZUKI Carry 2007. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 6615 4735",
+    "createdAt": "2026-06-22T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0112",
+    "brand": "BYD",
+    "model": "Yuan",
+    "year": 2020,
+    "price": 17675047,
+    "km": 58034,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "BYD Yuan 2020. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2291 7720",
+    "createdAt": "2026-06-16T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0113",
+    "brand": "DONGFENG",
+    "model": "Fengon 500",
+    "year": 2024,
+    "price": 20072934,
+    "km": 19499,
+    "region": "Ñuble",
+    "city": "Chillán",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "DONGFENG Fengon 500 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3117 2110",
+    "createdAt": "2026-06-08T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0114",
+    "brand": "TOYOTA",
+    "model": "RAV4",
+    "year": 2006,
+    "price": 3233130,
+    "km": 251460,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "TOYOTA RAV4 2006. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 1123 4653",
+    "createdAt": "2026-06-30T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0115",
+    "brand": "CHANGAN",
+    "model": "Benni",
+    "year": 2013,
+    "price": 10978075,
+    "km": 110846,
+    "region": "Los Ríos",
+    "city": "Valdivia",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "CHANGAN Benni 2013. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 5668 4321",
+    "createdAt": "2026-05-15T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0116",
+    "brand": "MG (SAIC)",
+    "model": "RX5",
+    "year": 2017,
+    "price": 17398147,
+    "km": 91963,
+    "region": "Antofagasta",
+    "city": "Antofagasta",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "MG (SAIC) RX5 2017. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3005 2326",
+    "createdAt": "2026-06-21T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0117",
+    "brand": "LEXUS",
+    "model": "LS",
+    "year": 2012,
+    "price": 12503229,
+    "km": 137364,
+    "region": "Antofagasta",
+    "city": "Antofagasta",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "LEXUS LS 2012. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7119 4514",
+    "createdAt": "2026-05-20T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0118",
+    "brand": "TOYOTA",
+    "model": "Innova",
+    "year": 2017,
+    "price": 15096924,
+    "km": 95790,
+    "region": "Ñuble",
+    "city": "Chillán",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "TOYOTA Innova 2017. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2290 2913",
+    "createdAt": "2026-06-19T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0119",
+    "brand": "DODGE/RAM",
+    "model": "Charger",
+    "year": 2019,
+    "price": 16245052,
+    "km": 56721,
+    "region": "Atacama",
+    "city": "Copiapó",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "DODGE/RAM Charger 2019. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9551 5861",
+    "createdAt": "2026-05-21T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0120",
+    "brand": "KGM (SSANGYONG)",
+    "model": "Tivoli",
+    "year": 2021,
+    "price": 17232768,
+    "km": 60580,
+    "region": "O'Higgins",
+    "city": "Rancagua",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "KGM (SSANGYONG) Tivoli 2021. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2276 6328",
+    "createdAt": "2026-05-21T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0121",
+    "brand": "MAZDA",
+    "model": "BT-50",
+    "year": 2014,
+    "price": 12483193,
+    "km": 130005,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "MAZDA BT-50 2014. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 6956 2943",
+    "createdAt": "2026-06-19T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0122",
+    "brand": "MG (SAIC)",
+    "model": "GS",
+    "year": 2015,
+    "price": 15094762,
+    "km": 146929,
+    "region": "Región Metropolitana",
+    "city": "Maipú",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "MG (SAIC) GS 2015. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9514 8482",
+    "createdAt": "2026-06-20T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0123",
+    "brand": "CHEVROLET",
+    "model": "Aveo",
+    "year": 2005,
+    "price": 900000,
+    "km": 200109,
+    "region": "Ñuble",
+    "city": "Chillán",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "CHEVROLET Aveo 2005. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4261 3670",
+    "createdAt": "2026-07-01T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0124",
+    "brand": "AUDI",
+    "model": "A6",
+    "year": 2012,
+    "price": 10767232,
+    "km": 142305,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "AUDI A6 2012. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 6577 2980",
+    "createdAt": "2026-05-30T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0125",
+    "brand": "ISUZU",
+    "model": "Trooper",
+    "year": 2004,
+    "price": 900000,
+    "km": 186403,
+    "region": "Maule",
+    "city": "Talca",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "ISUZU Trooper 2004. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4617 6335",
+    "createdAt": "2026-06-07T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0126",
+    "brand": "MITSUBISHI",
+    "model": "L-200",
+    "year": 2023,
+    "price": 20148269,
+    "km": 31066,
+    "region": "Atacama",
+    "city": "Copiapó",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "MITSUBISHI L-200 2023. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3024 7340",
+    "createdAt": "2026-06-24T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0127",
+    "brand": "FIAT",
+    "model": "600",
+    "year": 2001,
+    "price": 900000,
+    "km": 247060,
+    "region": "Coquimbo",
+    "city": "La Serena",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "FIAT 600 2001. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4965 4302",
+    "createdAt": "2026-05-28T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0128",
+    "brand": "SUBARU",
+    "model": "Impreza",
+    "year": 2014,
+    "price": 10637594,
+    "km": 135947,
+    "region": "La Araucanía",
+    "city": "Villarrica",
+    "transmission": "Manual",
+    "fuel": "Bencina",
+    "description": "SUBARU Impreza 2014. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7184 1958",
+    "createdAt": "2026-05-08T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0129",
+    "brand": "TOYOTA",
+    "model": "Yaris",
+    "year": 2009,
+    "price": 10673790,
+    "km": 146175,
+    "region": "Magallanes",
+    "city": "Punta Arenas",
+    "transmission": "Manual",
+    "fuel": "Bencina",
+    "description": "TOYOTA Yaris 2009. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4548 8292",
+    "createdAt": "2026-06-15T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0130",
+    "brand": "DONGFENG",
+    "model": "Aeolus GS",
+    "year": 2016,
+    "price": 11853946,
+    "km": 96397,
+    "region": "Maule",
+    "city": "Curicó",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "DONGFENG Aeolus GS 2016. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9094 7633",
+    "createdAt": "2026-06-13T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0131",
+    "brand": "CITROËN",
+    "model": "C-Elysée",
+    "year": 2019,
+    "price": 16491506,
+    "km": 98190,
+    "region": "Ñuble",
+    "city": "Chillán",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "CITROËN C-Elysée 2019. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2114 7922",
+    "createdAt": "2026-05-24T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0132",
+    "brand": "CITROËN",
+    "model": "Picasso",
+    "year": 2011,
+    "price": 8986262,
+    "km": 158869,
+    "region": "Arica y Parinacota",
+    "city": "Arica",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "CITROËN Picasso 2011. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 5622 8225",
+    "createdAt": "2026-06-20T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0133",
+    "brand": "CITROËN",
+    "model": "Saxo",
+    "year": 2001,
+    "price": 5138238,
+    "km": 351532,
+    "region": "Antofagasta",
+    "city": "Calama",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "CITROËN Saxo 2001. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 6252 6935",
+    "createdAt": "2026-07-05T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0134",
+    "brand": "RENAULT",
+    "model": "Megane",
+    "year": 2003,
+    "price": 5452309,
+    "km": 204249,
+    "region": "Aysén",
+    "city": "Coyhaique",
+    "transmission": "Manual",
+    "fuel": "Bencina",
+    "description": "RENAULT Megane 2003. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3611 2820",
+    "createdAt": "2026-06-25T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0135",
+    "brand": "GREAT WALL (GWM/HAVAL)",
+    "model": "Tank",
+    "year": 2022,
+    "price": 19198928,
+    "km": 47710,
+    "region": "Los Ríos",
+    "city": "Valdivia",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "GREAT WALL (GWM/HAVAL) Tank 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 8872 9242",
+    "createdAt": "2026-05-29T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0136",
+    "brand": "KIA",
+    "model": "Soluto",
+    "year": 2020,
+    "price": 18346413,
+    "km": 77609,
+    "region": "Aysén",
+    "city": "Coyhaique",
+    "transmission": "Automática",
+    "fuel": "Bencina",
+    "description": "KIA Soluto 2020. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 6643 3334",
+    "createdAt": "2026-07-05T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0137",
+    "brand": "CHEVROLET",
+    "model": "Cavalier",
+    "year": 2002,
+    "price": 1033144,
+    "km": 231026,
+    "region": "Región Metropolitana",
+    "city": "Las Condes",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "CHEVROLET Cavalier 2002. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7558 4929",
+    "createdAt": "2026-06-06T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0138",
+    "brand": "MAZDA",
+    "model": "CX-3",
+    "year": 2024,
+    "price": 21473680,
+    "km": 16950,
+    "region": "O'Higgins",
+    "city": "San Fernando",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "MAZDA CX-3 2024. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 5342 6326",
+    "createdAt": "2026-05-16T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0139",
+    "brand": "CHEVROLET",
+    "model": "Blazer",
+    "year": 2021,
+    "price": 18182999,
+    "km": 60869,
+    "region": "La Araucanía",
+    "city": "Temuco",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "CHEVROLET Blazer 2021. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7178 3754",
+    "createdAt": "2026-05-15T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0140",
+    "brand": "GEELY",
+    "model": "SX11",
+    "year": 2022,
+    "price": 18203030,
+    "km": 34827,
+    "region": "Coquimbo",
+    "city": "Coquimbo",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "GEELY SX11 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 5854 4183",
+    "createdAt": "2026-05-15T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0141",
+    "brand": "VOLVO",
+    "model": "V60",
+    "year": 2014,
+    "price": 14272662,
+    "km": 115266,
+    "region": "Coquimbo",
+    "city": "Coquimbo",
+    "transmission": "Automática",
+    "fuel": "Eléctrico",
+    "description": "VOLVO V60 2014. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 3284 8247",
+    "createdAt": "2026-06-16T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0142",
+    "brand": "VOLVO",
+    "model": "XC Recharge",
+    "year": 2023,
+    "price": 19723709,
+    "km": 29634,
+    "region": "O'Higgins",
+    "city": "San Fernando",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "VOLVO XC Recharge 2023. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2896 1012",
+    "createdAt": "2026-06-17T21:23:08.168Z"
+  },
+  {
+    "id": "ls_0143",
+    "brand": "LAMBORGHINI",
+    "model": "Murciélago",
+    "year": 2009,
+    "price": 5977913,
+    "km": 161028,
+    "region": "O'Higgins",
+    "city": "San Fernando",
+    "transmission": "Manual",
+    "fuel": "Híbrido",
+    "description": "LAMBORGHINI Murciélago 2009. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7899 6226",
+    "createdAt": "2026-06-23T21:23:08.169Z"
+  },
+  {
+    "id": "ls_0144",
+    "brand": "DONGFENG",
+    "model": "Aeolus D9",
+    "year": 2023,
+    "price": 18769177,
+    "km": 38037,
+    "region": "Arica y Parinacota",
+    "city": "Arica",
+    "transmission": "Manual",
+    "fuel": "Diésel",
+    "description": "DONGFENG Aeolus D9 2023. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 9963 7050",
+    "createdAt": "2026-05-28T21:23:08.169Z"
+  },
+  {
+    "id": "ls_0145",
+    "brand": "SUZUKI",
+    "model": "Vitara",
+    "year": 2014,
+    "price": 9167732,
+    "km": 104957,
+    "region": "Los Ríos",
+    "city": "Valdivia",
+    "transmission": "Manual",
+    "fuel": "Bencina",
+    "description": "SUZUKI Vitara 2014. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 7993 3455",
+    "createdAt": "2026-06-12T21:23:08.169Z"
+  },
+  {
+    "id": "ls_0146",
+    "brand": "NISSAN",
+    "model": "Pathfinder",
+    "year": 2005,
+    "price": 2140723,
+    "km": 211992,
+    "region": "La Araucanía",
+    "city": "Temuco",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "NISSAN Pathfinder 2005. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2011 9298",
+    "createdAt": "2026-06-08T21:23:08.169Z"
+  },
+  {
+    "id": "ls_0147",
+    "brand": "HYUNDAI",
+    "model": "Creta",
+    "year": 2022,
+    "price": 18711901,
+    "km": 41983,
+    "region": "Antofagasta",
+    "city": "Calama",
+    "transmission": "Automática",
+    "fuel": "Híbrido",
+    "description": "HYUNDAI Creta 2022. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 2565 4982",
+    "createdAt": "2026-05-24T21:23:08.169Z"
+  },
+  {
+    "id": "ls_0148",
+    "brand": "LEXUS",
+    "model": "ES",
+    "year": 2015,
+    "price": 11064165,
+    "km": 133601,
+    "region": "Los Lagos",
+    "city": "Osorno",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "LEXUS ES 2015. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 4712 3972",
+    "createdAt": "2026-05-18T21:23:08.169Z"
+  },
+  {
+    "id": "ls_0149",
+    "brand": "HYUNDAI",
+    "model": "Palisade",
+    "year": 2021,
+    "price": 18319673,
+    "km": 67409,
+    "region": "O'Higgins",
+    "city": "Rancagua",
+    "transmission": "Manual",
+    "fuel": "Eléctrico",
+    "description": "HYUNDAI Palisade 2021. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 8241 3714",
+    "createdAt": "2026-06-30T21:23:08.169Z"
+  },
+  {
+    "id": "ls_0150",
+    "brand": "SUBARU",
+    "model": "XV",
+    "year": 2013,
+    "price": 11127781,
+    "km": 153366,
+    "region": "Arica y Parinacota",
+    "city": "Arica",
+    "transmission": "Automática",
+    "fuel": "Diésel",
+    "description": "SUBARU XV 2013. Documentos al día.",
+    "images": [
+      "/car-placeholder.svg"
+    ],
+    "contactName": "Vendedor BuenAuto",
+    "contactPhone": "+56 9 8073 7918",
+    "createdAt": "2026-06-04T21:23:08.169Z"
+  },
+  {
     "id": "ls_0001",
     "brand": "TOYOTA",
     "model": "Hilux",

@@ -164,9 +164,7 @@ export function applyListingSearch(listings: Listing[], search: ListingSearch) {
 
 export async function getListings() {
   const items = await loadListingsRaw();
-  // Limit to most recent 100 for performance
-  const recentItems = items.slice(0, 100);
-  const visible = recentItems.filter((l) => isListingPublic(l));
+  const visible = items.filter((l) => isListingPublic(l));
   return applyListingSearch(visible, { sort: "newest" });
 }
 
@@ -188,7 +186,9 @@ export async function createListing(
     ownerId?: string;
   },
 ) {
-  const existing = await getListings();
+  // Usar la lista cruda: con la lista filtrada se reusarían IDs de avisos
+  // no públicos y saveListings borraría borradores y avisos pendientes.
+  const existing = await loadListingsRaw();
   const id = getNextListingId(existing);
 
   const year = toNumber(input.year);
