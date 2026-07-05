@@ -12,7 +12,7 @@
     "fuel": "Eléctrico",
     "description": "BYD Song 2022. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/byd-song.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3621 6596",
@@ -31,7 +31,7 @@
     "fuel": "Diésel",
     "description": "HYUNDAI Accent 2013. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/hyundai-accent.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1709 2506",
@@ -50,7 +50,7 @@
     "fuel": "Diésel",
     "description": "FORD Escape 2004. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/ford-escape.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3938 5771",
@@ -107,7 +107,7 @@
     "fuel": "Diésel",
     "description": "MAZDA CX-5 2024. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mazda-cx-5.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2762 7714",
@@ -164,7 +164,7 @@
     "fuel": "Eléctrico",
     "description": "CITROËN C3 2020. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/citroen-c3.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 5665 2127",
@@ -183,7 +183,7 @@
     "fuel": "Diésel",
     "description": "SUZUKI Ertiga 2019. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-ertiga.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1909 4837",
@@ -202,7 +202,7 @@
     "fuel": "Eléctrico",
     "description": "SUZUKI Cultus 2003. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-cultus.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7050 1866",
@@ -221,7 +221,7 @@
     "fuel": "Bencina",
     "description": "FORD EcoSport 2020. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/ford-ecosport.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9218 5042",
@@ -240,7 +240,7 @@
     "fuel": "Diésel",
     "description": "LAMBORGHINI Aventador 2015. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/lamborghini-aventador.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 6268 6054",
@@ -259,7 +259,7 @@
     "fuel": "Eléctrico",
     "description": "TOYOTA Hilux 2019. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-hilux.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9540 4153",
@@ -278,7 +278,7 @@
     "fuel": "Diésel",
     "description": "HYUNDAI Getz 2007. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/hyundai-getz.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4354 8571",
@@ -297,7 +297,7 @@
     "fuel": "Híbrido",
     "description": "SUBARU Loyale 2000. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/subaru-loyale.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3446 4898",
@@ -316,7 +316,7 @@
     "fuel": "Híbrido",
     "description": "BMW X5 2014. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/bmw-x5.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4839 4698",
@@ -335,7 +335,7 @@
     "fuel": "Eléctrico",
     "description": "ISUZU D-Max 2006. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/isuzu-d-max.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2265 9967",
@@ -354,7 +354,7 @@
     "fuel": "Diésel",
     "description": "NISSAN Sentra 2006. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-sentra.png"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2276 5598",
@@ -373,7 +373,7 @@
     "fuel": "Híbrido",
     "description": "HYUNDAI i20 2024. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/hyundai-i20.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1127 1228",
@@ -411,7 +411,7 @@
     "fuel": "Diésel",
     "description": "CHEVROLET Groove 2022. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/chevrolet-groove.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9228 9097",
@@ -449,7 +449,7 @@
     "fuel": "Diésel",
     "description": "CHERY Tiggo 2 2017. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/chery-tiggo-2.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1405 5002",
@@ -487,7 +487,7 @@
     "fuel": "Diésel",
     "description": "MITSUBISHI ASX 2016. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mitsubishi-asx.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 8653 6368",
@@ -506,7 +506,7 @@
     "fuel": "Eléctrico",
     "description": "OPEL Crossland 2023. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/opel-crossland.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2631 3298",
@@ -563,7 +563,7 @@
     "fuel": "Diésel",
     "description": "MITSUBISHI Outlander 2023. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mitsubishi-outlander.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9567 2929",
@@ -582,7 +582,7 @@
     "fuel": "Bencina",
     "description": "CITROËN Xsara 2004. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/citroen-xsara.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4770 6970",
@@ -601,7 +601,7 @@
     "fuel": "Bencina",
     "description": "AUDI Q5 2010. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/audi-q5.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 8597 7602",
@@ -620,7 +620,7 @@
     "fuel": "Eléctrico",
     "description": "ISUZU NPR 2025. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/isuzu-npr.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 5922 5946",
@@ -639,7 +639,7 @@
     "fuel": "Híbrido",
     "description": "AUDI Q3 2021. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/audi-q3.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3602 5168",
@@ -658,7 +658,7 @@
     "fuel": "Híbrido",
     "description": "PEUGEOT 206 2003. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/peugeot-206.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3348 2845",
@@ -696,7 +696,7 @@
     "fuel": "Híbrido",
     "description": "JAC T8 2021. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/jac-t8.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1729 1310",
@@ -715,7 +715,7 @@
     "fuel": "Híbrido",
     "description": "BYD Yuan Plus 2024. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/byd-yuan-plus.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2295 9045",
@@ -734,7 +734,7 @@
     "fuel": "Diésel",
     "description": "PEUGEOT Traveller 2023. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/peugeot-traveller.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1941 5218",
@@ -753,7 +753,7 @@
     "fuel": "Bencina",
     "description": "TOYOTA Prius 2013. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-prius.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4490 6571",
@@ -772,7 +772,7 @@
     "fuel": "Híbrido",
     "description": "FORD Mondeo 2005. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/ford-mondeo.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 5438 9745",
@@ -791,7 +791,7 @@
     "fuel": "Bencina",
     "description": "OPEL Grandland 2022. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/opel-grandland.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9788 4247",
@@ -810,7 +810,7 @@
     "fuel": "Eléctrico",
     "description": "BMW Serie 5 2024. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/bmw-serie-5.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9328 4778",
@@ -829,7 +829,7 @@
     "fuel": "Eléctrico",
     "description": "TOYOTA Land Cruiser 2024. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-land-cruiser.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 8256 5208",
@@ -848,7 +848,7 @@
     "fuel": "Eléctrico",
     "description": "VOLKSWAGEN Fox 2007. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/volkswagen-fox.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7102 4431",
@@ -867,7 +867,7 @@
     "fuel": "Bencina",
     "description": "SUZUKI Celerio 2022. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-celerio.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1487 7779",
@@ -886,7 +886,7 @@
     "fuel": "Bencina",
     "description": "CITROËN C4 2024. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/citroen-c4.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7628 8854",
@@ -905,7 +905,7 @@
     "fuel": "Diésel",
     "description": "OPEL Corsa 2022. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/opel-corsa.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1414 5174",
@@ -924,7 +924,7 @@
     "fuel": "Diésel",
     "description": "MITSUBISHI Lancer 2018. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mitsubishi-lancer.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9727 9098",
@@ -943,7 +943,7 @@
     "fuel": "Bencina",
     "description": "PORSCHE 911 2017. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/porsche-911.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1294 3230",
@@ -981,7 +981,7 @@
     "fuel": "Eléctrico",
     "description": "VOLVO XC60 2020. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/volvo-xc60.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4272 6609",
@@ -1019,7 +1019,7 @@
     "fuel": "Diésel",
     "description": "PEUGEOT 308 2010. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/peugeot-308.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 8061 6628",
@@ -1038,7 +1038,7 @@
     "fuel": "Eléctrico",
     "description": "FERRARI F458 2009. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/ferrari-f458.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 6394 7083",
@@ -1057,7 +1057,7 @@
     "fuel": "Eléctrico",
     "description": "SUZUKI Jimny 2016. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-jimny.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1173 2316",
@@ -1076,7 +1076,7 @@
     "fuel": "Diésel",
     "description": "GEELY Coolray 2020. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/geely-coolray.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3168 4272",
@@ -1095,7 +1095,7 @@
     "fuel": "Híbrido",
     "description": "VOLKSWAGEN Passat 2008. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/volkswagen-passat.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9642 4952",
@@ -1114,7 +1114,7 @@
     "fuel": "Híbrido",
     "description": "MAXUS G20 2022. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/maxus-g20.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7979 4681",
@@ -1133,7 +1133,7 @@
     "fuel": "Eléctrico",
     "description": "MAZDA Protegé 2002. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mazda-protege.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 6020 7403",
@@ -1152,7 +1152,7 @@
     "fuel": "Eléctrico",
     "description": "FERRARI F8 Tributo 2022. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/ferrari-f8-tributo.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1876 1388",
@@ -1171,7 +1171,7 @@
     "fuel": "Bencina",
     "description": "MITSUBISHI Montero Sport 2024. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mitsubishi-montero-sport.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9699 9508",
@@ -1190,7 +1190,7 @@
     "fuel": "Diésel",
     "description": "NISSAN Versa 2023. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-versa.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2977 1434",
@@ -1228,7 +1228,7 @@
     "fuel": "Híbrido",
     "description": "LAMBORGHINI Gallardo 2013. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/lamborghini-gallardo.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 8729 7863",
@@ -1247,7 +1247,7 @@
     "fuel": "Híbrido",
     "description": "CITROËN Jumper 2024. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/citroen-jumper.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4035 8874",
@@ -1266,7 +1266,7 @@
     "fuel": "Eléctrico",
     "description": "AUDI A5 2023. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/audi-a5.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7744 5662",
@@ -1304,7 +1304,7 @@
     "fuel": "Diésel",
     "description": "HYUNDAI Sonata 2014. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/hyundai-sonata.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4783 8642",
@@ -1323,7 +1323,7 @@
     "fuel": "Bencina",
     "description": "CHEVROLET Malibu 2009. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/chevrolet-malibu.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2433 3425",
@@ -1342,7 +1342,7 @@
     "fuel": "Eléctrico",
     "description": "CHANGAN Alsvin 2019. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/changan-alsvin.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1563 1802",
@@ -1361,7 +1361,7 @@
     "fuel": "Eléctrico",
     "description": "HYUNDAI i10 2008. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/hyundai-i10.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2521 6240",
@@ -1399,7 +1399,7 @@
     "fuel": "Bencina",
     "description": "SUBARU WRX 2009. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/subaru-wrx.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 5090 4940",
@@ -1418,7 +1418,7 @@
     "fuel": "Bencina",
     "description": "FIAT Punto 2012. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/fiat-punto.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3330 3921",
@@ -1437,7 +1437,7 @@
     "fuel": "Diésel",
     "description": "CHEVROLET Sail 2015. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/chevrolet-sail.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 5265 7328",
@@ -1475,7 +1475,7 @@
     "fuel": "Diésel",
     "description": "NISSAN Patrol 2011. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-patrol.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4054 5596",
@@ -1494,7 +1494,7 @@
     "fuel": "Bencina",
     "description": "BMW X3 2010. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/bmw-x3.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1806 6650",
@@ -1513,7 +1513,7 @@
     "fuel": "Híbrido",
     "description": "FIAT Palio 2012. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/fiat-palio.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3253 4413",
@@ -1532,7 +1532,7 @@
     "fuel": "Diésel",
     "description": "SUZUKI Carry 2007. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-carry.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 6615 4735",
@@ -1551,7 +1551,7 @@
     "fuel": "Eléctrico",
     "description": "BYD Yuan 2020. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/byd-yuan.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2291 7720",
@@ -1589,7 +1589,7 @@
     "fuel": "Bencina",
     "description": "TOYOTA RAV4 2006. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-rav4.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1123 4653",
@@ -1608,7 +1608,7 @@
     "fuel": "Híbrido",
     "description": "CHANGAN Benni 2013. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/changan-benni.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 5668 4321",
@@ -1646,7 +1646,7 @@
     "fuel": "Eléctrico",
     "description": "LEXUS LS 2012. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/lexus-ls.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7119 4514",
@@ -1665,7 +1665,7 @@
     "fuel": "Híbrido",
     "description": "TOYOTA Innova 2017. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-innova.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2290 2913",
@@ -1722,7 +1722,7 @@
     "fuel": "Eléctrico",
     "description": "MAZDA BT-50 2014. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mazda-bt-50.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 6956 2943",
@@ -1760,7 +1760,7 @@
     "fuel": "Híbrido",
     "description": "CHEVROLET Aveo 2005. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/chevrolet-aveo.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4261 3670",
@@ -1779,7 +1779,7 @@
     "fuel": "Híbrido",
     "description": "AUDI A6 2012. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/audi-a6.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 6577 2980",
@@ -1798,7 +1798,7 @@
     "fuel": "Diésel",
     "description": "ISUZU Trooper 2004. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/isuzu-trooper.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4617 6335",
@@ -1817,7 +1817,7 @@
     "fuel": "Híbrido",
     "description": "MITSUBISHI L-200 2023. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mitsubishi-l-200.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3024 7340",
@@ -1836,7 +1836,7 @@
     "fuel": "Diésel",
     "description": "FIAT 600 2001. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/fiat-600.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4965 4302",
@@ -1855,7 +1855,7 @@
     "fuel": "Bencina",
     "description": "SUBARU Impreza 2014. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/subaru-impreza.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7184 1958",
@@ -1874,7 +1874,7 @@
     "fuel": "Bencina",
     "description": "TOYOTA Yaris 2009. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-yaris.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4548 8292",
@@ -1912,7 +1912,7 @@
     "fuel": "Híbrido",
     "description": "CITROËN C-Elysée 2019. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/citroen-c-elysee.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2114 7922",
@@ -1931,7 +1931,7 @@
     "fuel": "Híbrido",
     "description": "CITROËN Picasso 2011. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/citroen-picasso.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 5622 8225",
@@ -1950,7 +1950,7 @@
     "fuel": "Diésel",
     "description": "CITROËN Saxo 2001. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/citroen-saxo.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 6252 6935",
@@ -1969,7 +1969,7 @@
     "fuel": "Bencina",
     "description": "RENAULT Megane 2003. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/renault-megane.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3611 2820",
@@ -2007,7 +2007,7 @@
     "fuel": "Bencina",
     "description": "KIA Soluto 2020. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/kia-soluto.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 6643 3334",
@@ -2026,7 +2026,7 @@
     "fuel": "Diésel",
     "description": "CHEVROLET Cavalier 2002. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/chevrolet-cavalier.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7558 4929",
@@ -2045,7 +2045,7 @@
     "fuel": "Diésel",
     "description": "MAZDA CX-3 2024. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mazda-cx-3.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 5342 6326",
@@ -2064,7 +2064,7 @@
     "fuel": "Híbrido",
     "description": "CHEVROLET Blazer 2021. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/chevrolet-blazer.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7178 3754",
@@ -2102,7 +2102,7 @@
     "fuel": "Eléctrico",
     "description": "VOLVO V60 2014. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/volvo-v60.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3284 8247",
@@ -2140,7 +2140,7 @@
     "fuel": "Híbrido",
     "description": "LAMBORGHINI Murciélago 2009. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/lamborghini-murcielago.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7899 6226",
@@ -2178,7 +2178,7 @@
     "fuel": "Bencina",
     "description": "SUZUKI Vitara 2014. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-vitara.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7993 3455",
@@ -2197,7 +2197,7 @@
     "fuel": "Híbrido",
     "description": "NISSAN Pathfinder 2005. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-pathfinder.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2011 9298",
@@ -2216,7 +2216,7 @@
     "fuel": "Híbrido",
     "description": "HYUNDAI Creta 2022. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/hyundai-creta.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2565 4982",
@@ -2235,7 +2235,7 @@
     "fuel": "Eléctrico",
     "description": "LEXUS ES 2015. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/lexus-es.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4712 3972",
@@ -2254,7 +2254,7 @@
     "fuel": "Eléctrico",
     "description": "HYUNDAI Palisade 2021. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/hyundai-palisade.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 8241 3714",
@@ -2273,7 +2273,7 @@
     "fuel": "Diésel",
     "description": "SUBARU XV 2013. Documentos al día.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/subaru-xv.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 8073 7918",
@@ -2292,7 +2292,7 @@
     "fuel": "Hibrido",
     "description": "Segundo dueño, impecable. Full equipo: aire, cierre centralizado, alzavidrios.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-hilux.jpg"
     ],
     "contactName": "Laura",
     "contactPhone": "+56 9 1307 1080",
@@ -2313,7 +2313,7 @@
     "fuel": "Bencina",
     "description": "Siempre en garage. Pintura original, sin choques.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-prius.jpg"
     ],
     "contactName": "Maria",
     "contactPhone": "+56 9 7633 1605",
@@ -2334,7 +2334,7 @@
     "fuel": "Hibrido",
     "description": "Oportunidad! Economico, ideal para ciudad. Consumo eficiente.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-vitara.jpg"
     ],
     "contactName": "Carlos",
     "contactPhone": "+56 9 1777 3846",
@@ -2355,7 +2355,7 @@
     "fuel": "Hibrido",
     "description": "Segundo dueño, impecable. Full equipo: aire, cierre centralizado, alzavidrios.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-4runner.jpg"
     ],
     "contactName": "Laura",
     "contactPhone": "+56 9 4737 2063",
@@ -2376,7 +2376,7 @@
     "fuel": "Diesel",
     "description": "Primera mano, kit de distribucion recien cambiado.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-land-cruiser.jpg"
     ],
     "contactName": "Pedro",
     "contactPhone": "+56 9 1144 7772",
@@ -2397,7 +2397,7 @@
     "fuel": "Diesel",
     "description": "Segundo dueño, impecable. Full equipo: aire, cierre centralizado, alzavidrios.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-yaris.jpg"
     ],
     "contactName": "Ana",
     "contactPhone": "+56 9 4716 5402",
@@ -2418,7 +2418,7 @@
     "fuel": "Bencina",
     "description": "Vehiculo de trabajo, motor impecable. Revision tecnica vigente.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-land-cruiser.jpg"
     ],
     "contactName": "Laura",
     "contactPhone": "+56 9 1873 3726",
@@ -2439,7 +2439,7 @@
     "fuel": "Bencina",
     "description": "Oportunidad! Economico, ideal para ciudad. Consumo eficiente.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-yaris.jpg"
     ],
     "contactName": "Diego",
     "contactPhone": "+56 9 9870 6304",
@@ -2460,7 +2460,7 @@
     "fuel": "Diesel",
     "description": "Excelente estado, unico dueño. Mantenciones al dia en concesionario oficial.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-rav4.jpg"
     ],
     "contactName": "Carmen",
     "contactPhone": "+56 9 7694 7837",
@@ -2481,7 +2481,7 @@
     "fuel": "Bencina",
     "description": "Siempre en garage. Pintura original, sin choques.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-hilux.jpg"
     ],
     "contactName": "Carmen",
     "contactPhone": "+56 9 4289 9786",
@@ -2502,7 +2502,7 @@
     "fuel": "Bencina",
     "description": "Segundo dueño, impecable. Full equipo: aire, cierre centralizado, alzavidrios.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-hilux.jpg"
     ],
     "contactName": "Laura",
     "contactPhone": "+56 9 2625 3670",
@@ -2523,7 +2523,7 @@
     "fuel": "Diesel",
     "description": "Vehiculo de trabajo, motor impecable. Revision tecnica vigente.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-kicks.jpg"
     ],
     "contactName": "Carmen",
     "contactPhone": "+56 9 7463 6663",
@@ -2544,7 +2544,7 @@
     "fuel": "Bencina",
     "description": "Segundo dueño, impecable. Full equipo: aire, cierre centralizado, alzavidrios.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-prius.jpg"
     ],
     "contactName": "Diego",
     "contactPhone": "+56 9 6721 1467",
@@ -2565,7 +2565,7 @@
     "fuel": "Bencina",
     "description": "Oportunidad! Economico, ideal para ciudad. Consumo eficiente.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-fortuner.jpg"
     ],
     "contactName": "Juan",
     "contactPhone": "+56 9 9814 7862",
@@ -2586,7 +2586,7 @@
     "fuel": "Diesel",
     "description": "Primera mano, kit de distribucion recien cambiado.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-kicks.jpg"
     ],
     "contactName": "Ana",
     "contactPhone": "+56 9 1225 5083",
@@ -2607,7 +2607,7 @@
     "fuel": "Bencina",
     "description": "Excelente estado, unico dueño. Mantenciones al dia en concesionario oficial.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-vitara.jpg"
     ],
     "contactName": "Ana",
     "contactPhone": "+56 9 3540 3966",
@@ -2628,7 +2628,7 @@
     "fuel": "Hibrido",
     "description": "Vehiculo de trabajo, motor impecable. Revision tecnica vigente.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-navara.jpg"
     ],
     "contactName": "Carlos",
     "contactPhone": "+56 9 3989 5890",
@@ -2649,7 +2649,7 @@
     "fuel": "Hibrido",
     "description": "Auto familiar muy cuidado. Documentos al dia, sin multas. Listo para transferir.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-rav4.jpg"
     ],
     "contactName": "Pedro",
     "contactPhone": "+56 9 6059 4705",
@@ -2670,7 +2670,7 @@
     "fuel": "Bencina",
     "description": "Version full equipada. Se aceptan permutas.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-prius.jpg"
     ],
     "contactName": "Carlos",
     "contactPhone": "+56 9 8962 8819",
@@ -2691,7 +2691,7 @@
     "fuel": "Diesel",
     "description": "Segundo dueño, impecable. Full equipo: aire, cierre centralizado, alzavidrios.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-hilux.jpg"
     ],
     "contactName": "Carmen",
     "contactPhone": "+56 9 9813 6117",
@@ -2712,7 +2712,7 @@
     "fuel": "Bencina",
     "description": "Version full equipada. Se aceptan permutas.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-corolla.jpg"
     ],
     "contactName": "Diego",
     "contactPhone": "+56 9 7516 7572",
@@ -2733,7 +2733,7 @@
     "fuel": "Diesel",
     "description": "Siempre en garage. Pintura original, sin choques.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-jimny.jpg"
     ],
     "contactName": "Pedro",
     "contactPhone": "+56 9 8644 4635",
@@ -2754,7 +2754,7 @@
     "fuel": "Bencina",
     "description": "Version full equipada. Se aceptan permutas.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-kicks.jpg"
     ],
     "contactName": "Pedro",
     "contactPhone": "+56 9 1141 2508",
@@ -2775,7 +2775,7 @@
     "fuel": "Diesel",
     "description": "Primera mano, kit de distribucion recien cambiado.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-kicks.jpg"
     ],
     "contactName": "Laura",
     "contactPhone": "+56 9 4921 3151",
@@ -2796,7 +2796,7 @@
     "fuel": "Diesel",
     "description": "Vehiculo de trabajo, motor impecable. Revision tecnica vigente.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-x-trail.jpg"
     ],
     "contactName": "Laura",
     "contactPhone": "+56 9 5529 1177",
@@ -2817,7 +2817,7 @@
     "fuel": "Hibrido",
     "description": "Siempre en garage. Pintura original, sin choques.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-swift.jpg"
     ],
     "contactName": "Juan",
     "contactPhone": "+56 9 7362 5565",
@@ -2838,7 +2838,7 @@
     "fuel": "Diesel",
     "description": "Excelente estado, unico dueño. Mantenciones al dia en concesionario oficial.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-fortuner.jpg"
     ],
     "contactName": "Pedro",
     "contactPhone": "+56 9 9209 5149",
@@ -2859,7 +2859,7 @@
     "fuel": "Diesel",
     "description": "Version full equipada. Se aceptan permutas.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-4runner.jpg"
     ],
     "contactName": "Pedro",
     "contactPhone": "+56 9 9615 4981",
@@ -2880,7 +2880,7 @@
     "fuel": "Hibrido",
     "description": "Segundo dueño, impecable. Full equipo: aire, cierre centralizado, alzavidrios.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-qashqai.jpg"
     ],
     "contactName": "Carmen",
     "contactPhone": "+56 9 8583 6077",
@@ -2901,7 +2901,7 @@
     "fuel": "Bencina",
     "description": "Excelente estado, unico dueño. Mantenciones al dia en concesionario oficial.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-alto.jpg"
     ],
     "contactName": "Diego",
     "contactPhone": "+56 9 7846 4511",

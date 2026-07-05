@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getListings } from "@/lib/server/listings-store";
 import { SearchBox } from "@/components/search/search-box";
@@ -90,8 +91,14 @@ export default async function Home() {
                   href={`/autos/${car.id}`}
                   className="group bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition border border-[#e8e4df]"
                 >
-                  <div className="h-48 bg-gradient-to-br from-[#1e3a5f]/10 to-[#c9a962]/10 flex items-center justify-center relative">
-                    <span className="text-6xl opacity-30">🚗</span>
+                  <div className="h-48 bg-gradient-to-br from-[#1e3a5f]/10 to-[#c9a962]/10 relative overflow-hidden">
+                    <Image
+                      src={car.images?.[0] ?? "/car-placeholder.svg"}
+                      alt={`${car.brand} ${car.model}`}
+                      fill
+                      sizes="(min-width: 1280px) 25vw, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
                     <span className="absolute bottom-3 left-3 px-2 py-1 bg-[#0f172a] text-white text-xs rounded">
                       {car.year}
                     </span>
