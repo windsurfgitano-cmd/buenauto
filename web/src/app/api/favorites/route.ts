@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 
 import { toggleFavorite } from "@/lib/server/auth";
+import { getListingById } from "@/lib/server/listings-store";
 import { getCurrentUser } from "@/lib/server/session";
 
 export const runtime = "nodejs";
@@ -43,6 +44,14 @@ export async function POST(req: Request) {
     return NextResponse.json(
       { error: "Falta listingId" },
       { status: 400 },
+    );
+  }
+
+  const listing = await getListingById(listingId);
+  if (!listing) {
+    return NextResponse.json(
+      { error: "El aviso no existe" },
+      { status: 404 },
     );
   }
 

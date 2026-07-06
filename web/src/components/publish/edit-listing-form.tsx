@@ -4,10 +4,17 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useId, useMemo, useState } from "react";
 
+import { compressImage } from "@/lib/compress-image";
 import { formatCLP } from "@/lib/format";
 import { CHILE_REGIONS } from "@/lib/regions";
 import type { Listing } from "@/lib/types";
 import { YEARS_2000_2025 } from "@/lib/years";
+
+const MAX_PHOTOS = 6;
+
+type ExistingPhoto = { kind: "existing"; url: string };
+type NewPhoto = { kind: "new"; file: File; preview: string };
+type Photo = ExistingPhoto | NewPhoto;
 
 type Props = {
   listing: Listing;
@@ -47,8 +54,43 @@ export function EditListingForm({ listing, brands }: Props) {
   const [contactName, setContactName] = useState(listing.contactName || "");
   const [contactPhone, setContactPhone] = useState(listing.contactPhone || "");
 
+  const [photos, setPhotos] = useState<Photo[]>(() =>
+    (listing.images ?? [])
+      .filter((url) => url !== "/car-placeholder.svg")
+      .map((url) => ({ kind: "existing", url })),
+  );
+
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  async function onPickPhotos(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(e.target.files ?? []);
+    e.target.value = "";
+
+    const incoming = files
+      .filter((f) => f.type.startsWith("image/"))
+      .slice(0, MAX_PHOTOS - photos.length);
+
+    if (incoming.length === 0) return;
+
+    const compressed = await Promise.all(incoming.map(compressImage));
+    setPhotos((prev) => [
+      ...prev,
+      ...compressed.map((file): NewPhoto => ({
+        kind: "new",
+        file,
+        preview: URL.createObjectURL(file),
+      })),
+    ]);
+  }
+
+  function removePhoto(index: number) {
+    setPhotos((prev) => {
+      const target = prev[index];
+      if (target?.kind === "new") URL.revokeObjectURL(target.preview);
+      return prev.filter((_, i) => i !== index);
+    });
+  }
 
   useEffect(() => {
     let active = true;
@@ -128,6 +170,37 @@ export function EditListingForm({ listing, brands }: Props) {
     setSubmitting(true);
     setError(null);
 
+    const images: string[] = [];
+
+    try {
+      for (const photo of photos) {
+        if (photo.kind === "existing") {
+          images.push(photo.url);
+          continue;
+        }
+
+        const fd = new FormData();
+        fd.append("file", photo.file);
+
+        const upRes = await fetch("/api/uploads", { method: "POST", body: fd });
+        const upData = (await upRes.json().catch(() => null)) as
+          | { url?: string; error?: string }
+          | null;
+
+        if (!upRes.ok || !upData?.url) {
+          setError(upData?.error ?? "No se pudo subir una de las fotos");
+          setSubmitting(false);
+          return;
+        }
+
+        images.push(upData.url);
+      }
+    } catch {
+      setError("No se pudieron subir las fotos");
+      setSubmitting(false);
+      return;
+    }
+
     try {
       const res = await fetch(`/api/listings/${encodeURIComponent(listing.id)}`, {
         method: "PATCH",
@@ -145,6 +218,7 @@ export function EditListingForm({ listing, brands }: Props) {
           transmission,
           fuel,
           description,
+          images,
           contactName,
           contactPhone,
         }),
@@ -378,6 +452,52 @@ export function EditListingForm({ listing, brands }: Props) {
             className="h-11 rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-900 outline-none ring-zinc-900/10 focus:ring-4 dark:border-zinc-800 dark:bg-black dark:text-white"
           />
         </label>
+
+        <div className="flex flex-col gap-2 sm:col-span-2">
+          <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+            Fotos del vehículo ({photos.length}/{MAX_PHOTOS})
+          </span>
+          <div className="flex flex-wrap gap-3">
+            {photos.map((photo, i) => (
+              <div
+                key={photo.kind === "existing" ? photo.url : photo.preview}
+                className="relative h-24 w-32 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={photo.kind === "existing" ? photo.url : photo.preview}
+                  alt={`Foto ${i + 1}`}
+                  className="h-full w-full object-cover"
+                />
+                <button
+                  type="button"
+                  onClick={() => removePhoto(i)}
+                  aria-label={`Quitar foto ${i + 1}`}
+                  className="absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-black/60 text-xs text-white hover:bg-black/80"
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+
+            {photos.length < MAX_PHOTOS ? (
+              <label className="flex h-24 w-32 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-zinc-300 text-zinc-500 transition hover:border-zinc-400 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500">
+                <span className="text-2xl leading-none">+</span>
+                <span className="text-[11px]">Agregar fotos</span>
+                <input
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  multiple
+                  onChange={onPickPhotos}
+                  className="hidden"
+                />
+              </label>
+            ) : null}
+          </div>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            La primera foto será la portada del aviso.
+          </p>
+        </div>
       </div>
 
       {error ? (

@@ -47,8 +47,15 @@ export async function POST(req: Request) {
     return res;
   } catch (err) {
     const raw = err instanceof Error ? err.message : "Unable to login";
-    const message = raw === "Invalid credentials" ? "Credenciales inválidas" : "No se pudo ingresar";
 
+    if (raw === "Too many attempts") {
+      return NextResponse.json(
+        { error: "Demasiados intentos fallidos. Intenta de nuevo en unos minutos." },
+        { status: 429 },
+      );
+    }
+
+    const message = raw === "Invalid credentials" ? "Credenciales inválidas" : "No se pudo ingresar";
     return NextResponse.json({ error: message }, { status: 400 });
   }
 }

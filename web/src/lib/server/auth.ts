@@ -177,12 +177,65 @@ export async function registerUser(input: {
   throw new Error("Could not allocate user id");
 }
 
+const LOGIN_MAX_ATTEMPTS = 5;
+const LOGIN_LOCK_MINUTES = 15;
+
+/**
+ * Ventana de fuerza bruta: bloquea un email tras varios intentos
+ * fallidos seguidos. Se resetea al iniciar sesión con éxito.
+ */
+export async function checkLoginLock(email: string): Promise<void> {
+  const normalized = normalizeEmail(email);
+
+  const rows = await query<{ locked_until: unknown }>(
+    `SELECT locked_until FROM login_attempts
+     WHERE email = $1 AND locked_until > now()`,
+    [normalized],
+  );
+
+  if (rows.length > 0) {
+    throw new Error("Too many attempts");
+  }
+}
+
+async function recordLoginFailure(email: string): Promise<void> {
+  const normalized = normalizeEmail(email);
+
+  await query(
+    `INSERT INTO login_attempts (email, failed_count, last_attempt_at, locked_until)
+     VALUES ($1, 1, now(), NULL)
+     ON CONFLICT (email) DO UPDATE SET
+       failed_count = CASE
+         WHEN login_attempts.locked_until IS NOT NULL AND login_attempts.locked_until <= now()
+           THEN 1
+         ELSE login_attempts.failed_count + 1
+       END,
+       last_attempt_at = now(),
+       locked_until = CASE
+         WHEN (CASE
+           WHEN login_attempts.locked_until IS NOT NULL AND login_attempts.locked_until <= now()
+             THEN 1
+           ELSE login_attempts.failed_count + 1
+         END) >= $2
+           THEN now() + make_interval(mins => $3)
+         ELSE NULL
+       END`,
+    [normalized, LOGIN_MAX_ATTEMPTS, LOGIN_LOCK_MINUTES],
+  );
+}
+
+async function recordLoginSuccess(email: string): Promise<void> {
+  await query(`DELETE FROM login_attempts WHERE email = $1`, [normalizeEmail(email)]);
+}
+
 export async function authenticateUser(input: {
   email: string;
   password: string;
 }): Promise<PublicUser> {
   const email = normalizeEmail(input.email);
   const password = input.password;
+
+  await checkLoginLock(email);
 
   const rows = await query<UserRow>(
     `SELECT ${USER_COLUMNS} FROM users WHERE lower(email) = $1`,
@@ -192,6 +245,7 @@ export async function authenticateUser(input: {
   const user = rows[0];
 
   if (!user) {
+    await recordLoginFailure(email);
     throw new Error("Invalid credentials");
   }
 
@@ -199,9 +253,11 @@ export async function authenticateUser(input: {
   const actual = hashPassword(password, user.password_salt);
 
   if (!safeEqualHex(expected, actual)) {
+    await recordLoginFailure(email);
     throw new Error("Invalid credentials");
   }
 
+  await recordLoginSuccess(email);
   return rowToPublicUser(user);
 }
 
@@ -304,4 +360,28 @@ export async function updateUserPassword(
 
 export function getSessionTtlSeconds() {
   return SESSION_TTL_SECONDS;
+}
+
+/**
+ * Elimina la cuenta y sus sesiones (cascade por FK). Los avisos del
+ * usuario se borran aparte, desde el caller, con
+ * deleteListingsByOwner. Los pagos/suscripciones quedan (registro
+ * contable), sin datos personales asociados una vez borrado el user.
+ */
+export async function deleteUser(userId: string, currentPassword: string) {
+  const rows = await query<UserRow>(`SELECT ${USER_COLUMNS} FROM users WHERE id = $1`, [
+    userId,
+  ]);
+  const user = rows[0];
+  if (!user) throw new Error("Missing user");
+
+  const expected = user.password_hash;
+  const actual = hashPassword(currentPassword, user.password_salt);
+
+  if (!safeEqualHex(expected, actual)) {
+    throw new Error("Invalid credentials");
+  }
+
+  await query(`DELETE FROM login_attempts WHERE email = $1`, [user.email]);
+  await query(`DELETE FROM users WHERE id = $1`, [userId]);
 }

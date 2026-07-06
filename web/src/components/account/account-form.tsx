@@ -36,6 +36,11 @@ export function AccountForm({ user }: Props) {
   const [savingPassword, setSavingPassword] = useState(false);
   const [passwordMessage, setPasswordMessage] = useState<string | null>(null);
 
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [deletePassword, setDeletePassword] = useState("");
+  const [deleting, setDeleting] = useState(false);
+  const [deleteError, setDeleteError] = useState<string | null>(null);
+
   const canSaveName = useMemo(() => {
     return name.trim() !== (user.name ?? "");
   }, [name, user.name]);
@@ -111,6 +116,36 @@ export function AccountForm({ user }: Props) {
       setPasswordMessage("No se pudo cambiar la contraseña");
     } finally {
       setSavingPassword(false);
+    }
+  }
+
+  async function onDeleteAccount() {
+    if (!deletePassword || deleting) return;
+
+    setDeleting(true);
+    setDeleteError(null);
+
+    try {
+      const res = await fetch("/api/account", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ currentPassword: deletePassword }),
+      });
+
+      const data = (await res.json().catch(() => null)) as
+        | { ok?: boolean; error?: string }
+        | null;
+
+      if (!res.ok) {
+        setDeleteError(data?.error ?? "No se pudo eliminar la cuenta");
+        return;
+      }
+
+      window.location.href = "/";
+    } catch {
+      setDeleteError("No se pudo eliminar la cuenta");
+    } finally {
+      setDeleting(false);
     }
   }
 
@@ -237,6 +272,68 @@ export function AccountForm({ user }: Props) {
         >
           {savingPassword ? "Guardando..." : "Cambiar contraseña"}
         </button>
+      </section>
+
+      <section className="relative rounded-2xl border border-red-200/60 bg-red-50/60 p-4 dark:border-red-900/40 dark:bg-red-950/20">
+        <h2 className="text-base font-semibold text-red-900 dark:text-red-200">
+          Eliminar cuenta
+        </h2>
+        <p className="mt-1 text-sm text-red-800/80 dark:text-red-300/80">
+          Esto borra tu cuenta y todos tus avisos publicados. No se puede deshacer.
+        </p>
+
+        {!showDeleteConfirm ? (
+          <button
+            type="button"
+            onClick={() => setShowDeleteConfirm(true)}
+            className="mt-4 inline-flex h-11 items-center justify-center rounded-xl border border-red-300 bg-white px-4 text-sm font-semibold text-red-700 shadow-sm transition hover:bg-red-100 dark:border-red-800 dark:bg-transparent dark:text-red-300 dark:hover:bg-red-950/40"
+          >
+            Eliminar mi cuenta
+          </button>
+        ) : (
+          <div className="mt-4 grid gap-3">
+            <label className="flex flex-col gap-1">
+              <span className="text-xs font-semibold text-red-900 dark:text-red-200">
+                Confirma con tu contraseña
+              </span>
+              <input
+                type="password"
+                value={deletePassword}
+                onChange={(e) => setDeletePassword(e.target.value)}
+                placeholder="••••••••"
+                className="h-11 rounded-xl border border-red-300 bg-white px-3 text-sm text-zinc-900 outline-none ring-red-900/10 focus:ring-4 dark:border-red-900 dark:bg-black dark:text-white"
+              />
+            </label>
+
+            {deleteError ? (
+              <p className="text-sm font-medium text-red-700 dark:text-red-300">
+                {deleteError}
+              </p>
+            ) : null}
+
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <button
+                type="button"
+                onClick={onDeleteAccount}
+                disabled={!deletePassword || deleting}
+                className="h-11 w-full rounded-xl bg-red-700 px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-red-800 active:scale-[0.99] disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {deleting ? "Eliminando..." : "Sí, eliminar definitivamente"}
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowDeleteConfirm(false);
+                  setDeletePassword("");
+                  setDeleteError(null);
+                }}
+                className="h-11 w-full rounded-xl border border-zinc-200 bg-white px-4 text-sm font-semibold text-zinc-900 shadow-sm transition hover:bg-zinc-50 dark:border-zinc-800 dark:bg-black dark:text-white"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        )}
       </section>
     </div>
   );

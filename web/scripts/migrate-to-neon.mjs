@@ -79,6 +79,12 @@ const SCHEMA = [
     expires_at timestamptz NOT NULL
   )`,
   `CREATE INDEX IF NOT EXISTS sessions_expires_idx ON sessions (expires_at)`,
+  `CREATE TABLE IF NOT EXISTS login_attempts (
+    email text PRIMARY KEY,
+    failed_count integer NOT NULL DEFAULT 0,
+    last_attempt_at timestamptz NOT NULL DEFAULT now(),
+    locked_until timestamptz
+  )`,
   `CREATE TABLE IF NOT EXISTS subscriptions (
     id text PRIMARY KEY,
     user_id text NOT NULL,

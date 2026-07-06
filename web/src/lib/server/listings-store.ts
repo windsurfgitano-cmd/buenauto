@@ -302,6 +302,11 @@ export async function getListingsByOwner(ownerId: string) {
   return rows.map(rowToListing);
 }
 
+/** Usado al eliminar una cuenta: borra todos los avisos de ese dueño. */
+export async function deleteListingsByOwner(ownerId: string) {
+  await query(`DELETE FROM listings WHERE owner_id = $1`, [ownerId]);
+}
+
 async function getOwnedListingOrThrow(id: string, ownerId: string) {
   const current = await getListingById(id);
 
