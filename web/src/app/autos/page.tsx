@@ -14,6 +14,12 @@ import { searchListings } from "@/lib/server/listings-store";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
+export const metadata = {
+  title: "Autos usados y nuevos en Chile",
+  description:
+    "Busca entre cientos de autos en venta en todo Chile: filtra por marca, modelo, año, precio y región. Fotos reales y contacto directo con el vendedor.",
+};
+
 type SearchParams = Record<string, string | string[] | undefined>;
 
 function first(value: string | string[] | undefined) {

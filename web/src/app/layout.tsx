@@ -9,9 +9,23 @@ const geistSans = Geist({
   subsets: ["latin"],
 });
 
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export const metadata: Metadata = {
-  title: "BuenAuto - Compra y vende autos en Chile",
-  description: "El marketplace de vehículos más confiable de Chile. Encuentra autos nuevos y usados al mejor precio.",
+  // Sin metadataBase las og:image quedan relativas y WhatsApp/Facebook
+  // no muestran la foto al compartir un aviso.
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "BuenAuto - Compra y vende autos en Chile",
+    template: "%s | BuenAuto",
+  },
+  description:
+    "El marketplace de vehículos más confiable de Chile. Encuentra autos nuevos y usados al mejor precio.",
+  openGraph: {
+    siteName: "BuenAuto",
+    locale: "es_CL",
+    type: "website",
+  },
 };
 
 export default async function RootLayout({

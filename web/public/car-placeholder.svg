@@ -1,28 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" fill="none">
-  <rect width="640" height="360" rx="28" fill="#F4F4F5" />
-  <path
-    d="M184 206c6-26 18-66 28-82 10-16 29-24 56-24h104c27 0 46 8 56 24 10 16 22 56 28 82"
-    stroke="#18181B"
-    stroke-width="14"
-    stroke-linecap="round"
-    stroke-linejoin="round"
-  />
-  <path
-    d="M156 206h328c16 0 28 12 28 28v36c0 16-12 28-28 28h-20a40 40 0 0 1-80 0H256a40 40 0 0 1-80 0h-20c-16 0-28-12-28-28v-36c0-16 12-28 28-28Z"
-    stroke="#18181B"
-    stroke-width="14"
-    stroke-linejoin="round"
-  />
-  <path
-    d="M228 252h184"
-    stroke="#18181B"
-    stroke-width="14"
-    stroke-linecap="round"
-  />
-  <path
-    d="M232 162h176"
-    stroke="#18181B"
-    stroke-width="14"
-    stroke-linecap="round"
-  />
+  <rect width="640" height="360" fill="#0f172a" />
+  <rect width="640" height="360" fill="url(#g)" />
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="640" y2="360" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#1e3a5f" stop-opacity="0.55" />
+      <stop offset="1" stop-color="#0f172a" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+  <g opacity="0.9">
+    <path
+      d="M184 196c6-26 18-66 28-82 10-16 29-24 56-24h104c27 0 46 8 56 24 10 16 22 56 28 82"
+      stroke="#c9a962"
+      stroke-width="14"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M156 196h328c16 0 28 12 28 28v36c0 16-12 28-28 28h-20a40 40 0 0 1-80 0H256a40 40 0 0 1-80 0h-20c-16 0-28-12-28-28v-36c0-16 12-28 28-28Z"
+      stroke="#c9a962"
+      stroke-width="14"
+      stroke-linejoin="round"
+    />
+    <path d="M228 242h184" stroke="#c9a962" stroke-width="14" stroke-linecap="round" />
+    <path d="M232 152h176" stroke="#c9a962" stroke-width="14" stroke-linecap="round" />
+  </g>
+  <text
+    x="320"
+    y="330"
+    text-anchor="middle"
+    font-family="system-ui, -apple-system, sans-serif"
+    font-size="24"
+    font-weight="700"
+    letter-spacing="8"
+    fill="#c9a962"
+    opacity="0.75"
+  >BUENAUTO</text>
 </svg>
