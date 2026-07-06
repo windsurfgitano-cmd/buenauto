@@ -269,6 +269,14 @@ export async function getPaymentByPreferenceId(preferenceId: string): Promise<Pa
   return rows.length > 0 ? rowToPayment(rows[0]) : null;
 }
 
+export async function getPaymentByMpPaymentId(mpPaymentId: string): Promise<Payment | null> {
+  const rows = await query<PaymentRow>(
+    `SELECT * FROM payments WHERE mp_payment_id = $1 LIMIT 1`,
+    [mpPaymentId],
+  );
+  return rows.length > 0 ? rowToPayment(rows[0]) : null;
+}
+
 // Boosts
 
 export async function loadBoosts(): Promise<ListingBoost[]> {

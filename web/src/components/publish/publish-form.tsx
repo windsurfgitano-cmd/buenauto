@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useMemo, useState } from "react";
 
+import { compressImage } from "@/lib/compress-image";
 import { formatCLP } from "@/lib/format";
 import { CHILE_REGIONS } from "@/lib/regions";
 import type { Listing, ListingCreateInput } from "@/lib/types";
@@ -39,11 +40,39 @@ export function PublishForm({ brands }: Props) {
   const [description, setDescription] = useState("");
   const [contactName, setContactName] = useState("");
   const [contactPhone, setContactPhone] = useState("");
-  const [invoiceEmail] = useState("");
-  const [invoiceRUT] = useState("");
+  const [invoiceEmail, setInvoiceEmail] = useState("");
+  const [invoiceRUT, setInvoiceRUT] = useState("");
+
+  const [photos, setPhotos] = useState<{ file: File; preview: string }[]>([]);
 
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const MAX_PHOTOS = 6;
+
+  async function onPickPhotos(e: React.ChangeEvent<HTMLInputElement>) {
+    const files = Array.from(e.target.files ?? []);
+    e.target.value = "";
+
+    const incoming = files
+      .filter((f) => f.type.startsWith("image/"))
+      .slice(0, MAX_PHOTOS - photos.length);
+
+    if (incoming.length === 0) return;
+
+    const compressed = await Promise.all(incoming.map(compressImage));
+    setPhotos((prev) => [
+      ...prev,
+      ...compressed.map((file) => ({ file, preview: URL.createObjectURL(file) })),
+    ]);
+  }
+
+  function removePhoto(index: number) {
+    setPhotos((prev) => {
+      URL.revokeObjectURL(prev[index]?.preview ?? "");
+      return prev.filter((_, i) => i !== index);
+    });
+  }
 
   useEffect(() => {
     let active = true;
@@ -134,6 +163,32 @@ export function PublishForm({ brands }: Props) {
     setSubmitting(true);
     setError(null);
 
+    const images: string[] = [];
+
+    try {
+      for (const photo of photos) {
+        const fd = new FormData();
+        fd.append("file", photo.file);
+
+        const upRes = await fetch("/api/uploads", { method: "POST", body: fd });
+        const upData = (await upRes.json().catch(() => null)) as
+          | { url?: string; error?: string }
+          | null;
+
+        if (!upRes.ok || !upData?.url) {
+          setError(upData?.error ?? "No se pudo subir una de las fotos");
+          setSubmitting(false);
+          return;
+        }
+
+        images.push(upData.url);
+      }
+    } catch {
+      setError("No se pudieron subir las fotos");
+      setSubmitting(false);
+      return;
+    }
+
     const payload: ListingCreateInput = {
       brand,
       model,
@@ -145,6 +200,7 @@ export function PublishForm({ brands }: Props) {
       transmission,
       fuel,
       description,
+      images,
       contactName,
       contactPhone,
       invoiceEmail,
@@ -400,6 +456,76 @@ export function PublishForm({ brands }: Props) {
             value={contactPhone}
             onChange={(e) => setContactPhone(e.target.value)}
             placeholder="Ej: +56 9 1234 5678"
+            className="h-11 rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-900 outline-none ring-zinc-900/10 focus:ring-4 dark:border-zinc-800 dark:bg-black dark:text-white"
+          />
+        </label>
+
+        <div className="flex flex-col gap-2 sm:col-span-2">
+          <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+            Fotos del vehículo ({photos.length}/{MAX_PHOTOS})
+          </span>
+          <div className="flex flex-wrap gap-3">
+            {photos.map((photo, i) => (
+              <div key={photo.preview} className="relative h-24 w-32 overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={photo.preview}
+                  alt={`Foto ${i + 1}`}
+                  className="h-full w-full object-cover"
+                />
+                <button
+                  type="button"
+                  onClick={() => removePhoto(i)}
+                  aria-label={`Quitar foto ${i + 1}`}
+                  className="absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-black/60 text-xs text-white hover:bg-black/80"
+                >
+                  ✕
+                </button>
+              </div>
+            ))}
+
+            {photos.length < MAX_PHOTOS ? (
+              <label className="flex h-24 w-32 cursor-pointer flex-col items-center justify-center gap-1 rounded-xl border border-dashed border-zinc-300 text-zinc-500 transition hover:border-zinc-400 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-400 dark:hover:border-zinc-500">
+                <span className="text-2xl leading-none">+</span>
+                <span className="text-[11px]">Agregar fotos</span>
+                <input
+                  type="file"
+                  accept="image/jpeg,image/png,image/webp"
+                  multiple
+                  onChange={onPickPhotos}
+                  className="hidden"
+                />
+              </label>
+            ) : null}
+          </div>
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+            La primera foto será la portada del aviso. Se comprimen automáticamente.
+          </p>
+        </div>
+
+        <label className="flex flex-col gap-1">
+          <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+            Email para la boleta
+          </span>
+          <input
+            required
+            type="email"
+            value={invoiceEmail}
+            onChange={(e) => setInvoiceEmail(e.target.value)}
+            placeholder="Ej: juan@correo.cl"
+            className="h-11 rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-900 outline-none ring-zinc-900/10 focus:ring-4 dark:border-zinc-800 dark:bg-black dark:text-white"
+          />
+        </label>
+
+        <label className="flex flex-col gap-1">
+          <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
+            RUT para la boleta
+          </span>
+          <input
+            required
+            value={invoiceRUT}
+            onChange={(e) => setInvoiceRUT(e.target.value)}
+            placeholder="Ej: 12.345.678-9"
             className="h-11 rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-900 outline-none ring-zinc-900/10 focus:ring-4 dark:border-zinc-800 dark:bg-black dark:text-white"
           />
         </label>

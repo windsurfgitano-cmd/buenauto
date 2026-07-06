@@ -1,3 +1,5 @@
+import crypto from "crypto";
+
 import { NextResponse, type NextRequest } from "next/server";
 import { MercadoPagoConfig, Payment } from "mercadopago";
 
@@ -8,6 +10,7 @@ import {
   createPayment,
   approvePayment,
   getPaymentByPreferenceId,
+  getPaymentByMpPaymentId,
 } from "@/lib/server/subscriptions-store";
 import { BOOSTS, PACKS, type PlanId, type BoostType, type PackId } from "@/lib/plans";
 import { publishListing } from "@/lib/server/listings-store";
@@ -20,6 +23,44 @@ function getClient() {
   }
 
   return new MercadoPagoConfig({ accessToken });
+}
+
+/**
+ * Valida la firma x-signature de MercadoPago (HMAC-SHA256 sobre
+ * "id:<data.id>;request-id:<x-request-id>;ts:<ts>;" con el secret del
+ * panel de webhooks). Sin MERCADOPAGO_WEBHOOK_SECRET configurado no se
+ * puede validar: se acepta con warning (solo aceptable en sandbox).
+ */
+function verifyWebhookSignature(req: NextRequest, dataId: string): boolean {
+  const secret = process.env.MERCADOPAGO_WEBHOOK_SECRET;
+
+  if (!secret) {
+    console.warn(
+      "[MP Webhook] MERCADOPAGO_WEBHOOK_SECRET no configurado — firma NO validada. Configúralo antes de usar credenciales de producción.",
+    );
+    return true;
+  }
+
+  const signature = req.headers.get("x-signature") ?? "";
+  const requestId = req.headers.get("x-request-id") ?? "";
+
+  const parts = new Map<string, string>();
+  for (const piece of signature.split(",")) {
+    const idx = piece.indexOf("=");
+    if (idx === -1) continue;
+    parts.set(piece.slice(0, idx).trim(), piece.slice(idx + 1).trim());
+  }
+
+  const ts = parts.get("ts");
+  const v1 = parts.get("v1");
+  if (!ts || !v1) return false;
+
+  const manifest = `id:${dataId.toLowerCase()};request-id:${requestId};ts:${ts};`;
+  const expected = crypto.createHmac("sha256", secret).update(manifest).digest("hex");
+
+  const a = Buffer.from(expected, "utf8");
+  const b = Buffer.from(v1, "utf8");
+  return a.length === b.length && crypto.timingSafeEqual(a, b);
 }
 
 type ExternalReference = {
@@ -42,10 +83,24 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ received: true });
     }
 
-    const paymentId = data?.id;
+    // El data.id oficial para la firma viene en el query string.
+    const paymentId =
+      req.nextUrl.searchParams.get("data.id") ?? (data?.id ? String(data.id) : null);
 
     if (!paymentId) {
       return NextResponse.json({ error: "No payment ID" }, { status: 400 });
+    }
+
+    if (!verifyWebhookSignature(req, String(paymentId))) {
+      console.error("[MP Webhook] Firma inválida, notificación rechazada");
+      return NextResponse.json({ error: "Invalid signature" }, { status: 401 });
+    }
+
+    // Idempotencia: si este pago de MP ya fue procesado, no repetir
+    // (evita duplicar créditos/boosts ante reenvíos o replays).
+    const alreadyProcessed = await getPaymentByMpPaymentId(String(paymentId));
+    if (alreadyProcessed) {
+      return NextResponse.json({ received: true, alreadyProcessed: true });
     }
 
     // Fetch payment details from MercadoPago
