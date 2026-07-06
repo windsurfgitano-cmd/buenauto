@@ -35,12 +35,21 @@ export default async function Home() {
   return (
     <div className="bg-[#f8f6f3]">
       {/* Hero - Sin header ya que está en layout */}
-      <section className="relative bg-gradient-to-br from-[#0f172a] via-[#1e3a5f] to-[#0f172a] py-16 lg:py-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4">
+      <section className="relative overflow-hidden bg-[#0f172a] py-16 lg:py-24">
+        <Image
+          src="/hero-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-45"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f172a]/70 via-[#0f172a]/40 to-[#0f172a]/85" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 drop-shadow-lg">
             Encuentra tu auto ideal
           </h1>
-          <p className="text-lg md:text-xl text-[#c9a962] mb-8">
+          <p className="text-lg md:text-xl text-[#c9a962] mb-8 drop-shadow">
             {listings.length.toLocaleString('es-CL')} vehículos disponibles en Chile
           </p>
           <SearchBox brands={brands} />
@@ -117,11 +126,19 @@ export default async function Home() {
       </section>
 
       {/* CTA Vender */}
-      <section className="py-20 bg-gradient-to-r from-[#0f172a] to-[#1e3a5f]">
-        <div className="max-w-4xl mx-auto px-4 text-center">
+      <section className="relative overflow-hidden bg-[#0f172a] py-20">
+        <Image
+          src="/cta-bg.jpg"
+          alt=""
+          fill
+          sizes="100vw"
+          className="object-cover object-center opacity-35"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/85 via-[#0f172a]/60 to-[#1e3a5f]/85" />
+        <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-light text-white mb-4">¿Quieres vender tu vehículo?</h2>
-          <p className="text-[#c9a962] text-lg mb-8">Publica gratis y llega a miles de compradores</p>
-          <Link href="/publicar" className="px-8 py-4 bg-[#c9a962] text-[#0f172a] rounded-xl font-bold hover:bg-[#d4af37] transition">
+          <p className="text-[#c9a962] text-lg mb-8">Publica y llega a miles de compradores</p>
+          <Link href="/publicar" className="inline-block px-8 py-4 bg-[#c9a962] text-[#0f172a] rounded-xl font-bold hover:bg-[#d4af37] transition shadow-lg shadow-black/30">
             Publicar Ahora
           </Link>
         </div>

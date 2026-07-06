@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     siteName: "BuenAuto",
     locale: "es_CL",
     type: "website",
+    images: ["/hero-bg.jpg"],
   },
 };
 
