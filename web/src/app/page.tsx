@@ -36,14 +36,16 @@ export default async function Home() {
     <div className="bg-[#f8f6f3]">
       {/* Hero - Sin header ya que está en layout */}
       <section className="relative overflow-hidden bg-[#0f172a] py-16 lg:py-24">
-        <Image
-          src="/hero-bg.jpg"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center opacity-45"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/hero-bg.jpg"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-45"
+        >
+          <source src="/hero-bg.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-b from-[#0f172a]/70 via-[#0f172a]/40 to-[#0f172a]/85" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-light text-white mb-4 drop-shadow-lg">
