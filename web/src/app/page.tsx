@@ -64,15 +64,24 @@ export default async function Home() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-2xl font-semibold text-[#0f172a] mb-8 text-center">Explora por marca</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-              {topBrands.map(([marca, count]) => (
+              {topBrands.map(([marca, count], i) => (
                 <Link
                   key={marca}
                   href={`/autos?brand=${encodeURIComponent(marca)}`}
-                  className="p-6 bg-[#f8f6f3] rounded-xl text-center hover:bg-[#0f172a] hover:text-white transition group"
+                  className="group relative overflow-hidden rounded-xl bg-[#0f172a] text-white"
                 >
-                  <span className="text-3xl mb-2 block group-hover:scale-110 transition">🚗</span>
-                  <span className="font-semibold block">{marca}</span>
-                  <span className="text-sm text-[#64748b] group-hover:text-[#c9a962]">{count} {count === 1 ? "aviso" : "avisos"}</span>
+                  <Image
+                    src={`/brand-${i + 1}.jpg`}
+                    alt=""
+                    fill
+                    sizes="(min-width: 768px) 25vw, 50vw"
+                    className="object-cover opacity-40 transition duration-300 group-hover:opacity-60 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172a] via-[#0f172a]/50 to-transparent" />
+                  <div className="relative flex flex-col items-center justify-center p-6 text-center min-h-[130px]">
+                    <span className="font-bold text-lg block drop-shadow">{marca}</span>
+                    <span className="text-sm text-[#c9a962] drop-shadow">{count} {count === 1 ? "aviso" : "avisos"}</span>
+                  </div>
                 </Link>
               ))}
             </div>
@@ -129,13 +138,16 @@ export default async function Home() {
 
       {/* CTA Vender */}
       <section className="relative overflow-hidden bg-[#0f172a] py-20">
-        <Image
-          src="/cta-bg.jpg"
-          alt=""
-          fill
-          sizes="100vw"
-          className="object-cover object-center opacity-35"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/cta-bg.jpg"
+          className="absolute inset-0 h-full w-full object-cover object-center opacity-35"
+        >
+          <source src="/cta-bg.mp4" type="video/mp4" />
+        </video>
         <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/85 via-[#0f172a]/60 to-[#1e3a5f]/85" />
         <div className="relative max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-light text-white mb-4">¿Quieres vender tu vehículo?</h2>

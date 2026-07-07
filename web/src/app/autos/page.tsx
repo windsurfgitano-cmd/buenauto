@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { RevealAnimations } from "@/components/animations/reveal-animations";
@@ -211,13 +212,29 @@ export default async function AutosPage({
   return (
     <div id="autos">
       <RevealAnimations rootId="autos" />
+      <section className="relative overflow-hidden bg-[#0f172a]">
+        <Image
+          src="/autos-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0f172a]/85 via-[#0f172a]/60 to-[#0f172a]/85" />
+        <div className="relative mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-10">
+          <h1 className="text-3xl font-semibold tracking-tight text-white drop-shadow-lg">
+            Autos en venta
+          </h1>
+          <p className="mt-1 text-sm text-zinc-200 drop-shadow">
+            Filtra por marca, modelo, año, precio y región.
+          </p>
+        </div>
+      </section>
       <Container className="py-12">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div data-anim="fade-up">
-            <h1 className="text-3xl font-semibold tracking-tight text-zinc-900 dark:text-white">
-              Autos en venta
-            </h1>
-            <p className="mt-1 text-sm text-zinc-600 dark:text-zinc-300">
+            <p className="text-sm text-zinc-600 dark:text-zinc-300">
               {total} resultados
               {total > 0 ? ` · Mostrando ${startIndex}–${endIndex}` : ""}
             </p>

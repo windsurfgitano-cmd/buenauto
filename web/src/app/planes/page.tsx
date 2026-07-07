@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 import { Container } from "@/components/ui/container";
@@ -20,19 +21,30 @@ export default async function PlanesPage() {
   const currentPlanId = subscription?.planId ?? "free";
 
   return (
-    <main className="py-12">
-      <Container>
-        <div className="mx-auto max-w-4xl text-center">
-          <p className="text-xs font-semibold tracking-[0.18em] uppercase text-zinc-500 dark:text-zinc-400">
+    <main className="pb-12">
+      <section className="relative overflow-hidden bg-[#0f172a] py-16 text-center">
+        <Image
+          src="/planes-bg.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-40"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0f172a]/70 via-[#0f172a]/50 to-[#0f172a]/90" />
+        <div className="relative mx-auto max-w-4xl px-4">
+          <p className="text-xs font-semibold tracking-[0.18em] uppercase text-[#c9a962]">
             Planes y Precios
           </p>
-          <h1 className="mt-3 text-3xl font-bold tracking-tight text-zinc-900 sm:text-4xl dark:text-white">
+          <h1 className="mt-3 text-3xl font-bold tracking-tight text-white sm:text-4xl drop-shadow-lg">
             Vende más con BuenAuto
           </h1>
-          <p className="mt-4 text-base text-zinc-600 dark:text-zinc-300">
+          <p className="mt-4 text-base text-zinc-200 drop-shadow">
             Elige el plan que mejor se adapte a tus necesidades. Cancela cuando quieras.
           </p>
         </div>
+      </section>
+      <Container className="pt-12">
 
         {user && (
           <div className="mt-8 flex items-center justify-center gap-4 text-sm">
