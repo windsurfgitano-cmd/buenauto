@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { RevealAnimations } from "@/components/animations/reveal-animations";
 import { ListingCard } from "@/components/listings/listing-card";
 import { Container } from "@/components/ui/container";
-import { getListings } from "@/lib/server/listings-store";
+import { getListingsByIds } from "@/lib/server/listings-store";
 import { getCurrentUser } from "@/lib/server/session";
 
 export const runtime = "nodejs";
@@ -16,9 +16,8 @@ export default async function FavoritosPage() {
     redirect("/ingresar?next=/favoritos");
   }
 
-  const listings = await getListings();
-  const favSet = new Set(user.favorites);
-  const favorites = listings.filter((l) => favSet.has(l.id));
+  // Solo trae los avisos favoritados, no todo el catálogo.
+  const favorites = await getListingsByIds(user.favorites);
 
   return (
     <div id="favorites">

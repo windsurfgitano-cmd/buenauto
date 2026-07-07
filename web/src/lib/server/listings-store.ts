@@ -190,6 +190,46 @@ export async function getListings() {
   return rows.map(rowToListing);
 }
 
+/** Destacados del home: los más recientes públicos. No carga todo. */
+export async function getFeaturedListings(limit = 12) {
+  const rows = await query<ListingRow>(
+    `SELECT ${LISTING_COLUMNS} FROM listings WHERE ${PUBLIC_WHERE}
+     ORDER BY created_at DESC LIMIT $1`,
+    [limit],
+  );
+  return rows.map(rowToListing);
+}
+
+/** Top de marcas por cantidad de avisos públicos (agregado en SQL). */
+export async function getTopBrands(limit = 4): Promise<Array<[string, number]>> {
+  const rows = await query<{ brand: string; count: number }>(
+    `SELECT brand, count(*)::int AS count FROM listings WHERE ${PUBLIC_WHERE}
+     GROUP BY brand ORDER BY count DESC, brand ASC LIMIT $1`,
+    [limit],
+  );
+  return rows.map((r) => [r.brand, Number(r.count)]);
+}
+
+export async function getPublicListingsCount(): Promise<number> {
+  const rows = await query<{ total: number }>(
+    `SELECT count(*)::int AS total FROM listings WHERE ${PUBLIC_WHERE}`,
+  );
+  return rows[0]?.total ?? 0;
+}
+
+/** Trae avisos por lista de ids preservando el orden pedido (favoritos). */
+export async function getListingsByIds(ids: string[]) {
+  if (ids.length === 0) return [];
+  const rows = await query<ListingRow>(
+    `SELECT ${LISTING_COLUMNS} FROM listings WHERE id = ANY($1)`,
+    [ids],
+  );
+  const byId = new Map(rows.map((r) => [r.id, rowToListing(r)]));
+  return ids
+    .map((id) => byId.get(id))
+    .filter((l): l is Listing => Boolean(l));
+}
+
 export async function getListingById(id: string) {
   const rows = await query<ListingRow>(
     `SELECT ${LISTING_COLUMNS} FROM listings WHERE id = $1`,

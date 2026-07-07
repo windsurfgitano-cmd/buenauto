@@ -63,6 +63,9 @@ const SCHEMA = [
   `CREATE INDEX IF NOT EXISTS listings_public_idx ON listings (status, expires_at)`,
   `CREATE INDEX IF NOT EXISTS listings_brand_idx ON listings (brand)`,
   `CREATE INDEX IF NOT EXISTS listings_owner_idx ON listings (owner_id)`,
+  `CREATE INDEX IF NOT EXISTS listings_created_idx ON listings (created_at DESC)`,
+  `CREATE INDEX IF NOT EXISTS listings_price_idx ON listings (price)`,
+  `CREATE INDEX IF NOT EXISTS listings_year_idx ON listings (year)`,
   `CREATE TABLE IF NOT EXISTS users (
     id text PRIMARY KEY,
     email text NOT NULL UNIQUE,

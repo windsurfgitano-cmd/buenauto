@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getListings } from "@/lib/server/listings-store";
+import {
+  getFeaturedListings,
+  getTopBrands,
+  getPublicListingsCount,
+} from "@/lib/server/listings-store";
+import { getCatalogBrands } from "@/lib/server/catalog";
 import { SearchBox } from "@/components/search/search-box";
 import type { Listing } from "@/lib/types";
 
@@ -12,25 +17,22 @@ function formatPrice(price: number): string {
 }
 
 export default async function Home() {
-  let listings: Listing[] = [];
+  let featured: Listing[] = [];
   let brands: string[] = [];
+  let topBrands: Array<[string, number]> = [];
+  let total = 0;
 
   try {
-    listings = await getListings();
-    brands = [...new Set(listings.map(l => l.brand))].sort();
+    // Agregaciones en SQL: no se cargan los avisos completos en memoria.
+    [featured, topBrands, total, brands] = await Promise.all([
+      getFeaturedListings(12),
+      getTopBrands(4),
+      getPublicListingsCount(),
+      getCatalogBrands(),
+    ]);
   } catch (e) {
-    console.error("Error loading listings:", e);
+    console.error("Error loading home data:", e);
   }
-
-  const featured = listings.slice(0, 12);
-
-  const brandCounts = new Map<string, number>();
-  for (const l of listings) {
-    brandCounts.set(l.brand, (brandCounts.get(l.brand) ?? 0) + 1);
-  }
-  const topBrands = [...brandCounts.entries()]
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 4);
 
   return (
     <div className="bg-[#f8f6f3]">
@@ -52,7 +54,7 @@ export default async function Home() {
             Encuentra tu auto ideal
           </h1>
           <p className="text-lg md:text-xl text-[#c9a962] mb-8 drop-shadow">
-            {listings.length.toLocaleString('es-CL')} vehículos disponibles en Chile
+            {total.toLocaleString('es-CL')} vehículos disponibles en Chile
           </p>
           <SearchBox brands={brands} />
         </div>

@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "seed:listings": "node scripts/seed-listings.mjs",
-    "db:migrate": "node scripts/migrate-to-neon.mjs"
+    "db:migrate": "node scripts/migrate-to-neon.mjs",
+    "market:generate": "node scripts/generate-market.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
