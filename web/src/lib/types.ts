@@ -21,6 +21,7 @@ export type Listing = {
   paymentId?: string;
   invoiceEmail?: string;
   invoiceRUT?: string;
+  needsReview?: boolean;
 };
 
 export type ListingCreateInput = {
@@ -39,6 +40,7 @@ export type ListingCreateInput = {
   contactPhone?: string;
   invoiceEmail?: string;
   invoiceRUT?: string;
+  needsReview?: boolean;
 };
 
 export type ListingUpdateInput = {
@@ -61,4 +63,5 @@ export type ListingUpdateInput = {
   paymentId?: string;
   invoiceEmail?: string;
   invoiceRUT?: string;
+  needsReview?: boolean;
 };

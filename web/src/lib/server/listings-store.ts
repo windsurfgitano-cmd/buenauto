@@ -23,7 +23,8 @@ const MAX_LISTING_YEAR = 2025;
 const LISTING_COLUMNS = `
   id, owner_id, status, brand, model, year, price, km, region, city,
   transmission, fuel, description, images, contact_name, contact_phone,
-  created_at, published_at, expires_at, payment_id, invoice_email, invoice_rut
+  created_at, published_at, expires_at, payment_id, invoice_email, invoice_rut,
+  needs_review
 `;
 
 /** Condición SQL equivalente a isListingPublic(). */
@@ -52,6 +53,7 @@ type ListingRow = {
   payment_id: string | null;
   invoice_email: string | null;
   invoice_rut: string | null;
+  needs_review: boolean | null;
 };
 
 function rowToListing(row: ListingRow): Listing {
@@ -78,6 +80,7 @@ function rowToListing(row: ListingRow): Listing {
     paymentId: row.payment_id ?? undefined,
     invoiceEmail: row.invoice_email ?? undefined,
     invoiceRUT: row.invoice_rut ?? undefined,
+    needsReview: row.needs_review ?? false,
   };
 }
 
@@ -301,8 +304,8 @@ export async function createListing(
       `INSERT INTO listings (
         id, owner_id, status, brand, model, year, price, km, region, city,
         transmission, fuel, description, images, contact_name, contact_phone,
-        created_at, invoice_email, invoice_rut
-      ) VALUES ($1,$2,'draft',$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,now(),$16,$17)
+        created_at, invoice_email, invoice_rut, needs_review
+      ) VALUES ($1,$2,'draft',$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,now(),$16,$17,$18)
       ON CONFLICT (id) DO NOTHING
       RETURNING ${LISTING_COLUMNS}`,
       [
@@ -323,6 +326,7 @@ export async function createListing(
         normalizeText(input.contactPhone ?? ""),
         input.invoiceEmail ? normalizeText(input.invoiceEmail) : null,
         input.invoiceRUT ? normalizeText(input.invoiceRUT) : null,
+        input.needsReview ?? false,
       ],
     );
 
@@ -408,7 +412,8 @@ export async function updateListing(id: string, ownerId: string, input: ListingU
       brand = $2, model = $3, year = $4, price = $5, km = $6, region = $7,
       city = $8, transmission = $9, fuel = $10, description = $11, images = $12,
       contact_name = $13, contact_phone = $14, status = $15, payment_id = $16,
-      published_at = $17, expires_at = $18, invoice_email = $19, invoice_rut = $20
+      published_at = $17, expires_at = $18, invoice_email = $19, invoice_rut = $20,
+      needs_review = $21
     WHERE id = $1
     RETURNING ${LISTING_COLUMNS}`,
     [
@@ -440,6 +445,7 @@ export async function updateListing(id: string, ownerId: string, input: ListingU
       input.expiresAt ?? current.expiresAt ?? null,
       input.invoiceEmail ?? current.invoiceEmail ?? null,
       input.invoiceRUT ?? current.invoiceRUT ?? null,
+      input.needsReview ?? current.needsReview ?? false,
     ],
   );
 

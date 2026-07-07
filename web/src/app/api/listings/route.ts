@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 import type { ListingCreateInput } from "@/lib/types";
 import { createListing, searchListings } from "@/lib/server/listings-store";
+import { resolveBrandModel } from "@/lib/server/catalog";
 import { getCurrentUser } from "@/lib/server/session";
 
 export const runtime = "nodejs";
@@ -64,8 +65,22 @@ export async function POST(req: Request) {
 
   const input = body as ListingCreateInput;
 
+  // Marca/modelo deben resolverse contra el catálogo (defensa del servidor).
+  const resolved = await resolveBrandModel(input.brand, input.model);
+  if (!resolved.ok) {
+    return NextResponse.json({ error: resolved.error }, { status: 400 });
+  }
+
   try {
-    const listing = await createListing(input, { ownerId: user.id });
+    const listing = await createListing(
+      {
+        ...input,
+        brand: resolved.brand,
+        model: resolved.model,
+        needsReview: resolved.needsReview,
+      },
+      { ownerId: user.id },
+    );
     return NextResponse.json({ listing }, { status: 201 });
   } catch (err) {
     const raw = err instanceof Error ? err.message : "Unable to create listing";

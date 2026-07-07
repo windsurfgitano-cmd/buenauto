@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import { compressImage } from "@/lib/compress-image";
 import { formatCLP } from "@/lib/format";
@@ -22,14 +22,13 @@ type CreateListingResponse =
   | { error: string };
 
 export function PublishForm({ brands }: Props) {
-  const brandsListId = useId();
-  const modelsListId = useId();
-
   const [brand, setBrand] = useState("");
   const [models, setModels] = useState<string[] | null>(null);
   const [modelsLoading, setModelsLoading] = useState(false);
 
   const [model, setModel] = useState("");
+  const [modelIsOther, setModelIsOther] = useState(false);
+  const [customModel, setCustomModel] = useState("");
   const [year, setYear] = useState("");
   const [price, setPrice] = useState("");
   const [km, setKm] = useState("");
@@ -120,10 +119,12 @@ export function PublishForm({ brands }: Props) {
     setError((prev) => (prev ? null : prev));
   }, [brand, model, year, price, km, region]);
 
+  const effectiveModel = modelIsOther ? customModel.trim() : model;
+
   const canSubmit = useMemo(() => {
     return Boolean(
       brand &&
-      model &&
+      effectiveModel &&
       year &&
       price &&
       km &&
@@ -131,7 +132,7 @@ export function PublishForm({ brands }: Props) {
       invoiceEmail.trim() &&
       invoiceRUT.trim(),
     );
-  }, [brand, model, year, price, km, region, invoiceEmail, invoiceRUT]);
+  }, [brand, effectiveModel, year, price, km, region, invoiceEmail, invoiceRUT]);
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -191,7 +192,7 @@ export function PublishForm({ brands }: Props) {
 
     const payload: ListingCreateInput = {
       brand,
-      model,
+      model: effectiveModel,
       year: yearNum,
       price: priceNum,
       km: kmNum,
@@ -264,44 +265,68 @@ export function PublishForm({ brands }: Props) {
           <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
             Marca
           </span>
-          <input
+          <select
             required
             value={brand}
             onChange={(e) => {
               setBrand(e.target.value);
               setModel("");
+              setModelIsOther(false);
+              setCustomModel("");
             }}
-            list={brandsListId}
-            placeholder="Ej: TOYOTA"
             className="h-11 rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-900 outline-none ring-zinc-900/10 focus:ring-4 dark:border-zinc-800 dark:bg-black dark:text-white"
-          />
-          <datalist id={brandsListId}>
+          >
+            <option value="">Selecciona marca</option>
             {brands.map((b) => (
-              <option key={b} value={b} />
+              <option key={b} value={b}>
+                {b}
+              </option>
             ))}
-          </datalist>
+          </select>
         </label>
 
         <label className="flex flex-col gap-1">
           <span className="text-xs font-semibold text-zinc-700 dark:text-zinc-200">
             Modelo
           </span>
-          <input
+          <select
             required
-            value={model}
-            onChange={(e) => setModel(e.target.value)}
-            className="h-11 rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-900 outline-none ring-zinc-900/10 focus:ring-4 disabled:opacity-70 dark:border-zinc-800 dark:bg-black dark:text-white"
+            value={modelIsOther ? "__otro__" : model}
             disabled={!brand || modelsLoading}
-            list={modelsListId}
-            placeholder={
-              !brand ? "Selecciona marca" : modelsLoading ? "Cargando..." : "Ej: Corolla"
-            }
-          />
-          <datalist id={modelsListId}>
+            onChange={(e) => {
+              const v = e.target.value;
+              if (v === "__otro__") {
+                setModelIsOther(true);
+                setModel("");
+              } else {
+                setModelIsOther(false);
+                setModel(v);
+                setCustomModel("");
+              }
+            }}
+            className="h-11 rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-900 outline-none ring-zinc-900/10 focus:ring-4 disabled:opacity-70 dark:border-zinc-800 dark:bg-black dark:text-white"
+          >
+            <option value="">
+              {!brand ? "Selecciona marca" : modelsLoading ? "Cargando..." : "Selecciona modelo"}
+            </option>
             {modelOptions.map((m) => (
-              <option key={m} value={m} />
+              <option key={m} value={m}>
+                {m}
+              </option>
             ))}
-          </datalist>
+            {brand && !modelsLoading ? (
+              <option value="__otro__">Otro (no está en la lista)</option>
+            ) : null}
+          </select>
+          {modelIsOther ? (
+            <input
+              required
+              value={customModel}
+              onChange={(e) => setCustomModel(e.target.value)}
+              placeholder="Escribe el modelo"
+              className="mt-1 h-11 rounded-xl border border-zinc-200 bg-white px-3 text-sm text-zinc-900 outline-none ring-zinc-900/10 focus:ring-4 dark:border-zinc-800 dark:bg-black dark:text-white"
+            />
+          ) : null}
         </label>
 
         <label className="flex flex-col gap-1">

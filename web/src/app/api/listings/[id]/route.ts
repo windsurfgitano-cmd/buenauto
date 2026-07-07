@@ -6,6 +6,7 @@ import {
   getListingById,
   updateListing,
 } from "@/lib/server/listings-store";
+import { resolveBrandModel } from "@/lib/server/catalog";
 import { getCurrentUser } from "@/lib/server/session";
 
 export const runtime = "nodejs";
@@ -48,6 +49,20 @@ export async function PATCH(
   }
 
   const input = body as ListingUpdateInput;
+
+  // Si viene marca/modelo, resolverlos contra el catálogo antes de guardar.
+  if (input.brand !== undefined || input.model !== undefined) {
+    const resolved = await resolveBrandModel(
+      String(input.brand ?? ""),
+      String(input.model ?? ""),
+    );
+    if (!resolved.ok) {
+      return NextResponse.json({ error: resolved.error }, { status: 400 });
+    }
+    input.brand = resolved.brand;
+    input.model = resolved.model;
+    input.needsReview = resolved.needsReview;
+  }
 
   try {
     const listing = await updateListing(id, user.id, input);

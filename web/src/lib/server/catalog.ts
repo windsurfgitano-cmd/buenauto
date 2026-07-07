@@ -271,4 +271,41 @@ export async function getCatalogModelsByBrand(brand: string) {
   return [...set].sort((a, b) => a.localeCompare(b, "es"));
 }
 
+/**
+ * Valida y canoniza marca/modelo contra el catálogo.
+ * - La marca DEBE existir en el catálogo (los selects del formulario ya la
+ *   limitan; esto es la defensa del servidor).
+ * - Si el modelo coincide con uno del catálogo (sin importar mayúsculas), se
+ *   guarda con la grafía canónica y needsReview = false.
+ * - Si no coincide (opción "Otro"), se acepta pero se marca needsReview = true
+ *   para que un admin lo revise; así las métricas quedan limpias.
+ */
+export async function resolveBrandModel(
+  rawBrand: string,
+  rawModel: string,
+): Promise<
+  | { ok: true; brand: string; model: string; needsReview: boolean }
+  | { ok: false; error: string }
+> {
+  const brand = normalizeBrand(rawBrand ?? "");
+  const model = normalizeModel(rawModel ?? "");
+
+  if (!brand) return { ok: false, error: "Falta la marca" };
+  if (!model) return { ok: false, error: "Falta el modelo" };
+
+  const brands = await getCatalogBrands();
+  if (!brands.includes(brand)) {
+    return { ok: false, error: "Marca no válida" };
+  }
+
+  const models = await getCatalogModelsByBrand(brand);
+  const canonical = models.find((m) => m.toLowerCase() === model.toLowerCase());
+
+  if (canonical) {
+    return { ok: true, brand, model: canonical, needsReview: false };
+  }
+
+  return { ok: true, brand, model, needsReview: true };
+}
+
 export type { CatalogRow };
