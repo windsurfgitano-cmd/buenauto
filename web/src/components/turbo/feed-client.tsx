@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { FeedItem } from "@/lib/turbo/feed-store";
+import { notifySwipe } from "@/lib/native/ads";
 import { CotizarSheet } from "./cotizar-sheet";
 import { FeedCard } from "./feed-card";
 import { PointsBadge } from "./points-badge";
@@ -91,6 +92,7 @@ export function FeedClient({
         }
         const i = listings.findIndex((l) => l.id === listing.id);
         if (i >= 0 && i < listings.length - 1) scrollToIndex(i + 1);
+        notifySwipe();
         return;
       }
       if (direction === "like") {
@@ -119,6 +121,7 @@ export function FeedClient({
       }
       const idx = listings.findIndex((l) => l.id === listing.id);
       if (idx >= 0 && idx < listings.length - 1) scrollToIndex(idx + 1);
+      notifySwipe();
     },
     [isLoggedIn, listings, scrollToIndex, showToast],
   );
@@ -261,7 +264,10 @@ export function FeedClient({
       </div>
 
       {activeIndex === 0 && !quoteFor && (
-        <div className="pointer-events-none absolute inset-x-0 bottom-2 z-20 flex justify-center">
+        <div
+          className="pointer-events-none absolute inset-x-0 z-20 flex justify-center"
+          style={{ bottom: "calc(0.5rem + var(--admob-bottom, 0px))" }}
+        >
           <span className="animate-bounce font-mono text-xs uppercase tracking-widest text-white/60">
             ↑↓ desliza para cambiar de auto
           </span>

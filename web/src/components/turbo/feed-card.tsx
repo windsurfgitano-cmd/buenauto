@@ -96,8 +96,12 @@ export function FeedCard({
         <RailButton label="Compartir" emoji="📤" onClick={onShare} />
       </div>
 
-      {/* Info inferior */}
-      <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-6">
+      {/* Info inferior. El padding extra deja lugar al banner de AdMob dentro de
+          la app nativa (var --admob-bottom = altura real del banner; 0 en web). */}
+      <div
+        className="absolute inset-x-0 bottom-0 z-10 px-4"
+        style={{ paddingBottom: "calc(1.5rem + var(--admob-bottom, 0px))" }}
+      >
         <p className="font-mono text-xs font-bold uppercase tracking-widest text-racing-bright">
           {listing.brand} · {listing.year} · {listing.transmission || "—"}
         </p>
