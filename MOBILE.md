@@ -59,19 +59,22 @@ Vas a ver el feed TURBO (la web en vivo) + un **banner de anuncio de prueba** ab
 
 ## AdMob
 
-Hoy usa los **IDs de PRUEBA de Google** (anuncios de test, sin riesgo de baneo):
+Hoy usa los **IDs de PRUEBA de Google** (anuncios de test, sin riesgo de baneo).
+Formatos activos:
+- **Banner** fijo abajo. El feed se ajusta solo a su altura (var `--admob-bottom`),
+  así que **no tapa** los botones Cotizar/Ver ficha.
+- **Intersticial** (pantalla completa) **cada 6 swipes**.
+
+Dónde están los IDs y la config:
 - **App ID** (test): `web/android/app/src/main/AndroidManifest.xml` → `ca-app-pub-3940256099942544~3347511713`
-- **Ad unit del banner** (test): `web/src/components/native/admob-init.tsx` → `ca-app-pub-3940256099942544/6300978111`
+- **Ad units** (test) y **frecuencia**: `web/src/lib/native/ads.ts`
+  (`TEST_BANNER`, `TEST_INTERSTITIAL`, `INTERSTITIAL_EVERY`).
 
 Para pasar a **anuncios reales**:
 1. Creá tu app en https://admob.google.com → sacá tu **App ID** y tus **ad unit IDs**.
-2. Reemplazá el App ID en el `AndroidManifest.xml` y los ad unit IDs en `admob-init.tsx`.
-3. `npm run cap:sync` y recompilás. (Dónde/cuándo mostrar anuncios vive en la web,
-   así que la frecuencia la tuneás sin recompilar.)
-
-> El banner de abajo tapa un poco los botones del feed. Cuando definamos el formato
-> final (banner fijo, intersticial cada N swipes, rewarded por puntos…) ajustamos el
-> padding inferior del feed para que no se pisen.
+2. Reemplazá el App ID en el `AndroidManifest.xml` y los ad unit IDs en `ads.ts`.
+3. `npm run cap:sync` y recompilás. (La lógica de anuncios vive en la web, así que
+   la frecuencia/dónde mostrarlos lo tuneás sin recompilar el APK.)
 
 ---
 
