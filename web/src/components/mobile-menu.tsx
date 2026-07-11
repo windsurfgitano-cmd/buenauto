@@ -37,6 +37,13 @@ export function MobileMenu({ user }: Props) {
       {open && (
         <div className="absolute left-0 right-0 top-16 z-50 border-t border-[#c9a962]/20 bg-[#0f172a] shadow-2xl">
           <nav className="px-4 py-4 space-y-1">
+            <Link
+              href="/descubre"
+              onClick={close}
+              className="block px-4 py-3 text-sm font-bold text-[#ff2a1f] hover:bg-[#e10600]/10 transition rounded-lg"
+            >
+              🔥 Descubre deslizando
+            </Link>
             <Link href="/autos" onClick={close} className={linkClass}>
               Buscar Autos
             </Link>

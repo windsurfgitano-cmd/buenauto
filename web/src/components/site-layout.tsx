@@ -20,8 +20,14 @@ export function SiteHeader({ user }: HeaderProps) {
 
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-1">
-            <Link 
-              href="/autos" 
+            <Link
+              href="/descubre"
+              className="px-4 py-2 text-sm font-bold text-[#ff2a1f] hover:text-[#e10600] transition rounded-lg hover:bg-[#e10600]/10"
+            >
+              🔥 Descubre
+            </Link>
+            <Link
+              href="/autos"
               className="px-4 py-2 text-sm font-medium text-gray-300 hover:text-[#c9a962] transition rounded-lg hover:bg-white/5"
             >
               Buscar Autos

@@ -60,6 +60,28 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* TURBO 2.0 — Descubre deslizando */}
+      <section className="bg-carbon">
+        <Link href="/descubre" className="group block">
+          <div className="mx-auto flex max-w-7xl flex-col items-center gap-5 px-4 py-10 text-center sm:flex-row sm:justify-between sm:text-left">
+            <div>
+              <p className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-racing">
+                Nuevo en BuenAuto
+              </p>
+              <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">
+                Descubre tu próximo auto <span className="text-racing">deslizando</span> 🔥
+              </h2>
+              <p className="mt-1 text-sm text-white/70">
+                Un feed tipo TikTok: desliza, dale me gusta y gana puntos que canjeas al cotizar.
+              </p>
+            </div>
+            <span className="inline-flex shrink-0 items-center rounded-xl bg-racing px-6 py-3.5 font-extrabold text-white transition-colors group-hover:bg-racing-bright">
+              Empezar a deslizar →
+            </span>
+          </div>
+        </Link>
+      </section>
+
       {/* Marcas */}
       {topBrands.length > 0 && (
         <section className="py-12 bg-white border-b border-[#e8e4df]">
