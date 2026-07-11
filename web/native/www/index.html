@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>BuenAuto</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100%;
+        background: #0b0b0d;
+        color: #f5f5f4;
+        font-family: system-ui, -apple-system, sans-serif;
+      }
+      .wrap {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 14px;
+        text-align: center;
+        padding: 24px;
+      }
+      .logo {
+        font-size: 28px;
+        font-weight: 800;
+        letter-spacing: 1px;
+      }
+      .logo .r {
+        color: #e10600;
+      }
+      .msg {
+        color: #9a9aa2;
+        max-width: 280px;
+        line-height: 1.5;
+      }
+      .spin {
+        width: 34px;
+        height: 34px;
+        border: 3px solid #2a2a31;
+        border-top-color: #e10600;
+        border-radius: 50%;
+        animation: s 0.9s linear infinite;
+      }
+      @keyframes s {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Pantalla de respaldo: la app normalmente carga la web en vivo.
+         Esto solo se ve si no hay conexión al abrir. -->
+    <div class="wrap">
+      <div class="logo">TURBO<span class="r">.cl</span></div>
+      <div class="spin"></div>
+      <div class="msg">Cargando BuenAuto… Revisa tu conexión a internet si esto no avanza.</div>
+    </div>
+  </body>
+</html>

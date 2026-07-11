@@ -1,0 +1,7 @@
+# El wrapper de Gradle corre en Linux (CI): debe quedar con saltos LF, nunca CRLF.
+gradlew text eol=lf
+*.sh text eol=lf
+
+# Scripts de Windows conservan CRLF.
+*.bat text eol=crlf
+gradlew.bat text eol=crlf

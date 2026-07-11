@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "./globals.css";
 import { SiteHeader, SiteFooter } from "@/components/site-layout";
+import { AdMobInit } from "@/components/native/admob-init";
 import { getCurrentUser } from "@/lib/server/session";
 
 const geistSans = Geist({
@@ -42,6 +43,8 @@ export default async function RootLayout({
         <SiteHeader user={user} />
         <main className="flex-1">{children}</main>
         <SiteFooter />
+        {/* Anuncios AdMob: solo activos dentro de la app Android (Capacitor). */}
+        <AdMobInit />
       </body>
     </html>
   );

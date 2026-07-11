@@ -1,0 +1,71 @@
+name: Android APK (debug)
+
+# Compila un APK de depuración descargable en la nube (no hace falta Android
+# Studio local). Solo se dispara con cambios NATIVOS: el contenido de la web se
+# autoactualiza solo (el APK carga la URL en vivo), así que no reconstruimos el
+# APK en cada push de contenido. Para forzar un build usá "Run workflow".
+on:
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - "web/android/**"
+      - "web/capacitor.config.ts"
+      - "web/native/**"
+      - "web/package.json"
+      - "web/package-lock.json"
+      - ".github/workflows/android-apk.yml"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Instalar dependencias
+        working-directory: web
+        run: npm ci
+
+      - name: Capacitor sync (inyecta la URL de producción)
+        working-directory: web
+        env:
+          # Seteá la variable de repo PROD_URL en:
+          # Settings > Secrets and variables > Actions > Variables
+          CAP_SERVER_URL: ${{ vars.PROD_URL }}
+        run: |
+          if [ -z "$CAP_SERVER_URL" ]; then
+            echo "::warning::La variable PROD_URL no está seteada. El APK cargará el placeholder y no funcionará hasta que la configures."
+          else
+            echo "Cargando URL de producción: $CAP_SERVER_URL"
+          fi
+          npx cap sync android
+
+      - name: Compilar APK de depuración
+        working-directory: web/android
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleDebug --stacktrace
+
+      - name: Subir APK como artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: buenauto-debug-apk
+          path: web/android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
