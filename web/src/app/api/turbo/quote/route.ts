@@ -11,10 +11,8 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(req: Request) {
+  // Cotizar es público: un invitado puede enviar un lead (sin puntos).
   const user = await getCurrentUser();
-  if (!user) {
-    return NextResponse.json({ error: "Debes iniciar sesión" }, { status: 401 });
-  }
 
   let body: unknown;
   try {
@@ -59,12 +57,13 @@ export async function POST(req: Request) {
   }
 
   const down = clampDown(listing.price, downPayment);
-  const reward = rewardById(rewardId);
+  // El canje de puntos solo aplica con cuenta iniciada.
+  const reward = user ? rewardById(rewardId) : null;
   let appliedPoints = 0;
   let benefit: string | null = null;
   let rate = RATE_MONTHLY;
 
-  if (reward) {
+  if (reward && user) {
     const bal = await pointsBalance(user.id);
     if (bal < reward.cost) {
       return NextResponse.json(
@@ -80,7 +79,7 @@ export async function POST(req: Request) {
   const monthly = computeMonthly(listing.price, down, termMonths, rate);
 
   const leadId = await createLead({
-    userId: user.id,
+    userId: user?.id ?? null,
     listingId,
     ownerId: listing.ownerId ?? null,
     downPayment: down,
@@ -93,10 +92,13 @@ export async function POST(req: Request) {
     contactEmail,
   });
 
-  if (reward) {
-    await addLedger(user.id, "redeem", -reward.cost, `redeem:lead:${leadId}`);
+  let awarded = false;
+  if (user) {
+    if (reward) {
+      await addLedger(user.id, "redeem", -reward.cost, `redeem:lead:${leadId}`);
+    }
+    awarded = await addLedger(user.id, "quote", POINTS.quote, `quote:${leadId}`);
   }
-  const awarded = await addLedger(user.id, "quote", POINTS.quote, `quote:${leadId}`);
 
   return NextResponse.json({
     ok: true,
@@ -105,6 +107,6 @@ export async function POST(req: Request) {
     monthly,
     downPayment: down,
     awarded,
-    balance: await pointsBalance(user.id),
+    balance: user ? await pointsBalance(user.id) : 0,
   });
 }

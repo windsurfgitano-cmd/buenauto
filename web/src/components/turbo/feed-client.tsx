@@ -10,9 +10,11 @@ import { PointsBadge } from "./points-badge";
 export function FeedClient({
   initialListings,
   initialPoints,
+  isLoggedIn,
 }: {
   initialListings: FeedItem[];
   initialPoints: number;
+  isLoggedIn: boolean;
 }) {
   const listings = initialListings;
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -34,6 +36,7 @@ export function FeedClient({
   }, []);
 
   const trackView = useCallback(async (id: string) => {
+    if (!isLoggedIn) return;
     if (viewed.current.has(id)) return;
     viewed.current.add(id);
     try {
@@ -47,7 +50,7 @@ export function FeedClient({
     } catch {
       viewed.current.delete(id);
     }
-  }, []);
+  }, [isLoggedIn]);
 
   useEffect(() => {
     if (listings.length === 0) return;
@@ -74,6 +77,16 @@ export function FeedClient({
 
   const swipe = useCallback(
     async (listing: FeedItem, direction: "like" | "pass") => {
+      // Anónimo: puede explorar y pasar; el "me gusta" invita a registrarse.
+      if (!isLoggedIn) {
+        if (direction === "like") {
+          window.location.href = "/ingresar?next=/";
+          return;
+        }
+        const i = listings.findIndex((l) => l.id === listing.id);
+        if (i >= 0 && i < listings.length - 1) scrollToIndex(i + 1);
+        return;
+      }
       if (direction === "like") {
         setLikedMap((m) => ({ ...m, [listing.id]: true }));
         setFlashId(listing.id);
@@ -101,7 +114,7 @@ export function FeedClient({
       const idx = listings.findIndex((l) => l.id === listing.id);
       if (idx >= 0 && idx < listings.length - 1) scrollToIndex(idx + 1);
     },
-    [listings, scrollToIndex, showToast],
+    [isLoggedIn, listings, scrollToIndex, showToast],
   );
 
   const share = useCallback(
@@ -114,6 +127,7 @@ export function FeedClient({
           await navigator.clipboard.writeText(url);
           showToast("Link copiado");
         }
+        if (!isLoggedIn) return; // los puntos requieren cuenta
         const res = await fetch("/api/turbo/track", {
           method: "POST",
           headers: { "content-type": "application/json" },
@@ -128,7 +142,7 @@ export function FeedClient({
         /* cancelado */
       }
     },
-    [showToast],
+    [isLoggedIn, showToast],
   );
 
   useEffect(() => {
@@ -167,12 +181,21 @@ export function FeedClient({
   return (
     <div className="turbo-scope fixed inset-0 z-50 bg-carbon">
       <div className="pointer-events-none absolute inset-x-0 top-0 z-30 flex items-center justify-between px-4 pt-4">
-        <Link href="/" className="pointer-events-auto inline-flex items-center text-lg font-extrabold tracking-tight text-white">
+        <Link href="/inicio" className="pointer-events-auto inline-flex items-center text-lg font-extrabold tracking-tight text-white" title="Ir al marketplace">
           <span aria-hidden className="mr-2 inline-block h-[0.85em] w-[4px] -skew-x-12 bg-racing" />
           TURBO<span className="text-racing">.cl</span>
         </Link>
         <div className="pointer-events-auto">
-          <PointsBadge points={points} />
+          {isLoggedIn ? (
+            <PointsBadge points={points} />
+          ) : (
+            <Link
+              href="/ingresar?next=/"
+              className="rounded-full border border-racing/50 bg-racing/15 px-4 py-1.5 text-sm font-bold text-racing-bright hover:bg-racing/25"
+            >
+              Ingresar
+            </Link>
+          )}
         </div>
       </div>
 
@@ -206,10 +229,17 @@ export function FeedClient({
         <div className="flex h-dvh snap-start flex-col items-center justify-center gap-4 bg-carbon px-6 text-center">
           <span className="text-5xl">🏁</span>
           <h2 className="text-2xl font-extrabold text-paper">¡Recorriste todo el garage!</h2>
-          <p className="max-w-xs text-mutedwhite">Revisa tus favoritos o cotiza el que más te gustó.</p>
+          <p className="max-w-xs text-mutedwhite">
+            {isLoggedIn
+              ? "Revisa tus favoritos o cotiza el que más te gustó."
+              : "Crea tu cuenta para guardar favoritos y ganar puntos."}
+          </p>
           <div className="mt-2 flex flex-wrap justify-center gap-3">
-            <Link href="/favoritos" className="rounded-xl bg-racing px-5 py-3 font-bold text-white hover:bg-racing-bright">
-              Mis favoritos
+            <Link
+              href={isLoggedIn ? "/favoritos" : "/registro"}
+              className="rounded-xl bg-racing px-5 py-3 font-bold text-white hover:bg-racing-bright"
+            >
+              {isLoggedIn ? "Mis favoritos" : "Crear cuenta"}
             </Link>
             <button
               onClick={() => scrollToIndex(0)}

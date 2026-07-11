@@ -12,7 +12,7 @@ export function SiteHeader({ user }: HeaderProps) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/inicio" className="flex items-center">
             <span className="text-2xl font-bold tracking-wider text-[#c9a962] hover:text-[#d4af37] transition">
               BUENAUTO
             </span>
@@ -21,7 +21,7 @@ export function SiteHeader({ user }: HeaderProps) {
           {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-1">
             <Link
-              href="/descubre"
+              href="/"
               className="px-4 py-2 text-sm font-bold text-[#ff2a1f] hover:text-[#e10600] transition rounded-lg hover:bg-[#e10600]/10"
             >
               🔥 Descubre
