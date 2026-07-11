@@ -4,10 +4,17 @@ import type { CapacitorConfig } from "@capacitor/cli";
 // así se "autoactualiza": cada deploy en Netlify se ve al instante en el APK,
 // sin reinstalar. Solo hay que recompilar el APK al cambiar algo nativo (AdMob).
 //
-// La URL se inyecta en build desde la variable de entorno CAP_SERVER_URL
-// (el workflow de GitHub Actions la toma de la variable de repo PROD_URL).
-// Cambiá el placeholder de abajo por tu dominio si vas a compilar localmente.
-const SERVER_URL = process.env.CAP_SERVER_URL || "https://REEMPLAZAR-POR-TU-URL.netlify.app";
+// La URL se resuelve así (primera que exista gana):
+//   1. process.env.CAP_SERVER_URL      → la usa el CI de GitHub Actions
+//   2. process.env.NEXT_PUBLIC_SITE_URL → si la exportás en tu shell
+//   3. el placeholder de abajo          → EDITALO con tu dominio para builds locales
+//
+// PARA ANDROID STUDIO (build local): reemplazá el placeholder por tu URL de
+// producción (ej. "https://buenauto.netlify.app") y corré `npm run cap:sync`.
+const SERVER_URL =
+  process.env.CAP_SERVER_URL ||
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  "https://REEMPLAZAR-POR-TU-URL.netlify.app";
 
 const config: CapacitorConfig = {
   appId: "cl.buenauto.app",

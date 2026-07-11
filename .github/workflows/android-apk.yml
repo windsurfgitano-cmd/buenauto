@@ -1,20 +1,24 @@
 name: Android APK (debug)
 
-# Compila un APK de depuración descargable en la nube (no hace falta Android
-# Studio local). Solo se dispara con cambios NATIVOS: el contenido de la web se
-# autoactualiza solo (el APK carga la URL en vivo), así que no reconstruimos el
-# APK en cada push de contenido. Para forzar un build usá "Run workflow".
+# Compila un APK de depuración descargable en la nube (opción alternativa al
+# build local con Android Studio). Está en modo MANUAL: requiere que la cuenta
+# de GitHub tenga Actions habilitado (hoy bloqueado por facturación). Para
+# usarlo: pestaña Actions > "Android APK (debug)" > Run workflow.
+#
+# El auto-trigger por push está desactivado a propósito para no spamear fallas
+# mientras se compila localmente. Si querés builds automáticos en cada cambio
+# nativo, descomentá el bloque `push:` de abajo.
 on:
   workflow_dispatch:
-  push:
-    branches: [master]
-    paths:
-      - "web/android/**"
-      - "web/capacitor.config.ts"
-      - "web/native/**"
-      - "web/package.json"
-      - "web/package-lock.json"
-      - ".github/workflows/android-apk.yml"
+  # push:
+  #   branches: [master]
+  #   paths:
+  #     - "web/android/**"
+  #     - "web/capacitor.config.ts"
+  #     - "web/native/**"
+  #     - "web/package.json"
+  #     - "web/package-lock.json"
+  #     - ".github/workflows/android-apk.yml"
 
 jobs:
   build:

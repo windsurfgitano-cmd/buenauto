@@ -9,7 +9,9 @@
     "lint": "eslint",
     "seed:listings": "node scripts/seed-listings.mjs",
     "db:migrate": "node scripts/migrate-to-neon.mjs",
-    "market:generate": "node scripts/generate-market.mjs"
+    "market:generate": "node scripts/generate-market.mjs",
+    "cap:sync": "cap sync android",
+    "android": "cap sync android && cap open android"
   },
   "dependencies": {
     "@capacitor-community/admob": "^8.0.0",
