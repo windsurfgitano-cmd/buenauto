@@ -57,6 +57,7 @@ export function FeedCard({
   onLike,
   onPass,
   onShare,
+  onQuote,
   flash,
   busy,
 }: {
@@ -65,6 +66,7 @@ export function FeedCard({
   onLike: () => void;
   onPass: () => void;
   onShare: () => void;
+  onQuote: () => void;
   flash?: boolean;
   busy?: boolean;
 }) {
@@ -109,15 +111,17 @@ export function FeedCard({
           {formatCLP(listing.price)}
         </p>
         <div className="mt-3 flex gap-2">
-          <Link
-            href={`/cotizar/${listing.id}`}
+          <button
+            type="button"
+            onClick={onQuote}
             className="flex-1 rounded-xl bg-racing py-3.5 text-center text-base font-extrabold text-white shadow-[0_8px_24px_-8px_rgba(225,6,0,0.7)] transition-colors hover:bg-racing-bright active:translate-y-[1px]"
           >
             Cotizar →
-          </Link>
+          </button>
           <Link
             href={`/autos/${listing.id}`}
             className="rounded-xl border border-white/25 bg-black/30 px-4 py-3.5 text-center text-base font-bold text-white backdrop-blur transition-colors hover:border-white/50"
+            title="Ver todos los detalles en la plataforma completa"
           >
             Ver ficha
           </Link>

@@ -4,17 +4,21 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { FeedItem } from "@/lib/turbo/feed-store";
+import { CotizarSheet } from "./cotizar-sheet";
 import { FeedCard } from "./feed-card";
 import { PointsBadge } from "./points-badge";
+import { SwipeCoach } from "./swipe-coach";
 
 export function FeedClient({
   initialListings,
   initialPoints,
   isLoggedIn,
+  prefill,
 }: {
   initialListings: FeedItem[];
   initialPoints: number;
   isLoggedIn: boolean;
+  prefill: { name: string; email: string };
 }) {
   const listings = initialListings;
   const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -29,6 +33,8 @@ export function FeedClient({
   const [activeIndex, setActiveIndex] = useState(0);
   const [toast, setToast] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
+  // Cotización dentro del feed (bottom-sheet). null = cerrado.
+  const [quoteFor, setQuoteFor] = useState<FeedItem | null>(null);
 
   const showToast = useCallback((msg: string) => {
     setToast(msg);
@@ -147,6 +153,8 @@ export function FeedClient({
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
+      // Con el cotizador abierto, el sheet maneja el teclado (Escape, etc.).
+      if (quoteFor) return;
       const l = listings[activeIndex];
       if (!l) return;
       if (e.code === "ArrowDown") {
@@ -163,7 +171,7 @@ export function FeedClient({
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [activeIndex, listings, swipe, scrollToIndex]);
+  }, [activeIndex, listings, swipe, scrollToIndex, quoteFor]);
 
   if (listings.length === 0) {
     return (
@@ -220,6 +228,7 @@ export function FeedClient({
               onLike={() => swipe(listing, "like")}
               onPass={() => swipe(listing, "pass")}
               onShare={() => share(listing)}
+              onQuote={() => setQuoteFor(listing)}
               flash={flashId === listing.id}
               busy={busy}
             />
@@ -251,10 +260,24 @@ export function FeedClient({
         </div>
       </div>
 
-      {activeIndex === 0 && (
+      {activeIndex === 0 && !quoteFor && (
         <div className="pointer-events-none absolute inset-x-0 bottom-2 z-20 flex justify-center">
-          <span className="animate-bounce font-mono text-xs uppercase tracking-widest text-white/60">↑ desliza</span>
+          <span className="animate-bounce font-mono text-xs uppercase tracking-widest text-white/60">
+            ↑↓ desliza para cambiar de auto
+          </span>
         </div>
+      )}
+
+      {!quoteFor && <SwipeCoach />}
+
+      {quoteFor && (
+        <CotizarSheet
+          listing={quoteFor}
+          initialPoints={points}
+          prefill={prefill}
+          onClose={() => setQuoteFor(null)}
+          onPointsChange={setPoints}
+        />
       )}
     </div>
   );

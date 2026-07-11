@@ -15,5 +15,12 @@ export default async function Home() {
     user ? pointsBalance(user.id) : Promise.resolve(0),
   ]);
 
-  return <FeedClient initialListings={listings} initialPoints={points} isLoggedIn={!!user} />;
+  return (
+    <FeedClient
+      initialListings={listings}
+      initialPoints={points}
+      isLoggedIn={!!user}
+      prefill={{ name: user?.name ?? "", email: user?.email ?? "" }}
+    />
+  );
 }

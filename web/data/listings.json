@@ -58,8 +58,8 @@
   },
   {
     "id": "ls_0034",
-    "brand": "HYUNDAI",
-    "model": "IONIQ 5",
+    "brand": "BMW",
+    "model": "Serie 5",
     "year": 2024,
     "price": 20724570,
     "km": 25754,
@@ -69,7 +69,7 @@
     "fuel": "Diésel",
     "description": "A la venta Hyundai IONIQ 5 2024. Kilometraje acorde al año. Mantenciones recientes, con boletas. Segundo dueño. Cuenta con pantalla con Android Auto/CarPlay y aire acondicionado. Documentos al día, revisión técnica vigente.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/bmw-serie-5.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3895 3177",
@@ -77,8 +77,8 @@
   },
   {
     "id": "ls_0035",
-    "brand": "HYUNDAI",
-    "model": "Creata Grand",
+    "brand": "SUZUKI",
+    "model": "Swift",
     "year": 2024,
     "price": 21783119,
     "km": 29472,
@@ -88,7 +88,7 @@
     "fuel": "Eléctrico",
     "description": "Vendo por renovación Hyundai Creata Grand 2024. Uso mixto ciudad/carretera. Aceite y filtros recién cambiados. Cuenta con pantalla con Android Auto/CarPlay, sensores de retroceso, aire acondicionado y batería con excelente salud. Papeles al día, sin multas ni prendas.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-swift.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9698 3089",
@@ -115,8 +115,8 @@
   },
   {
     "id": "ls_0037",
-    "brand": "LIFAN",
-    "model": "Lifan 320",
+    "brand": "MAZDA",
+    "model": "CX-5",
     "year": 2017,
     "price": 17098201,
     "km": 70280,
@@ -126,7 +126,7 @@
     "fuel": "Diésel",
     "description": "Vendo por renovación Lifan Lifan 320 2017. Kilometraje bajo, siempre estacionado en techado. Mantenciones recientes, con boletas. Cuenta con aire acondicionado, llantas originales y muy económico en carretera. Documentos al día, revisión técnica vigente.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mazda-cx-5.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9848 5253",
@@ -134,8 +134,8 @@
   },
   {
     "id": "ls_0038",
-    "brand": "GREAT WALL (GWM/HAVAL)",
-    "model": "Haval Dargo",
+    "brand": "CITROËN",
+    "model": "C4",
     "year": 2022,
     "price": 18941011,
     "km": 45976,
@@ -145,7 +145,7 @@
     "fuel": "Híbrido",
     "description": "A la venta Great wall (gwm/haval) Haval Dargo 2022. Kilometraje acorde al año. Aceite y filtros recién cambiados. Segundo dueño. Cuenta con pantalla con Android Auto/CarPlay, sensores de retroceso, aire acondicionado, llantas originales y consumo híbrido muy económico. Todo al día, transferencia inmediata.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/citroen-c4.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 4301 6510",
@@ -381,8 +381,8 @@
   },
   {
     "id": "ls_0051",
-    "brand": "DONGFENG",
-    "model": "Aeolus Y5",
+    "brand": "VOLKSWAGEN",
+    "model": "Passat",
     "year": 2024,
     "price": 21781994,
     "km": 25087,
@@ -392,7 +392,7 @@
     "fuel": "Diésel",
     "description": "Dongfeng Aeolus Y5 2024 impecable, listo para transferir. Kilometraje acorde al año. Mantenciones recientes, con boletas. Cuenta con sensores de retroceso y llantas originales. Documentos al día, revisión técnica vigente. Cualquier prueba con mecánico, bienvenida.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/volkswagen-passat.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 7876 9185",
@@ -419,8 +419,8 @@
   },
   {
     "id": "ls_0053",
-    "brand": "KIA",
-    "model": "K3",
+    "brand": "SUBARU",
+    "model": "WRX",
     "year": 2019,
     "price": 17355910,
     "km": 86851,
@@ -430,7 +430,7 @@
     "fuel": "Eléctrico",
     "description": "KIA K3 2019 impecable, listo para transferir. Uso mixto ciudad/carretera. Mantenciones recientes, con boletas. Único dueño. Cuenta con batería con excelente salud. Documentos al día, revisión técnica vigente. Cualquier prueba con mecánico, bienvenida.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/subaru-wrx.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9284 5949",
@@ -457,8 +457,8 @@
   },
   {
     "id": "ls_0055",
-    "brand": "DFSK",
-    "model": "Seres",
+    "brand": "TOYOTA",
+    "model": "Corolla",
     "year": 2025,
     "price": 22871741,
     "km": 733,
@@ -468,7 +468,7 @@
     "fuel": "Diésel",
     "description": "A la venta Dfsk Seres 2025. Kilometraje bajo, siempre estacionado en techado. Mantenciones recientes, con boletas. Único dueño. Cuenta con aire acondicionado, llantas originales y muy económico en carretera. Papeles al día, sin multas ni prendas.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-corolla.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2516 9752",
@@ -514,8 +514,8 @@
   },
   {
     "id": "ls_0058",
-    "brand": "GREAT WALL (GWM/HAVAL)",
-    "model": "Haval H2",
+    "brand": "BMW",
+    "model": "X5",
     "year": 2024,
     "price": 22399177,
     "km": 26069,
@@ -525,7 +525,7 @@
     "fuel": "Eléctrico",
     "description": "A la venta Great wall (gwm/haval) Haval H2 2024. Kilometraje acorde al año. Aceite y filtros recién cambiados. Segundo dueño. Cuenta con pantalla con Android Auto/CarPlay, sensores de retroceso, aire acondicionado y batería con excelente salud. Documentos al día, revisión técnica vigente. Cualquier prueba con mecánico, bienvenida.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/bmw-x5.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2352 8479",
@@ -533,8 +533,8 @@
   },
   {
     "id": "ls_0059",
-    "brand": "FOTON",
-    "model": "Isuzu",
+    "brand": "AUDI",
+    "model": "Q5",
     "year": 2012,
     "price": 8182006,
     "km": 179005,
@@ -544,7 +544,7 @@
     "fuel": "Diésel",
     "description": "Vendo por renovación Foton Isuzu 2012. Kilometraje acorde al año. Mantenciones al día con respaldo. Cuenta con aire acondicionado. Papeles al día, sin multas ni prendas. Se escuchan ofertas razonables.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/audi-q5.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1064 1103",
@@ -666,8 +666,8 @@
   },
   {
     "id": "ls_0066",
-    "brand": "GREAT WALL (GWM/HAVAL)",
-    "model": "Ora",
+    "brand": "TOYOTA",
+    "model": "Hilux",
     "year": 2025,
     "price": 20877261,
     "km": 19696,
@@ -677,7 +677,7 @@
     "fuel": "Híbrido",
     "description": "Great wall (gwm/haval) Ora 2025 impecable, listo para transferir. Uso de carretera, mecánica al día. Mantenciones al día con respaldo. Segundo dueño. Cuenta con pantalla con Android Auto/CarPlay, aire acondicionado y consumo híbrido muy económico. Todo al día, transferencia inmediata.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-hilux.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9581 6109",
@@ -951,8 +951,8 @@
   },
   {
     "id": "ls_0081",
-    "brand": "DODGE/RAM",
-    "model": "Ram Rampage",
+    "brand": "CITROËN",
+    "model": "Jumper",
     "year": 2024,
     "price": 21425421,
     "km": 22946,
@@ -962,7 +962,7 @@
     "fuel": "Diésel",
     "description": "A la venta Dodge/ram Ram Rampage 2024. Kilometraje acorde al año. Mantenciones en servicio oficial. Cuenta con llantas originales y muy económico en carretera. Papeles al día, sin multas ni prendas. Cualquier prueba con mecánico, bienvenida.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/citroen-jumper.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3992 2102",
@@ -989,8 +989,8 @@
   },
   {
     "id": "ls_0083",
-    "brand": "MG (SAIC)",
-    "model": "MG3",
+    "brand": "MITSUBISHI",
+    "model": "Lancer",
     "year": 2015,
     "price": 15344755,
     "km": 100858,
@@ -1000,7 +1000,7 @@
     "fuel": "Bencina",
     "description": "Vendo por renovación Mg (saic) MG3 2015. Uso mixto ciudad/carretera. Aceite y filtros recién cambiados. Cuenta con aire acondicionado y llantas originales. Papeles al día, sin multas ni prendas.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mitsubishi-lancer.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 8494 1162",
@@ -1198,8 +1198,8 @@
   },
   {
     "id": "ls_0094",
-    "brand": "GREAT WALL (GWM/HAVAL)",
-    "model": "Wingle",
+    "brand": "MITSUBISHI",
+    "model": "Outlander",
     "year": 2022,
     "price": 18696803,
     "km": 40663,
@@ -1209,7 +1209,7 @@
     "fuel": "Bencina",
     "description": "A la venta Great wall (gwm/haval) Wingle 2022. Kilometraje acorde al año. Mantenciones al día con respaldo. Único dueño. Cuenta con pantalla con Android Auto/CarPlay y sensores de retroceso. Papeles al día, sin multas ni prendas. Conversable con papeles en mano.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/mitsubishi-outlander.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9838 7605",
@@ -1274,8 +1274,8 @@
   },
   {
     "id": "ls_0098",
-    "brand": "RENAULT ARGENTINA",
-    "model": "Torino",
+    "brand": "SUZUKI",
+    "model": "Jimny",
     "year": 2004,
     "price": 6701442,
     "km": 201059,
@@ -1285,7 +1285,7 @@
     "fuel": "Diésel",
     "description": "Vendo Renault argentina Torino 2004 en excelente estado. Uso mixto ciudad/carretera. Aceite y filtros recién cambiados. Cuenta con aire acondicionado. Papeles al día, sin multas ni prendas. Conversable con papeles en mano.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/suzuki-jimny.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 5554 1770",
@@ -1369,8 +1369,8 @@
   },
   {
     "id": "ls_0103",
-    "brand": "DONGFENG",
-    "model": "Fengon",
+    "brand": "BMW",
+    "model": "X3",
     "year": 2016,
     "price": 16464418,
     "km": 95611,
@@ -1380,7 +1380,7 @@
     "fuel": "Híbrido",
     "description": "Vendo Dongfeng Fengon 2016 en excelente estado. Uso mixto ciudad/carretera. Kit de distribución y frenos recién hechos. Cuenta con llantas originales y consumo híbrido muy económico. Todo al día, transferencia inmediata. Conversable con papeles en mano.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/bmw-x3.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 1430 6511",
@@ -1446,7 +1446,7 @@
   {
     "id": "ls_0107",
     "brand": "ISUZU",
-    "model": "D-Max S-Cab",
+    "model": "NPR",
     "year": 2025,
     "price": 21185428,
     "km": 5332,
@@ -1456,7 +1456,7 @@
     "fuel": "Eléctrico",
     "description": "Vendo por renovación Isuzu D-Max S-Cab 2025. Pocos kilómetros para el año, uso de ciudad. Mantenciones recientes, con boletas. Segundo dueño. Cuenta con sensores de retroceso, llantas originales y batería con excelente salud. Papeles al día, sin multas ni prendas.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/isuzu-npr.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 8277 5459",
@@ -1559,8 +1559,8 @@
   },
   {
     "id": "ls_0113",
-    "brand": "DONGFENG",
-    "model": "Fengon 500",
+    "brand": "TOYOTA",
+    "model": "Land Cruiser",
     "year": 2024,
     "price": 20072934,
     "km": 19499,
@@ -1570,7 +1570,7 @@
     "fuel": "Híbrido",
     "description": "Vendo Dongfeng Fengon 500 2024 en excelente estado. Uso mixto ciudad/carretera. Mantenciones recientes, con boletas. Segundo dueño. Cuenta con pantalla con Android Auto/CarPlay, sensores de retroceso, llantas originales y consumo híbrido muy económico. Todo al día, transferencia inmediata.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-land-cruiser.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3117 2110",
@@ -1616,8 +1616,8 @@
   },
   {
     "id": "ls_0116",
-    "brand": "MG (SAIC)",
-    "model": "RX5",
+    "brand": "HYUNDAI",
+    "model": "Accent",
     "year": 2017,
     "price": 17398147,
     "km": 91963,
@@ -1627,7 +1627,7 @@
     "fuel": "Híbrido",
     "description": "Se vende Mg (saic) RX5 año 2017, muy cuidado. Kilometraje acorde al año. Aceite y filtros recién cambiados. Cuenta con aire acondicionado y consumo híbrido muy económico. Documentos al día, revisión técnica vigente.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/hyundai-accent.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 3005 2326",
@@ -1673,8 +1673,8 @@
   },
   {
     "id": "ls_0119",
-    "brand": "DODGE/RAM",
-    "model": "Charger",
+    "brand": "CITROËN",
+    "model": "C3",
     "year": 2019,
     "price": 16245052,
     "km": 56721,
@@ -1684,7 +1684,7 @@
     "fuel": "Bencina",
     "description": "Vendo por renovación Dodge/ram Charger 2019. Kilometraje bajo, siempre estacionado en techado. Aceite y filtros recién cambiados. Segundo dueño. Cuenta con pantalla con Android Auto/CarPlay, sensores de retroceso y aire acondicionado. Papeles al día, sin multas ni prendas.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/citroen-c3.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9551 5861",
@@ -1692,8 +1692,8 @@
   },
   {
     "id": "ls_0120",
-    "brand": "KGM (SSANGYONG)",
-    "model": "Tivoli",
+    "brand": "AUDI",
+    "model": "A6",
     "year": 2021,
     "price": 17232768,
     "km": 60580,
@@ -1703,7 +1703,7 @@
     "fuel": "Diésel",
     "description": "Kgm (ssangyong) Tivoli 2021 impecable, listo para transferir. Kilometraje acorde al año. Aceite y filtros recién cambiados. Cuenta con aire acondicionado. Todo al día, transferencia inmediata.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/audi-a6.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2276 6328",
@@ -1730,8 +1730,8 @@
   },
   {
     "id": "ls_0122",
-    "brand": "MG (SAIC)",
-    "model": "GS",
+    "brand": "FIAT",
+    "model": "Punto",
     "year": 2015,
     "price": 15094762,
     "km": 146929,
@@ -1741,7 +1741,7 @@
     "fuel": "Diésel",
     "description": "Vendo Mg (saic) GS 2015 en excelente estado. Uso mixto ciudad/carretera. Kit de distribución y frenos recién hechos. Cuenta con sensores de retroceso y aire acondicionado. Papeles al día, sin multas ni prendas. Se escuchan ofertas razonables.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/fiat-punto.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9514 8482",
@@ -1882,8 +1882,8 @@
   },
   {
     "id": "ls_0130",
-    "brand": "DONGFENG",
-    "model": "Aeolus GS",
+    "brand": "SUBARU",
+    "model": "Impreza",
     "year": 2016,
     "price": 11853946,
     "km": 96397,
@@ -1893,7 +1893,7 @@
     "fuel": "Eléctrico",
     "description": "Dongfeng Aeolus GS 2016 impecable, listo para transferir. Uso mixto ciudad/carretera. Mantenciones al día con respaldo. Cuenta con sensores de retroceso y batería con excelente salud. Todo al día, transferencia inmediata.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/subaru-impreza.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9094 7633",
@@ -1977,8 +1977,8 @@
   },
   {
     "id": "ls_0135",
-    "brand": "GREAT WALL (GWM/HAVAL)",
-    "model": "Tank",
+    "brand": "LEXUS",
+    "model": "ES",
     "year": 2022,
     "price": 19198928,
     "km": 47710,
@@ -1988,7 +1988,7 @@
     "fuel": "Eléctrico",
     "description": "Vendo por renovación Great wall (gwm/haval) Tank 2022. Kilometraje acorde al año. Mantenciones al día con respaldo. Único dueño. Cuenta con pantalla con Android Auto/CarPlay, sensores de retroceso, llantas originales y batería con excelente salud. Todo al día, transferencia inmediata.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/lexus-es.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 8872 9242",
@@ -2072,8 +2072,8 @@
   },
   {
     "id": "ls_0140",
-    "brand": "GEELY",
-    "model": "SX11",
+    "brand": "LEXUS",
+    "model": "LS",
     "year": 2022,
     "price": 18203030,
     "km": 34827,
@@ -2083,7 +2083,7 @@
     "fuel": "Híbrido",
     "description": "Vendo Geely SX11 2022 en excelente estado. Pocos kilómetros para el año, uso de ciudad. Mantenciones al día con respaldo. Segundo dueño. Cuenta con pantalla con Android Auto/CarPlay, sensores de retroceso y consumo híbrido muy económico. Todo al día, transferencia inmediata. Solo interesados serios, por favor.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/lexus-ls.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 5854 4183",
@@ -2110,8 +2110,8 @@
   },
   {
     "id": "ls_0142",
-    "brand": "VOLVO",
-    "model": "XC Recharge",
+    "brand": "NISSAN",
+    "model": "X-Trail",
     "year": 2023,
     "price": 19723709,
     "km": 29634,
@@ -2121,7 +2121,7 @@
     "fuel": "Diésel",
     "description": "Volvo XC Recharge 2023 impecable, listo para transferir. Kilometraje acorde al año. Mantenciones al día con respaldo. Único dueño. Cuenta con pantalla con Android Auto/CarPlay, sensores de retroceso y llantas originales. Documentos al día, revisión técnica vigente. Cualquier prueba con mecánico, bienvenida.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/nissan-x-trail.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 2896 1012",
@@ -2148,8 +2148,8 @@
   },
   {
     "id": "ls_0144",
-    "brand": "DONGFENG",
-    "model": "Aeolus D9",
+    "brand": "TOYOTA",
+    "model": "Fortuner",
     "year": 2023,
     "price": 18769177,
     "km": 38037,
@@ -2159,7 +2159,7 @@
     "fuel": "Diésel",
     "description": "Vendo por renovación Dongfeng Aeolus D9 2023. Uso mixto ciudad/carretera. Mantenciones recientes, con boletas. Cuenta con sensores de retroceso y llantas originales. Documentos al día, revisión técnica vigente. Se escuchan ofertas razonables.",
     "images": [
-      "/car-placeholder.svg"
+      "/cars/toyota-fortuner.jpg"
     ],
     "contactName": "Vendedor BuenAuto",
     "contactPhone": "+56 9 9963 7050",
