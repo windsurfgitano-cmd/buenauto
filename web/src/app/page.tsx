@@ -20,6 +20,7 @@ export default async function Home() {
       initialListings={listings}
       initialPoints={points}
       isLoggedIn={!!user}
+      userId={user?.id ?? null}
       prefill={{ name: user?.name ?? "", email: user?.email ?? "" }}
     />
   );

@@ -5,7 +5,11 @@ export const POINTS = {
   like: 5, // dar me gusta (favorito)
   share: 15, // compartir
   quote: 100, // cotizar
+  rewarded: 50, // mirar un anuncio rewarded (solo en la app)
 } as const;
+
+// Tope diario de anuncios rewarded que otorgan puntos (anti-abuso).
+export const REWARDED_DAILY_CAP = 10;
 
 export type PointAction = keyof typeof POINTS | "redeem";
 

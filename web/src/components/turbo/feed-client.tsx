@@ -4,7 +4,13 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import type { FeedItem } from "@/lib/turbo/feed-store";
-import { notifySwipe } from "@/lib/native/ads";
+import { POINTS } from "@/lib/turbo/points";
+import {
+  enableRewarded,
+  isNativeApp,
+  notifySwipe,
+  showRewardedForPoints,
+} from "@/lib/native/ads";
 import { CotizarSheet } from "./cotizar-sheet";
 import { FeedCard } from "./feed-card";
 import { PointsBadge } from "./points-badge";
@@ -14,11 +20,13 @@ export function FeedClient({
   initialListings,
   initialPoints,
   isLoggedIn,
+  userId,
   prefill,
 }: {
   initialListings: FeedItem[];
   initialPoints: number;
   isLoggedIn: boolean;
+  userId: string | null;
   prefill: { name: string; email: string };
 }) {
   const listings = initialListings;
@@ -36,11 +44,49 @@ export function FeedClient({
   const [busy, setBusy] = useState(false);
   // Cotización dentro del feed (bottom-sheet). null = cerrado.
   const [quoteFor, setQuoteFor] = useState<FeedItem | null>(null);
+  // Rewarded ads (solo dentro de la app nativa y con sesión).
+  const [isNative, setIsNative] = useState(false);
+  const [rewardBusy, setRewardBusy] = useState(false);
 
   const showToast = useCallback((msg: string) => {
     setToast(msg);
     setTimeout(() => setToast((t) => (t === msg ? null : t)), 1800);
   }, []);
+
+  // Dentro de la app nativa y con sesión: habilita los rewarded (precarga uno).
+  useEffect(() => {
+    let cancelled = false;
+    void isNativeApp().then((native) => {
+      if (cancelled) return;
+      setIsNative(native);
+      if (native && isLoggedIn && userId) enableRewarded(userId);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [isLoggedIn, userId]);
+
+  const watchAdForPoints = useCallback(async () => {
+    if (rewardBusy) return;
+    setRewardBusy(true);
+    try {
+      const res = await showRewardedForPoints();
+      if (res.ok) {
+        setPoints(res.balance);
+        showToast(
+          res.awarded ? `+${res.points} puntos 🔥` : "Ya contabilizamos ese anuncio",
+        );
+      } else if (res.error === "no-listo") {
+        showToast("El anuncio se está cargando, probá en unos segundos");
+      } else if (res.error === "cerrado") {
+        showToast("Mirá el anuncio completo para ganar puntos");
+      } else if (res.error === "server") {
+        showToast("No se pudieron sumar los puntos");
+      }
+    } finally {
+      setRewardBusy(false);
+    }
+  }, [rewardBusy, showToast]);
 
   const trackView = useCallback(async (id: string) => {
     if (!isLoggedIn) return;
@@ -196,9 +242,22 @@ export function FeedClient({
           <span aria-hidden className="mr-2 inline-block h-[0.85em] w-[4px] -skew-x-12 bg-racing" />
           TURBO<span className="text-racing">.cl</span>
         </Link>
-        <div className="pointer-events-auto">
+        <div className="pointer-events-auto flex items-center gap-2">
           {isLoggedIn ? (
-            <PointsBadge points={points} />
+            <>
+              {isNative && (
+                <button
+                  type="button"
+                  onClick={watchAdForPoints}
+                  disabled={rewardBusy}
+                  className="inline-flex items-center gap-1 rounded-full border border-racing/50 bg-racing/15 px-3 py-1.5 text-sm font-bold text-racing-bright transition-colors hover:bg-racing/25 disabled:opacity-60"
+                  title="Mirá un anuncio y ganá puntos TURBO"
+                >
+                  ▶ Ganá +{POINTS.rewarded}
+                </button>
+              )}
+              <PointsBadge points={points} />
+            </>
           ) : (
             <Link
               href="/ingresar?next=/"

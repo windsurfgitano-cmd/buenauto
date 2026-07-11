@@ -64,11 +64,24 @@ Formatos activos:
 - **Banner** fijo abajo. El feed se ajusta solo a su altura (var `--admob-bottom`),
   así que **no tapa** los botones Cotizar/Ver ficha.
 - **Intersticial** (pantalla completa) **cada 6 swipes**.
+- **Rewarded** (mirar anuncio → ganar puntos TURBO). Botón "▶ Ganá +50" en el
+  header del feed (solo en la app, con sesión). Los puntos se otorgan **en el
+  servidor** (`/api/turbo/reward`), autenticado + **tope diario** + anti-repetición.
 
 Dónde están los IDs y la config:
 - **App ID** (test): `web/android/app/src/main/AndroidManifest.xml` → `ca-app-pub-3940256099942544~3347511713`
 - **Ad units** (test) y **frecuencia**: `web/src/lib/native/ads.ts`
-  (`TEST_BANNER`, `TEST_INTERSTITIAL`, `INTERSTITIAL_EVERY`).
+  (`TEST_BANNER`, `TEST_INTERSTITIAL`, `TEST_REWARDED`, `INTERSTITIAL_EVERY`).
+- **Puntos por rewarded y tope diario**: `web/src/lib/turbo/points.ts`
+  (`POINTS.rewarded`, `REWARDED_DAILY_CAP`).
+
+### Endurecer los rewarded (SSV — no falsificable)
+Hoy el award va server-side pero lo dispara el cliente al completar el anuncio
+(acotado por el tope diario). Para hacerlo **imposible de falsificar**, activá
+**AdMob Server-Side Verification**: el cliente ya manda `ssv.userId`; falta
+configurar en la consola de AdMob la **SSV callback URL** apuntando a un handler
+`GET /api/turbo/reward` que verifique la firma de Google y llame a `addLedger`.
+Se agrega cuando el volumen/plata lo justifique.
 
 Para pasar a **anuncios reales**:
 1. Creá tu app en https://admob.google.com → sacá tu **App ID** y tus **ad unit IDs**.
