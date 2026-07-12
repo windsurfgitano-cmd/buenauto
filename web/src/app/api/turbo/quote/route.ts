@@ -26,6 +26,7 @@ export async function POST(req: Request) {
     downPayment?: unknown;
     termMonths?: unknown;
     rewardId?: unknown;
+    viaAd?: unknown;
     contactName?: unknown;
     contactPhone?: unknown;
     contactEmail?: unknown;
@@ -35,6 +36,8 @@ export async function POST(req: Request) {
   const downPayment = Number(b.downPayment);
   const termMonths = Number(b.termMonths);
   const rewardId = typeof b.rewardId === "string" ? b.rewardId : null;
+  // Beneficio desbloqueado mirando un anuncio (no gasta puntos).
+  const viaAd = b.viaAd === true;
   const contactName = typeof b.contactName === "string" ? b.contactName.trim() : "";
   const contactPhone = typeof b.contactPhone === "string" ? b.contactPhone.trim() : "";
   const contactEmail = typeof b.contactEmail === "string" ? b.contactEmail.trim() : "";
@@ -64,16 +67,22 @@ export async function POST(req: Request) {
   let rate = RATE_MONTHLY;
 
   if (reward && user) {
-    const bal = await pointsBalance(user.id);
-    if (bal < reward.cost) {
-      return NextResponse.json(
-        { error: "No tienes puntos suficientes para ese beneficio" },
-        { status: 400 },
-      );
+    if (viaAd) {
+      // Desbloqueado mirando un anuncio: aplica el beneficio SIN gastar puntos.
+      benefit = `${reward.label} (anuncio)`;
+      rate = RATE_MONTHLY + reward.rateDelta;
+    } else {
+      const bal = await pointsBalance(user.id);
+      if (bal < reward.cost) {
+        return NextResponse.json(
+          { error: "No tienes puntos suficientes para ese beneficio" },
+          { status: 400 },
+        );
+      }
+      appliedPoints = reward.cost;
+      benefit = reward.label;
+      rate = RATE_MONTHLY + reward.rateDelta;
     }
-    appliedPoints = reward.cost;
-    benefit = reward.label;
-    rate = RATE_MONTHLY + reward.rateDelta;
   }
 
   const monthly = computeMonthly(listing.price, down, termMonths, rate);
@@ -94,7 +103,7 @@ export async function POST(req: Request) {
 
   let awarded = false;
   if (user) {
-    if (reward) {
+    if (reward && !viaAd) {
       await addLedger(user.id, "redeem", -reward.cost, `redeem:lead:${leadId}`);
     }
     awarded = await addLedger(user.id, "quote", POINTS.quote, `quote:${leadId}`);

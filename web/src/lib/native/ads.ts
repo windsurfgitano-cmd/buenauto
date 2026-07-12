@@ -136,6 +136,27 @@ export function enableRewarded(userId: string): void {
   if (plugin) void loadRewarded();
 }
 
+/** True si hay un rewarded cargado y listo para mostrar (para habilitar botones). */
+export function rewardedIsReady(): boolean {
+  return rewardedReady;
+}
+
+// Muestra un rewarded para DESBLOQUEAR un beneficio (no otorga puntos). Devuelve
+// true si el usuario lo completó. Lo usa el cotizador ("mirá un anuncio y
+// desbloqueá la tasa preferente gratis").
+export async function showRewardedAd(): Promise<boolean> {
+  if (!plugin || !rewardedReady) return false;
+  rewardedReady = false;
+  try {
+    await plugin.showRewardVideoAd();
+    void loadRewarded();
+    return true;
+  } catch {
+    void loadRewarded();
+    return false;
+  }
+}
+
 export type RewardResult =
   | { ok: true; awarded: boolean; points: number; balance: number; remaining: number }
   | { ok: false; error: "solo-app" | "no-listo" | "cerrado" | "server" };

@@ -64,6 +64,9 @@ Formatos activos:
 - **Banner** fijo abajo. El feed se ajusta solo a su altura (var `--admob-bottom`),
   así que **no tapa** los botones Cotizar/Ver ficha.
 - **Intersticial** (pantalla completa) **cada 6 swipes**.
+- **Rewarded** en dos usos: "Ganá +50" en el feed (mirar ad → puntos, award
+  server-side) y **canje** en el cotizador ("mirá un anuncio y desbloqueá el
+  beneficio gratis, sin gastar puntos"). Ambos solo dentro de la app.
 - **Rewarded** (mirar anuncio → ganar puntos TURBO). Botón "▶ Ganá +50" en el
   header del feed (solo en la app, con sesión). Los puntos se otorgan **en el
   servidor** (`/api/turbo/reward`), autenticado + **tope diario** + anti-repetición.

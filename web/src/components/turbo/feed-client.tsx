@@ -340,6 +340,7 @@ export function FeedClient({
           listing={quoteFor}
           initialPoints={points}
           prefill={prefill}
+          canWatchAd={isNative && isLoggedIn}
           onClose={() => setQuoteFor(null)}
           onPointsChange={setPoints}
         />

@@ -5,6 +5,7 @@ import { useMemo, useState } from "react";
 
 import { formatCLP } from "@/lib/format";
 import type { Listing } from "@/lib/types";
+import { showRewardedAd } from "@/lib/native/ads";
 import { clampDown, computeMonthly, RATE_MONTHLY, TERMS, totalCost } from "@/lib/turbo/finance";
 import { POINTS, REWARDS, rewardById } from "@/lib/turbo/points";
 
@@ -17,6 +18,7 @@ export function QuotePanel({
   initialPoints,
   prefill,
   variant,
+  canWatchAd = false,
   onClose,
   onPointsChange,
 }: {
@@ -24,6 +26,8 @@ export function QuotePanel({
   initialPoints: number;
   prefill: { name: string; email: string };
   variant: "page" | "sheet";
+  /** True en la app nativa con sesión: permite desbloquear beneficios con un anuncio. */
+  canWatchAd?: boolean;
   /** Cierra el sheet (solo variant="sheet"). */
   onClose?: () => void;
   /** Notifica el nuevo saldo de puntos para sincronizar badges externos. */
@@ -33,10 +37,30 @@ export function QuotePanel({
   const [down, setDown] = useState(Math.round(listing.price * 0.2));
   const [term, setTerm] = useState(36);
   const [rewardId, setRewardId] = useState<string | null>(null);
+  // Beneficio desbloqueado mirando un anuncio (no gasta puntos).
+  const [adUnlocked, setAdUnlocked] = useState<string | null>(null);
+  const [adBusy, setAdBusy] = useState(false);
   const [contact, setContact] = useState({ name: prefill.name, phone: "", email: prefill.email });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState<{ monthly: number; benefit: string | null } | null>(null);
+
+  async function unlockViaAd(id: string) {
+    if (adBusy) return;
+    setAdBusy(true);
+    setError(null);
+    try {
+      const ok = await showRewardedAd();
+      if (ok) {
+        setRewardId(id);
+        setAdUnlocked(id);
+      } else {
+        setError("Mirá el anuncio completo para desbloquear el beneficio");
+      }
+    } finally {
+      setAdBusy(false);
+    }
+  }
 
   const reward = rewardById(rewardId);
   const rate = RATE_MONTHLY + (reward?.rateDelta ?? 0);
@@ -65,6 +89,7 @@ export function QuotePanel({
           downPayment: clampedDown,
           termMonths: term,
           rewardId,
+          viaAd: adUnlocked !== null && adUnlocked === rewardId,
           contactName: contact.name,
           contactPhone: contact.phone,
           contactEmail: contact.email,
@@ -219,7 +244,10 @@ export function QuotePanel({
         <div className="mt-3 space-y-2">
           <button
             type="button"
-            onClick={() => setRewardId(null)}
+            onClick={() => {
+              setRewardId(null);
+              setAdUnlocked(null);
+            }}
             className={`flex w-full items-center justify-between rounded-xl border p-3 text-left transition-colors ${
               rewardId === null ? "border-racing bg-racing/10" : "border-edge hover:border-mutedwhite"
             }`}
@@ -228,25 +256,50 @@ export function QuotePanel({
             <span className="text-sm text-mutedwhite">Guardar mis puntos</span>
           </button>
           {REWARDS.map((r) => {
-            const enabled = points >= r.cost;
+            const affordable = points >= r.cost;
+            const unlockedByAd = adUnlocked === r.id;
+            const selected = rewardId === r.id;
             return (
-              <button
+              <div
                 key={r.id}
-                type="button"
-                disabled={!enabled}
-                onClick={() => setRewardId(r.id)}
-                className={`flex w-full items-center justify-between rounded-xl border p-3 text-left transition-colors disabled:opacity-45 ${
-                  rewardId === r.id ? "border-racing bg-racing/10" : "border-edge hover:border-mutedwhite"
+                className={`overflow-hidden rounded-xl border transition-colors ${
+                  selected ? "border-racing bg-racing/10" : "border-edge"
                 }`}
               >
-                <span>
-                  <span className="block font-semibold text-paper">{r.label}</span>
-                  <span className="block text-sm text-mutedwhite">{r.desc}</span>
-                </span>
-                <span className="ml-3 shrink-0 rounded-full bg-carbon-3 px-3 py-1 font-mono text-sm font-bold text-racing-bright">
-                  {r.cost} pts
-                </span>
-              </button>
+                <button
+                  type="button"
+                  disabled={!affordable && !unlockedByAd}
+                  onClick={() => {
+                    setRewardId(r.id);
+                    setAdUnlocked(null);
+                  }}
+                  className="flex w-full items-center justify-between p-3 text-left transition-colors disabled:opacity-45"
+                >
+                  <span>
+                    <span className="block font-semibold text-paper">{r.label}</span>
+                    <span className="block text-sm text-mutedwhite">{r.desc}</span>
+                  </span>
+                  <span className="ml-3 shrink-0 rounded-full bg-carbon-3 px-3 py-1 font-mono text-sm font-bold text-racing-bright">
+                    {r.cost} pts
+                  </span>
+                </button>
+
+                {canWatchAd &&
+                  (unlockedByAd ? (
+                    <div className="border-t border-racing/30 bg-racing/5 px-3 py-2 text-sm font-semibold text-racing-bright">
+                      ✓ Desbloqueado con un anuncio · gratis
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      disabled={adBusy}
+                      onClick={() => unlockViaAd(r.id)}
+                      className="w-full border-t border-edge px-3 py-2 text-left text-sm font-semibold text-paper transition-colors hover:bg-carbon-3 disabled:opacity-50"
+                    >
+                      🎬 {adBusy ? "Cargando anuncio…" : "Desbloquealo gratis mirando un anuncio"}
+                    </button>
+                  ))}
+              </div>
             );
           })}
         </div>

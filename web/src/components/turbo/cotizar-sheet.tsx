@@ -12,12 +12,14 @@ export function CotizarSheet({
   listing,
   initialPoints,
   prefill,
+  canWatchAd = false,
   onClose,
   onPointsChange,
 }: {
   listing: Listing;
   initialPoints: number;
   prefill: { name: string; email: string };
+  canWatchAd?: boolean;
   onClose: () => void;
   onPointsChange: (balance: number) => void;
 }) {
@@ -81,6 +83,7 @@ export function CotizarSheet({
             initialPoints={initialPoints}
             prefill={prefill}
             variant="sheet"
+            canWatchAd={canWatchAd}
             onClose={onClose}
             onPointsChange={onPointsChange}
           />
