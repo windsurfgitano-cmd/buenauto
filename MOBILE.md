@@ -75,13 +75,28 @@ Dónde están los IDs y la config:
 - **Puntos por rewarded y tope diario**: `web/src/lib/turbo/points.ts`
   (`POINTS.rewarded`, `REWARDED_DAILY_CAP`).
 
-### Endurecer los rewarded (SSV — no falsificable)
-Hoy el award va server-side pero lo dispara el cliente al completar el anuncio
-(acotado por el tope diario). Para hacerlo **imposible de falsificar**, activá
-**AdMob Server-Side Verification**: el cliente ya manda `ssv.userId`; falta
-configurar en la consola de AdMob la **SSV callback URL** apuntando a un handler
-`GET /api/turbo/reward` que verifique la firma de Google y llame a `addLedger`.
-Se agrega cuando el volumen/plata lo justifique.
+### SSV — rewarded no falsificable (ya implementado)
+
+Hay dos modos para otorgar los puntos del rewarded:
+
+- **Modo cliente** (por defecto, para ads de test): al completar el anuncio, el
+  cliente pega a `POST /api/turbo/reward` y el server otorga (autenticado + tope
+  diario). Funciona ya, pero un técnico podría falsificarlo (acotado por el tope).
+- **Modo SSV** (no falsificable): **solo** el callback firmado de Google otorga.
+  El handler `GET /api/turbo/reward` verifica la firma ECDSA de Google contra sus
+  claves públicas y recién ahí llama a `addLedger`. Una firma forjada devuelve 403.
+
+**Para activar SSV** (cuando tengas tu cuenta AdMob real):
+1. En AdMob → tu **ad unit rewarded** → sección **Server-side verification** →
+   poné la callback URL: `https://TU-DOMINIO/api/turbo/reward`
+2. Reemplazá `TEST_REWARDED` en `web/src/lib/native/ads.ts` por tu ad unit real.
+3. Seteá la env `NEXT_PUBLIC_REWARD_SSV=1` en Netlify (para que el cliente NO
+   haga el POST y espere el callback de Google).
+4. Deploy. Listo: el award pasa a ser 100% verificado por Google.
+
+> Los IDs de PRUEBA de Google no permiten configurar SSV (no son tu ad unit), por
+> eso el modo SSV recién se puede probar con tu cuenta real. El mecanismo de
+> verificación de firma ya está probado (vectores ECDSA + rechazo de firmas falsas).
 
 Para pasar a **anuncios reales**:
 1. Creá tu app en https://admob.google.com → sacá tu **App ID** y tus **ad unit IDs**.

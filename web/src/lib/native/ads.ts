@@ -8,6 +8,22 @@ const TEST_REWARDED = "ca-app-pub-3940256099942544/5224354917";
 // Cada cuántos swipes se muestra un intersticial (bajá/subí a gusto).
 const INTERSTITIAL_EVERY = 6;
 
+// Modo SSV (Server-Side Verification): cuando está activo, el award lo hace el
+// callback firmado de Google (GET /api/turbo/reward), no el cliente. Se prende
+// con NEXT_PUBLIC_REWARD_SSV=1 una vez configurada la callback en AdMob.
+const SSV_MODE = process.env.NEXT_PUBLIC_REWARD_SSV === "1";
+
+async function fetchBalance(): Promise<number | null> {
+  try {
+    const res = await fetch("/api/turbo/balance");
+    if (!res.ok) return null;
+    const d = await res.json();
+    return typeof d.balance === "number" ? d.balance : null;
+  } catch {
+    return null;
+  }
+}
+
 type AdMobPlugin = (typeof import("@capacitor-community/admob"))["AdMob"];
 
 let plugin: AdMobPlugin | null = null;
@@ -130,6 +146,9 @@ export async function showRewardedForPoints(): Promise<RewardResult> {
   if (!plugin) return { ok: false, error: "solo-app" };
   if (!rewardedReady) return { ok: false, error: "no-listo" };
 
+  // En modo SSV el award llega asíncrono; guardamos el saldo previo para detectarlo.
+  const before = SSV_MODE ? ((await fetchBalance()) ?? 0) : 0;
+
   rewardedReady = false;
   try {
     // Resuelve con el item de recompensa cuando el usuario completa el anuncio.
@@ -141,6 +160,21 @@ export async function showRewardedForPoints(): Promise<RewardResult> {
 
   void loadRewarded(); // precargar el siguiente
 
+  if (SSV_MODE) {
+    // El award lo hace el callback firmado de Google (GET /api/turbo/reward).
+    // Sondeamos el saldo hasta que suba (o nos rendimos: quizá aún no llegó).
+    for (let i = 0; i < 5; i++) {
+      await new Promise((r) => setTimeout(r, 1200));
+      const bal = await fetchBalance();
+      if (bal !== null && bal > before) {
+        return { ok: true, awarded: true, points: bal - before, balance: bal, remaining: 0 };
+      }
+    }
+    const bal = (await fetchBalance()) ?? before;
+    return { ok: true, awarded: false, points: 0, balance: bal, remaining: 0 };
+  }
+
+  // Modo cliente (por defecto, para ads de test): el server otorga vía POST.
   try {
     const txId =
       typeof crypto !== "undefined" && crypto.randomUUID
